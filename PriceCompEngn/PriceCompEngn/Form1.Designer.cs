@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
