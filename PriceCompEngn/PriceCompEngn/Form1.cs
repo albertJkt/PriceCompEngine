@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// This is the summary
+/// </summary>
+
 namespace PriceCompEngn
 {
     public partial class Form1 : Form
@@ -19,7 +23,6 @@ namespace PriceCompEngn
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Hey there");
         }
     }
 }
