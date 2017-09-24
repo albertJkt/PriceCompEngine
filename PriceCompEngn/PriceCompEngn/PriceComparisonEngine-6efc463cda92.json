@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pricecomparisonengine",
+  "private_key_id": "6efc463cda9259ff9025866163b899c0d1194b73",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCjNVS3BPVaJg2K\nlb8dYl6go+1jJExMAZh2awmsXDUw8IECRXG/Dkq9rtUI6w/Ac89ce+VfDWkNgqKM\nbsVen0FYkQaxYW0ajw73KcbhrDT2DSxpHoIH1+VTRrzw1lBhjgsJ7NVlgBAtAGNJ\n/zhdwWXVOiCpYH7FCy6NAivcS6niXST+/fJPYqq5Ys99bXrF4ee2UcKhCK399ZsZ\nrK1fg/kbMkN/CZXrBKc5MmACQeAlEMyu6eas9omNEonBhd5Kdl+V4jmrxinpmczv\nMG6fV3KgajgsKmZ3Te923PutsFiya3wQ2vdGLw+C8e7gT93ouVNjMQ7H+ZFZsJNd\nmbaKpAX/AgMBAAECggEARKCIwjqiBqmomQUVqz/xZV/40m7xbCZhmy2wEBtnvG/s\n920HAtz6HZ+V8d2Rro2j/JIWZW0opucu/ZkYggy6OAknhM/gRkIwe0rEV6GHVY09\nhuguqiikw+sjSKv9eb/2MVK2eqsqYhnfJj7cz0Oi09HQ6RfrxmRIyz9F/SiNw2JW\nKeHZXmJUpD92oGEI/9mZIcT9ahgnBnjhXPdF9aoBFC5+SrYjp8CMEKIN0L1aUvy3\nboMPFH9RqOGZi73fLRzyPAz1U+gtRuye5LZ06ibpLJPpCpQb2GknO65bgj+6RgKA\nisWJ00zfcIpRjFJqRVA9mRxea4+5D2bI62NgsBFY6QKBgQDXQN3FBsbDw2ltKWu3\ncU4bsARqO5YG/glf1lHChj0ad2JnyLWtfORo3+kvbhIH4FQUkEGAN5FbkYNfU5dH\nqDscYSCBKb13nmjvoGdk12ZmWlqzV/d1S5LfLo0fNcIOtxuvK6ELiLbukCUctQxy\nZJ/gC3sPndTkUNSXgcxljbnkJwKBgQDCGl85OSwfwKL1dskwqCozlRjcktKXG8rr\nl3n5MnxgO9Fu32EjPUr93OVqIViyDWOTiiFLi79Ck3PB22u3YnO/8D+PSBqDKDFo\n3QLxtLHtICKAThBoj7q2wm2t5MyC9SjOd6wmfU2+C/tidZ5CFPxQeHijYPNy50KR\nDu8pnTw+aQKBgQCcqXc+uMndHNIUQvtEzdA9UoREFQ4CFM4Z1FA5NZ4vLwiN5IRl\nueo7cguzG3dACELpnHwvp0HB1Uw6CwqleolbBE218/0TnFVfYe0eda7ve39b3AAc\nfF5u1OCdAHE2aIpbmXNig6QwSPTZyeM/NoEtfO2Z1hNmAHZZtnxexSGwLQKBgAwh\nmdH5wMg7QfQVeH2SBRE0QFmI06CeHBCdZwIsJZneIzjKvUd2jTlQlQYND34RWCfg\nejQ+h7WhgZqcHB9aB+H3IgHSf9WyrWPgbE6u/G/VklJyjpP6Z7EEddZodl+48tP0\nps3BBxrZpNyCfWGj7iEZZnDPnmeQDJkEVe5D5YABAoGAUtdNXb3z2g2Ii5qntg8l\nMcdU+xVP8xS3JnVXKs0BSV6xvr5eN2CSxlKuPlbjRHfni0Jgud/UgUwToE6tNiYG\nGSGZ8KzjkuSC6eqO3gpGkK/frXtok5VyPwOEDxMDBscM8ZRr/z8gjJuMcF9ue0rq\nBby85cwVu2dM2Hf2kyD7QRs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ocr-service@pricecomparisonengine.iam.gserviceaccount.com",
+  "client_id": "108677235331058994480",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ocr-service%40pricecomparisonengine.iam.gserviceaccount.com"
+}
