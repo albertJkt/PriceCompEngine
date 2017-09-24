@@ -9,10 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/// <summary>
-/// This is the summary
-/// </summary>
-
 namespace PriceCompEngn
 {
     public partial class OCREngineForm : Form
