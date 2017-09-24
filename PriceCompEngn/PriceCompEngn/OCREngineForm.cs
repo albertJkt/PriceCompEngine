@@ -36,7 +36,7 @@ namespace PriceCompEngn
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     FileInfo fileInfo = new FileInfo(dialog.FileName);
-                    if (fileInfo.Length > 1024 * 1024)
+                    if (fileInfo.Length > 4 * 1024 * 1024)
                     {
                         MessageBox.Show("File too large");
                         return;
