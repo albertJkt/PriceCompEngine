@@ -15,7 +15,7 @@ namespace PriceCompEngn
 {
     class GoogleAnnotate
     {
-        public string ApplicationName { get { return "Ocr"; } }
+        public string ApplicationName { get { return "PriceCompEngine"; } }
         public string JsonResult { get; set; }
         public string TextResult { get; set; }
         public string Error { get; set; }
