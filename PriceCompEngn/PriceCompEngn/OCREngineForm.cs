@@ -37,7 +37,7 @@ namespace PriceCompEngn
                         MessageBox.Show("File too large");
                         return;
                     }
-                    uploaded_image.Image = Image.FromFile(dialog.FileName);
+                    Uploaded_image.Image = Image.FromFile(dialog.FileName);
                     ImagePath = dialog.FileName;
                     Read_button.Enabled = true;
                 }
@@ -52,7 +52,7 @@ namespace PriceCompEngn
                 return;
 
 
-            converted_text.Text = "";
+            Converted_text.Text = "";
             GoogleAnnotate annotate = new GoogleAnnotate();
             annotate.GetText(ImagePath, "lt");
             if (string.IsNullOrEmpty(annotate.Error) == false)
@@ -60,7 +60,7 @@ namespace PriceCompEngn
             else
             {
                 ResultTextString = annotate.TextResult;
-                converted_text.Text = annotate.TextResult;
+                Converted_text.Text = annotate.TextResult;
             }
         }
     }

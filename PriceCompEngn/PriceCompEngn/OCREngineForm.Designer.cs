@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.Upload_button = new System.Windows.Forms.Button();
-            this.uploaded_image = new System.Windows.Forms.PictureBox();
-            this.converted_text = new System.Windows.Forms.RichTextBox();
+            this.Uploaded_image = new System.Windows.Forms.PictureBox();
+            this.Converted_text = new System.Windows.Forms.RichTextBox();
             this.Read_button = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.uploaded_image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uploaded_image)).BeginInit();
             this.SuspendLayout();
             // 
             // Upload_button
@@ -45,24 +45,24 @@
             this.Upload_button.UseVisualStyleBackColor = true;
             this.Upload_button.Click += new System.EventHandler(this.Upload_button_Click);
             // 
-            // uploaded_image
+            // Uploaded_image
             // 
-            this.uploaded_image.Location = new System.Drawing.Point(12, 67);
-            this.uploaded_image.MaximumSize = new System.Drawing.Size(290, 447);
-            this.uploaded_image.MinimumSize = new System.Drawing.Size(290, 447);
-            this.uploaded_image.Name = "uploaded_image";
-            this.uploaded_image.Size = new System.Drawing.Size(290, 447);
-            this.uploaded_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.uploaded_image.TabIndex = 1;
-            this.uploaded_image.TabStop = false;
+            this.Uploaded_image.Location = new System.Drawing.Point(12, 67);
+            this.Uploaded_image.MaximumSize = new System.Drawing.Size(290, 447);
+            this.Uploaded_image.MinimumSize = new System.Drawing.Size(290, 447);
+            this.Uploaded_image.Name = "Uploaded_image";
+            this.Uploaded_image.Size = new System.Drawing.Size(290, 447);
+            this.Uploaded_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Uploaded_image.TabIndex = 1;
+            this.Uploaded_image.TabStop = false;
             // 
-            // converted_text
+            // Converted_text
             // 
-            this.converted_text.Location = new System.Drawing.Point(458, 67);
-            this.converted_text.Name = "converted_text";
-            this.converted_text.Size = new System.Drawing.Size(309, 447);
-            this.converted_text.TabIndex = 2;
-            this.converted_text.Text = "";
+            this.Converted_text.Location = new System.Drawing.Point(458, 67);
+            this.Converted_text.Name = "Converted_text";
+            this.Converted_text.Size = new System.Drawing.Size(309, 447);
+            this.Converted_text.TabIndex = 2;
+            this.Converted_text.Text = "";
             // 
             // Read_button
             // 
@@ -80,12 +80,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 584);
             this.Controls.Add(this.Read_button);
-            this.Controls.Add(this.converted_text);
-            this.Controls.Add(this.uploaded_image);
+            this.Controls.Add(this.Converted_text);
+            this.Controls.Add(this.Uploaded_image);
             this.Controls.Add(this.Upload_button);
             this.Name = "OCREngineForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.uploaded_image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uploaded_image)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -93,8 +93,8 @@
         #endregion
 
         private System.Windows.Forms.Button Upload_button;
-        private System.Windows.Forms.PictureBox uploaded_image;
-        private System.Windows.Forms.RichTextBox converted_text;
+        private System.Windows.Forms.PictureBox Uploaded_image;
+        private System.Windows.Forms.RichTextBox Converted_text;
         private System.Windows.Forms.Button Read_button;
     }
 }
