@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.upload_button = new System.Windows.Forms.Button();
+            this.Upload_button = new System.Windows.Forms.Button();
             this.uploaded_image = new System.Windows.Forms.PictureBox();
             this.converted_text = new System.Windows.Forms.RichTextBox();
-            this.read_button = new System.Windows.Forms.Button();
+            this.Read_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uploaded_image)).BeginInit();
             this.SuspendLayout();
             // 
-            // upload_button
+            // Upload_button
             // 
-            this.upload_button.Location = new System.Drawing.Point(302, 12);
-            this.upload_button.Name = "upload_button";
-            this.upload_button.Size = new System.Drawing.Size(197, 29);
-            this.upload_button.TabIndex = 0;
-            this.upload_button.Text = "Select image";
-            this.upload_button.UseVisualStyleBackColor = true;
-            this.upload_button.Click += new System.EventHandler(this.upload_button_Click);
+            this.Upload_button.Location = new System.Drawing.Point(302, 12);
+            this.Upload_button.Name = "Upload_button";
+            this.Upload_button.Size = new System.Drawing.Size(197, 29);
+            this.Upload_button.TabIndex = 0;
+            this.Upload_button.Text = "Select image";
+            this.Upload_button.UseVisualStyleBackColor = true;
+            this.Upload_button.Click += new System.EventHandler(this.Upload_button_Click);
             // 
             // uploaded_image
             // 
@@ -64,25 +64,25 @@
             this.converted_text.TabIndex = 2;
             this.converted_text.Text = "";
             // 
-            // read_button
+            // Read_button
             // 
-            this.read_button.Location = new System.Drawing.Point(308, 129);
-            this.read_button.Name = "read_button";
-            this.read_button.Size = new System.Drawing.Size(144, 23);
-            this.read_button.TabIndex = 3;
-            this.read_button.Text = "Read text";
-            this.read_button.UseVisualStyleBackColor = true;
-            this.read_button.Click += new System.EventHandler(this.read_button_Click);
+            this.Read_button.Location = new System.Drawing.Point(308, 129);
+            this.Read_button.Name = "Read_button";
+            this.Read_button.Size = new System.Drawing.Size(144, 23);
+            this.Read_button.TabIndex = 3;
+            this.Read_button.Text = "Read text";
+            this.Read_button.UseVisualStyleBackColor = true;
+            this.Read_button.Click += new System.EventHandler(this.Read_button_Click);
             // 
             // OCREngineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 584);
-            this.Controls.Add(this.read_button);
+            this.Controls.Add(this.Read_button);
             this.Controls.Add(this.converted_text);
             this.Controls.Add(this.uploaded_image);
-            this.Controls.Add(this.upload_button);
+            this.Controls.Add(this.Upload_button);
             this.Name = "OCREngineForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.uploaded_image)).EndInit();
@@ -92,10 +92,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button upload_button;
+        private System.Windows.Forms.Button Upload_button;
         private System.Windows.Forms.PictureBox uploaded_image;
         private System.Windows.Forms.RichTextBox converted_text;
-        private System.Windows.Forms.Button read_button;
+        private System.Windows.Forms.Button Read_button;
     }
 }
 

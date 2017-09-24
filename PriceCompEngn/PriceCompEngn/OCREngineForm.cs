@@ -23,11 +23,11 @@ namespace PriceCompEngn
         {
         }
 
-        private void upload_button_Click(object sender, EventArgs e)
+        private void Upload_button_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                read_button.Enabled = false;
+                Read_button.Enabled = false;
                 dialog.Filter = "jpeg files|*.jpg;*.JPG";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -39,14 +39,14 @@ namespace PriceCompEngn
                     }
                     uploaded_image.Image = Image.FromFile(dialog.FileName);
                     ImagePath = dialog.FileName;
-                    read_button.Enabled = true;
+                    Read_button.Enabled = true;
                 }
             }
         }
 
 
         private string ResultTextString = "";
-        private void read_button_Click(object sender, EventArgs e)
+        private void Read_button_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(ImagePath))
                 return;
