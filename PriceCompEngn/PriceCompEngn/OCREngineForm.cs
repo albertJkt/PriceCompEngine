@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OCREngine;
 
 namespace PriceCompEngn
 {
@@ -49,7 +48,20 @@ namespace PriceCompEngn
         private string ResultTextString = "";
         private void Read_button_Click(object sender, EventArgs e)
         {
-            Converted_text.Text = ResultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
+            if (string.IsNullOrEmpty(ImagePath))
+                return;
+
+
+            Converted_text.Text = "";
+            GoogleAnnotate annotate = new GoogleAnnotate();
+            annotate.GetText(ImagePath, "lt");
+            if (string.IsNullOrEmpty(annotate.Error) == false)
+                MessageBox.Show("Error" + annotate.Error);
+            else
+            {
+                ResultTextString = annotate.TextResult;
+                Converted_text.Text = annotate.TextResult;
+            }
         }
     }
 }
