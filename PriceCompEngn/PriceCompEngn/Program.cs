@@ -17,7 +17,7 @@ namespace PriceCompEngn
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OCREngine());
+            Application.Run(new Form1());
         }
     }
 }
