@@ -49,7 +49,7 @@ namespace PriceCompEngn
         private string ResultTextString = "";
         private void Read_button_Click(object sender, EventArgs e)
         {
-            Converted_text.Text = ResultTextString = OCREngineAPI.GetImageText(ImagePath, ResultFormat.TEXT);
+            Converted_text.Text = ResultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
         }
     }
 }

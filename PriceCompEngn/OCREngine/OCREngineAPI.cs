@@ -14,13 +14,13 @@ namespace OCREngine
 
     public class OCREngineAPI
     {
-        public static string GetImageText(string imagePath, ResultFormat format)
+        public static string GetImageText(string imagePath, string language, ResultFormat format)
         {
             if (string.IsNullOrEmpty(imagePath))
                 return  "Wrong image path";
 
             GoogleAnnotate annotate = new GoogleAnnotate();
-            annotate.GetText(imagePath, "lt");
+            annotate.GetText(imagePath, language);
 
             if (string.IsNullOrEmpty(annotate.Error) == false)
                 return annotate.Error;
