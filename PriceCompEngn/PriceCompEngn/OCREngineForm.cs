@@ -12,10 +12,10 @@ using OCREngine;
 
 namespace PriceCompEngn
 {
-    public partial class MainForm : Form
+    public partial class OCREngineForm : Form
     {
         public string ImagePath { get; set; }
-        public MainForm()
+        public OCREngineForm()
         {
             InitializeComponent();
         }
