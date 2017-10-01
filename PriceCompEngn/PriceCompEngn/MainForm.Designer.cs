@@ -1,6 +1,6 @@
 ﻿namespace PriceCompEngn
 {
-    partial class OCREngineForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.

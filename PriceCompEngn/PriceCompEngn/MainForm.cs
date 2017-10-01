@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace PriceCompEngn
 {
-    public partial class OCREngineForm : Form
+    public partial class MainForm : Form
     {
         public string ImagePath { get; set; }
-        public OCREngineForm()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -48,20 +48,7 @@ namespace PriceCompEngn
         private string ResultTextString = "";
         private void Read_button_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ImagePath))
-                return;
-
-
-            Converted_text.Text = "";
-            GoogleAnnotate annotate = new GoogleAnnotate();
-            annotate.GetText(ImagePath, "lt");
-            if (string.IsNullOrEmpty(annotate.Error) == false)
-                MessageBox.Show("Error" + annotate.Error);
-            else
-            {
-                ResultTextString = annotate.TextResult;
-                Converted_text.Text = annotate.TextResult;
-            }
+            
         }
     }
 }
