@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PriceCompEngn
+namespace OCREngine
 {
     class GoogleAnnotate
     {
