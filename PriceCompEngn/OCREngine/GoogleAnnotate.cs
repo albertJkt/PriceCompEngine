@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace OCREngine
 {
-    class GoogleAnnotate
+    class GoogleAnnotate 
     {
         public string ApplicationName { get { return "PriceCompEngine"; } }
         public string JsonResult { get; set; }
