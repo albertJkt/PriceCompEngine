@@ -78,5 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OCREngine\OCREngine.csproj">
+      <Project>{a16939a6-2f01-4acd-91b4-75d38bd9073e}</Project>
+      <Name>OCREngine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

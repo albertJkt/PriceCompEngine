@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngn", "PriceCompEngn\PriceCompEngn.csproj", "{6D968374-AE7E-425F-A3B5-F2779ADD17A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCREngine", "OCREngine\OCREngine.csproj", "{A16939A6-2F01-4ACD-91B4-75D38BD9073E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6D968374-AE7E-425F-A3B5-F2779ADD17A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D968374-AE7E-425F-A3B5-F2779ADD17A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D968374-AE7E-425F-A3B5-F2779ADD17A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16939A6-2F01-4ACD-91B4-75D38BD9073E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16939A6-2F01-4ACD-91B4-75D38BD9073E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16939A6-2F01-4ACD-91B4-75D38BD9073E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16939A6-2F01-4ACD-91B4-75D38BD9073E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
