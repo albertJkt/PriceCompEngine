@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCREngine", "OCREngine\OCREngine.csproj", "{21128456-3063-46CA-8B62-77B26553326A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8F518C34-8D79-4702-ABF1-B1EB1983F419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{8F518C34-8D79-4702-ABF1-B1EB1983F419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
