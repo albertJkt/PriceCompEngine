@@ -14,7 +14,7 @@ namespace UnitTests
             ShopGoods c = new ShopGoods();
 
             //act
-            c.Top5Goods();
+           c.Top5Goods();
             //assert
             Assert.Fail();
         }
