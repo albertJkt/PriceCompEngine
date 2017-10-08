@@ -32,6 +32,8 @@ namespace Logic
                //1 stulp 2 eil...
             }
 
+            connection.Close();
+
         }
     }
 }
