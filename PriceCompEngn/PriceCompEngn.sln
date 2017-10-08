@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngn", "PriceCompEngn\PriceCompEngn.csproj", "{6D968374-AE7E-425F-A3B5-F2779ADD17A2}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{2CDEE47B-1DA5-4CDF-BE08-85C847CF4EA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCREngine", "OCREngine\OCREngine.csproj", "{21128456-3063-46CA-8B62-77B26553326A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "LogicTests\LogicTests.csproj", "{05F0EEE4-41D1-44FC-9080-FB0760019A6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{21128456-3063-46CA-8B62-77B26553326A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21128456-3063-46CA-8B62-77B26553326A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21128456-3063-46CA-8B62-77B26553326A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F0EEE4-41D1-44FC-9080-FB0760019A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F0EEE4-41D1-44FC-9080-FB0760019A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F0EEE4-41D1-44FC-9080-FB0760019A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F0EEE4-41D1-44FC-9080-FB0760019A6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
