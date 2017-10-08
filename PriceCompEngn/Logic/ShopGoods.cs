@@ -15,7 +15,7 @@ namespace Logic
         public void Top5Goods()
         {
             
-            SqlConnection connection = new SqlConnection(new Connection().getConnectionString());
+            SqlConnection connection = new SqlConnection(new Connection().GetConnectionString());
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT Preke, Tipas, Kaina, COUNT(*) Kiekis " +
