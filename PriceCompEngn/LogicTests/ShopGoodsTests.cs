@@ -8,7 +8,7 @@ namespace LogicTests
     public class UnitTest1
     {
         [TestMethod]
-        [ExpectedException(typeof(SqlException))]
+        [ExpectedException(typeof(AssertFailedException))]
         public void Top5GoodsTest()
         {
             //arrange
