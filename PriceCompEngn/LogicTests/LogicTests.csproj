@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ShopGoodsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextManagerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -58,6 +59,10 @@
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{2cdee47b-1da5-4cdf-be08-85c847cf4ea2}</Project>
       <Name>Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OCREngine\OCREngine.csproj">
+      <Project>{21128456-3063-46ca-8b62-77b26553326a}</Project>
+      <Name>OCREngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
