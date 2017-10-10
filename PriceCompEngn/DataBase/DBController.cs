@@ -46,5 +46,18 @@ namespace DataBase
             Products = products;
             return products;
         }
+
+        public List<ShopItem> GetProductsLinq(string type, string[] shops, int days)
+        {
+            List<ShopItem> products;
+            using(var context = new PriceCompEngineEntities())
+            {
+                var query = from item in context.ShopItems
+                            where item.Type == type
+                            select item;
+                products = query.ToList<ShopItem>();
+            }
+            return products;
+        }
     }
 }
