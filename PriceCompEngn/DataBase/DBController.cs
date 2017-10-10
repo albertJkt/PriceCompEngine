@@ -52,12 +52,21 @@ namespace DataBase
             List<ShopItem> products;
             using(var context = new PriceCompEngineEntities())
             {
-                var query = from item in context.ShopItems
+                IQueryable<ShopItem> query = from item in context.ShopItems
                             where item.Type == type
                             select item;
                 products = query.ToList<ShopItem>();
             }
             return products;
+        }
+
+        public void InsertEntry(ShopItem item)
+        {
+            using(var context = new PriceCompEngineEntities())
+            {
+                context.Entry(item).State = System.Data.Entity.EntityState.Added;
+                context.SaveChanges();
+            }
         }
     }
 }
