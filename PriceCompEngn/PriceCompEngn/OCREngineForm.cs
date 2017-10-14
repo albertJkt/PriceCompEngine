@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OCREngine;
+using Logic;
 
 namespace PriceCompEngn
 {
@@ -29,7 +30,7 @@ namespace PriceCompEngn
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 Read_button.Enabled = false;
-                dialog.Filter = "jpeg files|*.jpg;*.JPG";
+                dialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     FileInfo fileInfo = new FileInfo(dialog.FileName);

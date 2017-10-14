@@ -10,7 +10,7 @@ namespace DataBase
     {
         private const string ConnectionString = "Server=tcp:pricecompengn.database.windows.net,1433;Initial Catalog=PriceCompEngine;Persist Security Info=False;User ID=adminlogin33;Password=Adminpassword33;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        public string getConnectionString()
+        public string GetConnectionString()
         {
             return ConnectionString;
         }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
-using System.Data.SqlClient;
 
 namespace LogicTests
 {
@@ -8,7 +7,6 @@ namespace LogicTests
     public class UnitTest1
     {
         [TestMethod]
-        [ExpectedException(typeof(AssertFailedException))]
         public void Top5GoodsTest()
         {
             //arrange
