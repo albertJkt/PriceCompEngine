@@ -10,7 +10,7 @@ namespace DataBaseTest
     public class DBControllerTest
     {
         [TestMethod]
-        public void GetProductsLinqTest()
+        public void GetShopItemsListTest()
         {
             DBController controller = new DBController();
             string type = "vanduo";
@@ -23,7 +23,7 @@ namespace DataBaseTest
             };
             int days = 14;
 
-            List<ShopItem> retrievedItems = controller.GetProductsLinq(type, shops, days);
+            List<ShopItem> retrievedItems = controller.GetShopItemsList(type, shops, days);
 
             int expectedId = 1;
             string expectedShopName = "Maxima";
@@ -31,7 +31,7 @@ namespace DataBaseTest
             string expectedType = "Vanduo";
             float expectedPrice = (float)0.69;
 
-            ShopItem item = retrievedItems.ElementAt<ShopItem>(0);
+            ShopItem item = retrievedItems.Last<ShopItem>();
 
             int actualId = item.Id;
             string actualShopName = item.ShopName;
@@ -39,6 +39,10 @@ namespace DataBaseTest
             string actualType = item.Type;
             float actualPrice = item.Price;
 
+            foreach(ShopItem shopItem in retrievedItems)
+            {
+                Console.WriteLine(shopItem.PurchaseTime.ToString());
+            }
 
             Assert.AreEqual(expectedId, actualId);
             Assert.AreEqual(expectedItemnName, actualitemName);
