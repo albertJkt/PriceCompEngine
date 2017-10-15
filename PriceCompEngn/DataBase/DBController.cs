@@ -29,6 +29,14 @@ namespace DataBase
             return items;
         }
 
+        public Dictionary<string, int> GetTopShopItemsList(List<ShopItem> shopItems, int number)
+        {
+            var items = (shopItems.GroupBy(x => x.ItemName).Take(number)
+                 .ToDictionary(g => g.Key, g => g.Count()));
+
+            return items;
+        }
+
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
             using(var context = new PriceCompEngineEntities())

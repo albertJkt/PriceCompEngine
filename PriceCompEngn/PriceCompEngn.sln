@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngn", "PriceCompEngn\PriceCompEngn.csproj", "{6D968374-AE7E-425F-A3B5-F2779ADD17A2}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "LogicTests\LogicTests.csproj", "{05F0EEE4-41D1-44FC-9080-FB0760019A6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseTest", "DataBaseTest\DataBaseTest.csproj", "{62FEE92F-E6E3-43FD-B1C8-1BA6C5A645F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleDirections", "GoogleDirections\GoogleDirections.csproj", "{7C6447B2-D889-4306-AD8B-DA5542054C66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{62FEE92F-E6E3-43FD-B1C8-1BA6C5A645F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62FEE92F-E6E3-43FD-B1C8-1BA6C5A645F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62FEE92F-E6E3-43FD-B1C8-1BA6C5A645F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

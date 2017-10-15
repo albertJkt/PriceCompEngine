@@ -46,11 +46,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShopGoodsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextManagerTest.cs" />
+    <Compile Include="UserLocationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
