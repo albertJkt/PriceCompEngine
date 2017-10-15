@@ -43,15 +43,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PriceComparator.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="UserLocation.cs" />
-    <Compile Include="PriceComparator.cs" />
     <Compile Include="ShopGoods.cs" />
     <Compile Include="TextManager.cs" />
+    <Compile Include="UserLocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

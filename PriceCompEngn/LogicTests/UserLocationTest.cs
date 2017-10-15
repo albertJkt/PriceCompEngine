@@ -11,11 +11,11 @@ namespace LogicTests
         [TestMethod]
         public void ReverseGeocodeTest()
         {
-           
+
             UserLocation address = UserLocation.Instance;
             UserLocation.Instance.watcher = new GeoCoordinateWatcher();
             UserLocation.Instance.coordinate = new GeoCoordinate();
-           // UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
+            // UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
             UserLocation.Instance.watcher.TryStart(true, TimeSpan.FromMilliseconds(1000));
 
             /* private void watcher_StatusChanged(Object sender, GeoPositionStatusChangedEventArgs e)
@@ -36,6 +36,7 @@ namespace LogicTests
 
             UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
             var city = address.ReverseGeocode();
+            Assert.IsNotNull(city);
         }
     }
 }

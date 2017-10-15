@@ -30,11 +30,11 @@ namespace DataBase
         }
 
         public Dictionary<string, int> GetTopShopItemsList(List<ShopItem> shopItems, int number)
-        {  
+        {
             var items = (shopItems.GroupBy(x => x.ItemName).Take(number)
                  .ToDictionary(g => g.Key, g => g.Count()));
-           
-            return items;     
+
+            return items;
         }
 
         public ShopItem GetLatestEntry(string itemName, string shop)
@@ -59,5 +59,14 @@ namespace DataBase
                 context.SaveChanges();
             }
         }
+        
+        public void PushToDatabase (List<ShopItem> items)
+        {
+            foreach (var item in items)
+            {
+                InsertEntry(item);
+            }
+        }
+        
     }
 }

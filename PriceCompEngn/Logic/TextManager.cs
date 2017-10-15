@@ -5,22 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using OCREngine;
 using System.IO;
+using DataBase;
+using System.Text.RegularExpressions;
 
 namespace Logic
 {
     public class TextManager
     {
-        //private static string ImagePath = @"C:\Users\Albert\Desktop\a.png"; // string to the test file
-        public string ShopName { get; set; }
-        public string Item { get; set; }
-        public string ItemName { get; set; }
-        public float ItemPrice { get; set; }
-
-        public string Standartise (string text)
+        private string Standartise (string text)
         {
             return text.ToLower();
         }
-        public string DetectShopName(string text)
+        private string DetectShopName(string text)
         {
             // kadangi realus cekiai labai skiriasi lengviausia tiesiog ieskot parduotuves pavadinimo. 
             if (text.Contains("maxima"))
@@ -48,7 +44,7 @@ namespace Logic
                 return "unrecognized";
             }
         }
-        public string GetProducts (string text)
+        private string GetProducts (string text)
         {
             string result = "";
             // Delete everything till products
@@ -85,11 +81,37 @@ namespace Logic
 
             return text;
         }
-        public string GetDate (string text)
-        {
+        private System.DateTime GetDate (string text)
+        { // a bit hardcoded part. reverses text from the check and takes 10 symbols of it (date).
             var str = text.Split('\n').Reverse().Take(2);
             string result = string.Join("", str);
-            return result;
+            result = result.Substring(0, 10);
+            DateTime dt = Convert.ToDateTime(result);
+            return dt;
+        }
+        
+        public List<ShopItem> GetListOfProducts(string text)
+        {
+            text = Standartise(text);
+            string ShopName = DetectShopName(text);
+            DateTime DateT = GetDate(text);
+            List<ShopItem> items = new List<ShopItem>();
+            string Products = GetProducts(text);
+            string pattern = " ?\" ?| *eu *";
+            string[] substrings = Regex.Split(Products, pattern);
+
+            for (int i=0; i<(substrings.Length/3); i++)
+            {
+                items.Add(new ShopItem() {
+                    ShopName = ShopName,
+                    Type = substrings[i * 3],
+                    ItemName = substrings[i * 3 + 1],
+                    Price = float.Parse(substrings[i * 3 + 2]),
+                    PurchaseTime = DateT
+                });
+                
+            }
+            return items;
         }
 
     }
