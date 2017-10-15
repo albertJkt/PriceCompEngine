@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
 using OCREngine;
+using DataBase;
 
 namespace LogicTests
 {
@@ -13,51 +14,21 @@ namespace LogicTests
     [TestClass]
     public class TextManagerTest
     {
-        
-
+   
         [TestMethod]
-        public void TestDetectShopName()
+        public void TestGetListOfProducts()
         {
             TextManager tm = new TextManager();
-            string ImagePath = @"C:\Users\Albert\Desktop\a.png";
+            string ImagePath = @"C:\Users\Albert\Desktop\ab.png";
             string ResultText = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
-            string Expected = "iki";
-            string Actual = String.Empty;
-            ResultText = ResultText.ToLower();
+            string Expected = "pienas";
+            List<ShopItem> Actual;
+            string act;
 
-            Actual = tm.DetectShopName(ResultText);
+            Actual = tm.GetListOfProducts(ResultText);
+            act = Actual[0].Type;
 
-            Assert.AreEqual(Expected, Actual);
-            
-
-        }
-        [TestMethod]
-        public void TestGetProducts()
-        {
-            TextManager tm = new TextManager();
-            string ImagePath = @"C:\Users\Albert\Desktop\a.png";
-            string ResultText = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
-            string Expected = "vanduo \"neptūnas\" 1,69 eu ";
-            string Actual = String.Empty;
-            ResultText = ResultText.ToLower();
-
-            Actual = tm.GetProducts(ResultText);
-
-            Assert.AreEqual(Expected, Actual);
-        }
-        [TestMethod]
-        public void TestGetDate()
-        {
-            TextManager tm = new TextManager();
-            string ImagePath = @"C:\Users\Albert\Desktop\a.png";
-            string ResultText = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
-            string Expected = "2017-09-15";
-            string Actual = String.Empty;
-            ResultText = ResultText.ToLower();
-
-            Actual = tm.GetDate(ResultText);
-
-            Assert.AreEqual(Expected, Actual);
+            Assert.AreEqual(Expected, act);
         }
     }
 }
