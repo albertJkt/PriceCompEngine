@@ -36,9 +36,6 @@ namespace DataBase
            
             return items;     
         }
-        /*SELECT A.itemName, COUNT(*)
-        FROM dbo.ShopItem A
-        GROUP BY A.itemName */
 
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
