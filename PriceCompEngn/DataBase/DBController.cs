@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,101 +10,37 @@ namespace DataBase
 {
     public class DBController
     {
-        public List<Product> Products { get; private set; }
-        private const string SQL_TABLE_NAME = "dbo.Prekes";
-
-        public List<Product> GetProducts(string type, string[] shops, int days)
+        public List<ShopItem> GetShopItemsList(string type, string[] shops, int days)
         {
-            string sql_query = "SELECT * FROM " + SQL_TABLE_NAME + " WHERE Tipas = \'" + type + "\'";
-            //sql statement is not finished, needs filter for 1 entry per shop, entries have to be the most recent ones
-
-            List<Product> products = null;
-            
-            using(SqlConnection connection = new SqlConnection(new Connection().GetConnectionString()))
+            List<ShopItem> items;
+            using(var context = new PriceCompEngineEntities())
             {
-                connection.Open();
+                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
 
-                SqlCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = sql_query;
+                IQueryable<ShopItem> query = from item in context.ShopItems
+                                             where item.Type == type
+                                             where shops.Contains<string>(item.ShopName)
+                                             where item.PurchaseTime >= oldestValidTime
+                                             orderby item.PurchaseTime descending
+                                             select item;
 
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    if (products == null)
-                        products = new List<Product>();
-                    string shopName = reader.GetString(0);
-                    string productName = reader.GetString(1);
-                    string productType = reader.GetString(2);
-                    float price = reader.GetFloat(3);
-
-                    products.Add(new Product(shopName, productName, productType, price));
-                }
+                items = query.ToList<ShopItem>();
             }
-
-            Products = products;
-            return products;
+            return items;
         }
 
-        public List<ShopItem> GetProductsLinq(string type, string[] shops, int days)
+        public ShopItem GetLatestEntry(string itemName, string shop)
         {
-            List<ShopItem> products;
             using(var context = new PriceCompEngineEntities())
             {
                 IQueryable<ShopItem> query = from item in context.ShopItems
-                            where item.Type == type
-                            select item;
-                products = query.ToList<ShopItem>();
+                                             where item.ItemName == itemName
+                                             where item.ShopName == shop
+                                             orderby item.PurchaseTime descending
+                                             select item;
+
+                return query.FirstOrDefault<ShopItem>();
             }
-            return products;
-        }
-
-        public List<Product> GetTopProducts(string number)
-        {
-            string sql_query = "SELECT TOP " + number + " *, COUNT(*) Kiekis FROM" + SQL_TABLE_NAME;
-
-            List<Product> products = null;
-            
-            using(SqlConnection connection = new SqlConnection(new Connection().GetConnectionString()))
-            {
-                connection.Open();
-
-                SqlCommand command = connection.CreateCommand();
-                command.CommandType = CommandType.Text;
-                command.CommandText = sql_query;
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    if (products == null)
-                        products = new List<Product>();
-                    string shopName = reader.GetString(0);
-                    string productName = reader.GetString(1);
-                    string productType = reader.GetString(2);
-                    float price = reader.GetFloat(3);
-
-                    products.Add(new Product(shopName, productName, productType, price));
-                }
-            }
-
-            Products = products;
-            return products;
-        }
-        
-        public List<ShopItem> GetTopProductsLinq(int number)
-        {
-            List<ShopItem> products;
-            using (var context = new PriceCompEngineEntities())
-            {
-                //need to learn how to write this query correctly
-                IQueryable<ShopItem> query = (from item in context.ShopItems
-                                              group item by item.ItemName into g
-                                              select g);
-                products = query.ToList<ShopItem>();
-            }
-            return products;
         }
 
         public void InsertEntry(ShopItem item)

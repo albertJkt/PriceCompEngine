@@ -6,7 +6,6 @@ namespace LogicTests
     [TestClass]
     public class UnitTest1
     {
-        [ExpectedException(typeof(AssertFailedException))]
         [TestMethod]
         public void Top5GoodsTest()
         {
