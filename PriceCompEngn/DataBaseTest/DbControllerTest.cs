@@ -51,5 +51,39 @@ namespace DataBaseTest
             Assert.AreEqual(expectedPrice, actualPrice);
             Assert.IsNotNull(retrievedItems);
         }
+
+        [TestMethod]
+        public void GetShopTopItemList()
+        {
+            DBController controller = new DBController();
+            string type = "vanduo";
+            string type2 = "energetinis gerimas";
+            string[] shops =
+            {
+                "Maxima",
+                "Iki",
+                "Rimi",
+                "Norfa"
+            };
+            int days = 300;
+            int number = 2;
+            List<ShopItem> retrievedItems = controller.GetShopItemsList(type, shops, days);
+            List<ShopItem> test1 = controller.GetShopItemsList(type2, shops, days);
+      
+            retrievedItems.Add(test1.Last<ShopItem>());
+
+
+            ShopItem item = retrievedItems.Last<ShopItem>();
+            var test = controller.GetTopShopItemsList(retrievedItems, number);
+            string[] expectedNames = { "Mineralinis vanduo Vytautas", "Energetinis gerima Red Bull" };
+            int[] expectedNumbers = { 4, 1 };
+
+            Assert.AreEqual(expectedNames[0],test.Keys.First());
+            Assert.AreEqual(expectedNames[1], test.Keys.Last());
+            Assert.AreEqual(expectedNumbers[0], test["Mineralinis vanduo Vytautas"]);
+            Assert.AreEqual(expectedNumbers[1], test["Energetinis gerima Red Bull"]);
+
+        }
+
     }
 }
