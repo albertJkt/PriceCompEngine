@@ -51,5 +51,14 @@ namespace DataBase
                 context.SaveChanges();
             }
         }
+        
+        public void PushToDatabase (List<ShopItem> items)
+        {
+            foreach (var item in items)
+            {
+                InsertEntry(item);
+            }
+        }
+        
     }
 }
