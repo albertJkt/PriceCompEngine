@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
 using System.Device.Location;
+using System.Collections.Generic;
 
 namespace LogicTests
 {
@@ -15,28 +16,45 @@ namespace LogicTests
             UserLocation address = UserLocation.Instance;
             UserLocation.Instance.watcher = new GeoCoordinateWatcher();
             UserLocation.Instance.coordinate = new GeoCoordinate();
-            // UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
-            UserLocation.Instance.watcher.TryStart(true, TimeSpan.FromMilliseconds(1000));
 
-            /* private void watcher_StatusChanged(Object sender, GeoPositionStatusChangedEventArgs e)
-             {
-                 if (e.Status == GeoPositionStatus.Ready)
-                 {
-                     if (UserLocation.Instance.watcher.Position.Location.IsUnknown)
-                     {
-
-                     }
-                     else
-                     {
-                         UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
-                     }
-                 }
-             }*/
+            UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
+            UserLocation.Instance.watcher.TryStart(false, TimeSpan.FromSeconds(5));
 
 
-            UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
+
+            while (UserLocation.Instance.watcher.Status != GeoPositionStatus.Ready)
+            {
+
+            }
+
+
             var city = address.ReverseGeocode();
             Assert.IsNotNull(city);
+
+
+        }
+
+        private void watcher_StatusChanged(Object sender, GeoPositionStatusChangedEventArgs e)
+        {
+            switch (e.Status)
+            {
+                case GeoPositionStatus.Initializing:
+                    Console.WriteLine("Working on location fix");
+
+                    break;
+
+                case GeoPositionStatus.Ready:
+                    UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
+                    break;
+
+                case GeoPositionStatus.NoData:
+                    Console.WriteLine("No data");
+                    break;
+
+                case GeoPositionStatus.Disabled:
+                    Console.WriteLine("Disabled");
+                    break;
+            }
         }
     }
 }
