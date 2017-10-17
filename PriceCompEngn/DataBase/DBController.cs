@@ -29,36 +29,6 @@ namespace DataBase
             return items;
         }
 
-
-        public List<ShopItem> GetShopItemsList(int days)
-        {
-            List<ShopItem> items;
-            using(var context = new PriceCompEngineEntities())
-            {
-                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
-
-                IQueryable<ShopItem> query = from item in context.ShopItems
-                                             where item.PurchaseTime >= oldestValidTime
-                                             orderby item.PurchaseTime descending
-                                             select item;
-                items = query.ToList<ShopItem>();
-            }
-            return items;
-        } 
-
-        public List<ShopItem> GetShopItemsList()
-        {
-            List<ShopItem> items;
-            using(var context = new PriceCompEngineEntities())
-            {
-                IQueryable<ShopItem> query = from item in context.ShopItems
-                                             orderby item.PurchaseTime descending
-                                             select item;
-                items = query.ToList<ShopItem>();
-            }
-            return items;
-        }
-
         public Dictionary<string, int> GetTopShopItemsList(List<ShopItem> shopItems, int number)
         {
             var items = (shopItems.GroupBy(x => x.ItemName).Take(number)
