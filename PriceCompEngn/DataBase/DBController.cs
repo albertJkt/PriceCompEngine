@@ -29,6 +29,22 @@ namespace DataBase
             return items;
         }
 
+        public List<ShopItem> GetShopItemsList(int days)
+        {
+            List<ShopItem> items;
+            using(var context = new PriceCompEngineEntities())
+            {
+                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
+
+                IQueryable<ShopItem> query = from item in context.ShopItems
+                                             where item.PurchaseTime >= oldestValidTime
+                                             orderby item.PurchaseTime descending
+                                             select item;
+                items = query.ToList<ShopItem>();
+            }
+            return items;
+        } 
+
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
             using(var context = new PriceCompEngineEntities())
