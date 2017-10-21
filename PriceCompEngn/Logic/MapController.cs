@@ -15,28 +15,28 @@ namespace Logic
 {
     public class MapController
     {
-        private Map Map;
+        private Map _map;
 
 
         public MapController(Map map)
         {
-            Map = map;
+            _map = map;
         }
 
         public void AddMarker(double lat, double lnt, GMarkerGoogleType type)
         {
 
-            Map.GetMarkerOverlay().Markers.Add(new GMarkerGoogle(new PointLatLng(lat, lnt), type));
+            _map.GetMarkerOverlay().Markers.Add(new GMarkerGoogle(new PointLatLng(lat, lnt), type));
         }
 
         public void DisplayMap()
         {
 
-            Map.GetGMapControl().ShowCenter = false;
-            Map.GetGMapControl().MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
-            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            _map.GetGMapControl().ShowCenter = false;
+            _map.GetGMapControl().MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
 
-            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
+            _map.GetGMapControl().Overlays.Add(_map.GetMarkerOverlay());
             AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
 
 
@@ -57,11 +57,11 @@ namespace Logic
             var json = reader.ReadToEnd();
             RootObject result = JsonConvert.DeserializeObject<RootObject>(json);
 
-            Map.GetMarkerOverlay().Markers.Clear();
-            Map.GetGMapControl().Overlays.Clear();
+            _map.GetMarkerOverlay().Markers.Clear();
+            _map.GetGMapControl().Overlays.Clear();
 
-            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
-            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
+            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            _map.GetGMapControl().Overlays.Add(_map.GetMarkerOverlay());
 
             for (var i = 0; i < result.results.Count(); i++)
             {
@@ -91,11 +91,11 @@ namespace Logic
             RootObject result = JsonConvert.DeserializeObject<RootObject>(json);
 
 
-            Map.GetMarkerOverlay().Markers.Clear();
-            Map.GetGMapControl().Overlays.Clear();
+            _map.GetMarkerOverlay().Markers.Clear();
+            _map.GetGMapControl().Overlays.Clear();
 
-            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
-            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            _map.GetGMapControl().Overlays.Add(_map.GetMarkerOverlay());
+            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
 
             for (var i = 0; i < result.results.Count(); i++)
             {

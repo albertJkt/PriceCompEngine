@@ -11,22 +11,22 @@ namespace Logic
 {
     public class Map
     {
-        GMapControl Gmap;
-        GMapOverlay Markeroverlay = new GMapOverlay("markers");
+        private GMapControl _gmap;
+        private GMapOverlay _markeroverlay = new GMapOverlay("markers");
    
         public Map(GMapControl gmap)
         {
-            Gmap = gmap;
+            _gmap = gmap;
         }
 
         public GMapOverlay GetMarkerOverlay()
         {
-            return Markeroverlay;
+            return _markeroverlay;
         }
 
         public GMapControl GetGMapControl()
         {
-            return Gmap;
+            return _gmap;
         }
 
     }
