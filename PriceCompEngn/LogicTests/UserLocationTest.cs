@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
 using System.Device.Location;
+using System.Threading;
 
 namespace LogicTests
 {
@@ -9,34 +10,23 @@ namespace LogicTests
     public class UserLocationTest
     {
         [TestMethod]
-        public void ReverseGeocodeTest()
+        public void UserCoordinatesTest()
         {
 
-            UserLocation address = UserLocation.Instance;
-            UserLocation.Instance.watcher = new GeoCoordinateWatcher();
-            UserLocation.Instance.coordinate = new GeoCoordinate();
-            // UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
-            UserLocation.Instance.watcher.TryStart(true, TimeSpan.FromMilliseconds(1000));
+            UserLocation ul = UserLocation.Instance;
 
-            /* private void watcher_StatusChanged(Object sender, GeoPositionStatusChangedEventArgs e)
-             {
-                 if (e.Status == GeoPositionStatus.Ready)
-                 {
-                     if (UserLocation.Instance.watcher.Position.Location.IsUnknown)
-                     {
+            ThreadStart threaddelegate = new ThreadStart(ul.FindUserLocation);
+            Thread ulThread = new Thread(threaddelegate);
 
-                     }
-                     else
-                     {
-                         UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
-                     }
-                 }
-             }*/
+            ulThread.Start();
+            ulThread.Join();
 
+            Thread test = new Thread(new ThreadStart(ul.FindAddress));
+            test.Start();
+            test.Join();
 
-            UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
-            var city = address.ReverseGeocode();
-            Assert.IsNotNull(city);
+            //Assert.AreEqual("Vilnius",ul.GetAddress()["locality"]);
+
         }
     }
 }
