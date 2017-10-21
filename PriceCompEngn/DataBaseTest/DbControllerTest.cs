@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Logic;
 using OCREngine;
-using DataBase;
 
 namespace DataBaseTest
 {
@@ -56,28 +55,11 @@ namespace DataBaseTest
         }
 
         [TestMethod]
-        public void GetShopTopItemList()
+        public void GetShopTopItemListTest()
         {
             DBController controller = new DBController();
-            string type = "vanduo";
-            string type2 = "energetinis gerimas";
-            string[] shops =
-            {
-                "Maxima",
-                "Iki",
-                "Rimi",
-                "Norfa"
-            };
-            int days = 300;
-            int number = 2;
-            List<ShopItem> retrievedItems = controller.GetShopItemsList(type, shops, days);
-            List<ShopItem> test1 = controller.GetShopItemsList(type2, shops, days);
-
-            retrievedItems.Add(test1.Last<ShopItem>());
-
-
-            ShopItem item = retrievedItems.Last<ShopItem>();
-            var test = controller.GetTopShopItemsList(retrievedItems, number);
+            int rows = 2;
+            var test = controller.GetTopShopItemsList(rows);
             string[] expectedNames = { "Mineralinis vanduo Vytautas", "Energetinis gerima Red Bull" };
             int[] expectedNumbers = { 4, 1 };
 
@@ -86,6 +68,39 @@ namespace DataBaseTest
             Assert.AreEqual(expectedNumbers[0], test["Mineralinis vanduo Vytautas"]);
             Assert.AreEqual(expectedNumbers[1], test["Energetinis gerima Red Bull"]);
 
+        }
+
+        [TestMethod]
+        public void GetShopTopItemList2Test()
+        {
+            DBController controller = new DBController();
+            int rows = 4;
+            int days = 14;
+            int expected = 4;
+
+            var test = controller.GetTopShopItemsList(rows, days);
+            Assert.AreEqual(expected, test.Count());
+        }
+
+        [TestMethod]
+        public void GetCheapestShopItemListTest()
+        {
+            DBController controller = new DBController();
+            int rows = 5;
+
+            var test = controller.GetCheapestShopItemsList(rows);
+            Assert.IsNotNull(test);
+        }
+
+        [TestMethod]
+        public void GetCheapestShopItemListTest2()
+        {
+            DBController controller = new DBController();
+            int rows = 5;
+            int date = 3;
+
+            var test = controller.GetCheapestShopItemsList(rows, date);
+            Assert.IsNotNull(test);
         }
 
         [TestMethod]
@@ -99,11 +114,10 @@ namespace DataBaseTest
             Actual = tm.GetListOfProducts(ResultText);
             DBController con = new DBController();
             // We don't really want to push to DB everytime we run this test
-           // con.PushToDatabase(Actual);
-
-            
+            // con.PushToDatabase(Actual);   
 
         }
+
 
     }
 }

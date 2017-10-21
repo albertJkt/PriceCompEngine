@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using System.Net;
+using System.IO;
+using JSONResponse;
+using Newtonsoft.Json;
+
+namespace Logic
+{
+    public class MapController
+    {
+        private Map Map;
+
+
+        public MapController(Map map)
+        {
+            Map = map;
+        }
+
+        public void AddMarker(double lat, double lnt, GMarkerGoogleType type)
+        {
+
+            Map.GetMarkerOverlay().Markers.Add(new GMarkerGoogle(new PointLatLng(lat, lnt), type));
+        }
+
+        public void DisplayMap()
+        {
+
+            Map.GetGMapControl().ShowCenter = false;
+            Map.GetGMapControl().MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+
+            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+
+
+        }
+
+        public void ShowShops(int radius, string shop)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+                + UserLocation.Instance.GetCoordinate()[0] + "," + UserLocation.Instance.GetCoordinate()[1] +
+                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=" + shop + "&key=" + Logic.Properties.Settings.Default.userAPI);
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            Stream responseStream = response.GetResponseStream();
+
+            StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+            var json = reader.ReadToEnd();
+            RootObject result = JsonConvert.DeserializeObject<RootObject>(json);
+
+            Map.GetMarkerOverlay().Markers.Clear();
+            Map.GetGMapControl().Overlays.Clear();
+
+            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
+
+            for (var i = 0; i < result.results.Count(); i++)
+            {
+                if (result.results[i].name.ToLower().Contains(shop))
+                {
+
+                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng, GMarkerGoogleType.blue_dot);
+                }
+            }
+
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+        }
+
+        public void ShowShops(int radius)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
+                + UserLocation.Instance.GetCoordinate()[0] + "," + UserLocation.Instance.GetCoordinate()[1] +
+                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=rimi|norfa|iki|maxima&key=" + Logic.Properties.Settings.Default.userAPI);
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            Stream responseStream = response.GetResponseStream();
+
+            StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+            var json = reader.ReadToEnd();
+            RootObject result = JsonConvert.DeserializeObject<RootObject>(json);
+
+
+            Map.GetMarkerOverlay().Markers.Clear();
+            Map.GetGMapControl().Overlays.Clear();
+
+            Map.GetGMapControl().Overlays.Add(Map.GetMarkerOverlay());
+            Map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+
+            for (var i = 0; i < result.results.Count(); i++)
+            {
+                if (result.results[i].name.ToLower().Contains("rimi") ||
+                   result.results[i].name.ToLower().Contains("norfa") ||
+                   result.results[i].name.ToLower().Contains("iki") ||
+                   result.results[i].name.ToLower().Contains("maxima"))
+                {
+                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng, GMarkerGoogleType.blue_dot);
+                }
+            }
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+
+        }
+
+    }
+}
