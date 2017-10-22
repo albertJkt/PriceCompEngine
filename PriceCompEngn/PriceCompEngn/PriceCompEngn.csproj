@@ -32,11 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="GMap.NET.Core">
       <HintPath>..\packages\GreatMaps\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms">
       <HintPath>..\packages\GreatMaps\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +61,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AfterShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AfterShop.Designer.cs">
+      <DependentUpon>AfterShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AroundMe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AroundMe.Designer.cs">
+      <DependentUpon>AroundMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BeforeShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeforeShop.Designer.cs">
+      <DependentUpon>BeforeShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +96,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AfterShop.resx">
+      <DependentUpon>AfterShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AroundMe.resx">
+      <DependentUpon>AroundMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeforeShop.resx">
+      <DependentUpon>BeforeShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapsForm.resx">
       <DependentUpon>MapsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +124,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="PriceComparisonEngine-6efc463cda92.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +140,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{bed55bec-7388-42f3-b1d0-bdb66699a8cf}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{2cdee47b-1da5-4cdf-be08-85c847cf4ea2}</Project>
       <Name>Logic</Name>

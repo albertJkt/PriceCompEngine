@@ -56,16 +56,15 @@ namespace Logic
             return items;
         }
 
-        /*
-         This one will not be used for now, as it requires some additional testing and corrections
-        
         public List<ShopItem> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
         {
-            List<ShopItem> allItems = (new DBController()).GetShopItemsList(itemType, shops, 14);
+            DBController controller = new DBController();
+            List<ShopItem> items = controller.GetShopItemsList(itemType, shops);
 
-            var filteredItems = allItems.GroupBy(item => item.ShopName).Select(group => group.First()).ToList<ShopItem>();
+
+            var filteredItems = items.GroupBy(item => item.ShopName).Select(group => group.First()).ToList<ShopItem>();
 
             return filteredItems;
-        }*/
+        }
     }
 }

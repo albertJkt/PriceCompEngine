@@ -60,6 +60,22 @@ namespace DataBase
             return items;
         }
 
+        public List<ShopItem> GetShopItemsList(string type, string[] shops)
+        {
+            List<ShopItem> items;
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<ShopItem> query = from item in context.ShopItems
+                                             where item.Type == type
+                                             where shops.Contains<string>(item.ShopName)
+                                             orderby item.PurchaseTime descending
+                                             select item;
+
+                items = query.ToList<ShopItem>();
+            }
+            return items;
+        }
+
 
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
