@@ -60,43 +60,6 @@ namespace DataBase
             return items;
         }
 
-        public Dictionary<string, int> GetTopShopItemsList(int rows)
-        {
-            List<ShopItem> shopItems = GetShopItemsList();
-            var items = (shopItems.GroupBy(x => x.ItemName).Take(rows)
-                 .ToDictionary(g => g.Key, g => g.Count()));
-
-            return items;
-        }
-
-        public Dictionary<string, int> GetTopShopItemsList(int rows, int days)
-        {
-            List<ShopItem> shopItems = GetShopItemsList(days);
-            var items = (shopItems.GroupBy(x => x.ItemName).Take(rows)
-                .ToDictionary(g => g.Key, g => g.Count()));
-
-            return items;
-        }
-
-        public List<ShopItem> GetCheapestShopItemsList(int rows)
-        {
-            List<ShopItem> shopItems = GetShopItemsList();
-            var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
-                .ToList<ShopItem>();
-
-            return items;
-
-        }
-
-        public List<ShopItem> GetCheapestShopItemsList(int rows, int date)
-        {
-            List<ShopItem> shopItems = GetShopItemsList(date);
-            var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
-                .ToList<ShopItem>();
-
-            return items;
-
-        }
 
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
