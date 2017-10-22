@@ -55,52 +55,17 @@ namespace DataBaseTest
         }
 
         [TestMethod]
-        public void GetShopTopItemListTest()
+        public void GetLatestEntryTest()
         {
             DBController controller = new DBController();
-            int rows = 2;
-            var test = controller.GetTopShopItemsList(rows);
-            string[] expectedNames = { "Mineralinis vanduo Vytautas", "Energetinis gerima Red Bull" };
-            int[] expectedNumbers = { 4, 1 };
+            float expectedPrice = (float) 0.69;
 
-            Assert.AreEqual(expectedNames[0], test.Keys.First());
-            Assert.AreEqual(expectedNames[1], test.Keys.Last());
-            Assert.AreEqual(expectedNumbers[0], test["Mineralinis vanduo Vytautas"]);
-            Assert.AreEqual(expectedNumbers[1], test["Energetinis gerima Red Bull"]);
+            ShopItem item =  controller.GetLatestEntry("Mineralinis vanduo Vytautas", "Maxima");
 
-        }
+            float actualPrice = item.Price;
 
-        [TestMethod]
-        public void GetShopTopItemList2Test()
-        {
-            DBController controller = new DBController();
-            int rows = 4;
-            int days = 14;
-            int expected = 4;
+            Assert.AreEqual(expectedPrice, actualPrice);
 
-            var test = controller.GetTopShopItemsList(rows, days);
-            Assert.AreEqual(expected, test.Count());
-        }
-
-        [TestMethod]
-        public void GetCheapestShopItemListTest()
-        {
-            DBController controller = new DBController();
-            int rows = 5;
-
-            var test = controller.GetCheapestShopItemsList(rows);
-            Assert.IsNotNull(test);
-        }
-
-        [TestMethod]
-        public void GetCheapestShopItemListTest2()
-        {
-            DBController controller = new DBController();
-            int rows = 5;
-            int date = 3;
-
-            var test = controller.GetCheapestShopItemsList(rows, date);
-            Assert.IsNotNull(test);
         }
 
         [TestMethod]
