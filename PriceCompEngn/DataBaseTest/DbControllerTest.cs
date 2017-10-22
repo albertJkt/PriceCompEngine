@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Logic;
 using OCREngine;
+using DataBase;
 
 namespace DataBaseTest
 {
@@ -55,6 +56,7 @@ namespace DataBaseTest
         }
 
         [TestMethod]
+
         public void GetShopTopItemListTest()
         {
             DBController controller = new DBController();
@@ -104,6 +106,7 @@ namespace DataBaseTest
         }
 
         [TestMethod]
+
         public void PushToDatabaseTest()
         {
             TextManager tm = new TextManager();
@@ -117,7 +120,6 @@ namespace DataBaseTest
             // con.PushToDatabase(Actual);   
 
         }
-
 
     }
 }
