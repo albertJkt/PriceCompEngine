@@ -83,8 +83,9 @@ namespace DataBase
                 context.SaveChanges();
             }
         }
+        
+        public void PushToDatabase (List<ShopItem> items)
 
-        public void PushToDatabase(List<ShopItem> items)
         {
             foreach (var item in items)
             {
