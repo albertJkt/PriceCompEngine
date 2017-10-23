@@ -23,13 +23,15 @@ namespace Logic
 
             var queryableList = items.AsQueryable<ShopItem>();
 
-
             List<ShopItem> sortedList = items.OrderBy(item => item.Price).ToList<ShopItem>();
 
-            ShopItem cheapestItem = sortedList.First<ShopItem>();
+            if (sortedList.Count > 0)
+            {
+                ShopItem cheapestItem = sortedList.First<ShopItem>();
+                return cheapestItem;
+            }
 
-            return cheapestItem;
-
+            else return null;
         }
 
 

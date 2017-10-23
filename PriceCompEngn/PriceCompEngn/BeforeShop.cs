@@ -67,8 +67,11 @@ namespace PriceCompEngn
             if (_text != null)
             {
                 si = pc.GetCheapestItem(_text, shops);
-                label5.Text = "Prekė: " + si.ItemName + " " + si.Type + " " + si.Price + " pigiausiai kainuoja: " + si.ShopName + " parduotuvėje";
-                label5.Show();
+                if (si != null)
+                {
+                    label5.Text = "Prekė: " + si.ItemName + " " + si.Type + " " + si.Price + " pigiausiai kainuoja: " + si.ShopName + " parduotuvėje";
+                    label5.Show();
+                }
             }
         }
 
@@ -89,8 +92,12 @@ namespace PriceCompEngn
             if (_text != null)
             {
                 si = pc.GetCheapestItemTypeList(_text, shops, 1);
-                label7.Text = "Prekė: " + si[0].ItemName + " " + si[0].Type + " " + si[0].Price + " pigiausiai kainuoja: " + si[0].ShopName + " parduotuvėje";
-                label7.Show();
+                if (si != null && si.Count > 0)
+                {
+                    label7.Text = "Prekė: " + si[0].ItemName + " " + si[0].Type + " " + si[0].Price + " pigiausiai kainuoja: " + si[0].ShopName + " parduotuvėje";
+                    label7.Show();
+                }
+                
             }
         }
 
