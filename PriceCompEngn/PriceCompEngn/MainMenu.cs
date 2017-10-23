@@ -21,6 +21,7 @@ namespace PriceCompEngn
         {
             pb1.ImageLocation = "https://insoftd.com/wp-content/uploads/2014/01/online-taxi-booking-system.jpg";
             pb1.SizeMode = PictureBoxSizeMode.AutoSize;
+
         }
 
         private void btnAfterShop_Click(object sender, EventArgs e)

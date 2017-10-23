@@ -24,13 +24,7 @@ namespace PriceCompEngn
 
         private void AroundMe_Load(object sender, EventArgs e)
         {
-            UserLocation ul = UserLocation.Instance;
 
-            ThreadStart threaddelegate = new ThreadStart(ul.FindUserLocation);
-            Thread ulThread = new Thread(threaddelegate);
-
-            ulThread.Start();
-            ulThread.Join();
             MapController mc = new MapController(new Map(gmap));
 
             mc.DisplayMap();
@@ -42,7 +36,7 @@ namespace PriceCompEngn
             string name = txtName.Text;
             MapController mc = new MapController(new Map(gmap));
 
-            if (name != null)
+            if (!string.IsNullOrEmpty(name))
             {
                 mc.ShowShops(radius, name);
             }

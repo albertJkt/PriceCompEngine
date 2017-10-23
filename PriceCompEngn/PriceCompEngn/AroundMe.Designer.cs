@@ -59,7 +59,7 @@
             this.gmap.ShowTileGridLines = false;
             this.gmap.Size = new System.Drawing.Size(967, 696);
             this.gmap.TabIndex = 0;
-            this.gmap.Zoom = 0D;
+            this.gmap.Zoom = 13D;
             // 
             // label1
             // 

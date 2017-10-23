@@ -34,10 +34,12 @@ namespace Logic
 
             _map.GetGMapControl().ShowCenter = false;
             _map.GetGMapControl().MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
-            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0],
+                UserLocation.Instance.GetCoordinate()[1]);
 
             _map.GetGMapControl().Overlays.Add(_map.GetMarkerOverlay());
-            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1],
+                GMarkerGoogleType.red_dot);
 
 
         }
@@ -47,7 +49,8 @@ namespace Logic
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
                 + UserLocation.Instance.GetCoordinate()[0] + "," + UserLocation.Instance.GetCoordinate()[1] +
-                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=" + shop + "&key=" + Logic.Properties.Settings.Default.userAPI);
+                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=" + shop + "&key=" +
+                  Logic.Properties.Settings.Default.userAPI);
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -60,7 +63,8 @@ namespace Logic
             _map.GetMarkerOverlay().Markers.Clear();
             _map.GetGMapControl().Overlays.Clear();
 
-            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1]);
+            _map.GetGMapControl().Position = new PointLatLng(UserLocation.Instance.GetCoordinate()[0],
+                UserLocation.Instance.GetCoordinate()[1]);
             _map.GetGMapControl().Overlays.Add(_map.GetMarkerOverlay());
 
             for (var i = 0; i < result.results.Count(); i++)
@@ -68,11 +72,13 @@ namespace Logic
                 if (result.results[i].name.ToLower().Contains(shop))
                 {
 
-                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng, GMarkerGoogleType.blue_dot);
+                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng,
+                        GMarkerGoogleType.blue_dot);
                 }
             }
 
-            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1],
+                GMarkerGoogleType.red_dot);
         }
 
         public void ShowShops(int radius)
@@ -80,7 +86,7 @@ namespace Logic
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
                 + UserLocation.Instance.GetCoordinate()[0] + "," + UserLocation.Instance.GetCoordinate()[1] +
-                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=rimi|norfa|iki|maxima&key=" + Logic.Properties.Settings.Default.userAPI);
+                  "&radius=" + radius + "&type=grocery_or_supermarket|food|store&keyword=rimi|norfa|iki|maxima|lidl&key=" + Logic.Properties.Settings.Default.userAPI);
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -102,12 +108,15 @@ namespace Logic
                 if (result.results[i].name.ToLower().Contains("rimi") ||
                    result.results[i].name.ToLower().Contains("norfa") ||
                    result.results[i].name.ToLower().Contains("iki") ||
+                    result.results[i].name.ToLower().Contains("lidl") ||
                    result.results[i].name.ToLower().Contains("maxima"))
                 {
-                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng, GMarkerGoogleType.blue_dot);
+                    AddMarker(result.results[i].geometry.location.lat, result.results[i].geometry.location.lng,
+                        GMarkerGoogleType.blue_dot);
                 }
             }
-            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1], GMarkerGoogleType.red_dot);
+            AddMarker(UserLocation.Instance.GetCoordinate()[0], UserLocation.Instance.GetCoordinate()[1],
+                GMarkerGoogleType.red_dot);
 
         }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic;
 using DataBase;
+using System.Threading;
 
 namespace PriceCompEngn
 {
@@ -17,6 +18,7 @@ namespace PriceCompEngn
         string[] shops;
         public BeforeShop()
         {
+            UserLocation.Instance.FindUserLocation();
             InitializeComponent();
         }
 
