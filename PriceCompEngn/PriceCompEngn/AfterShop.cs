@@ -18,6 +18,7 @@ namespace PriceCompEngn
     {
         public string ImagePath { get; set; }
         private string _resultTextString;
+        List<ShopItem> items;
 
         public AfterShop()
         {
@@ -39,23 +40,26 @@ namespace PriceCompEngn
                         return;
                     }
                     ImagePath = dialog.FileName;
+                    pictureBox1.Image = Image.FromFile(dialog.FileName);
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     btnAddImage.Enabled = true;
                 }
+            }
+            _resultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
+            TextManager tm = new TextManager();
+            items = tm.GetListOfProducts(_resultTextString);
+
+            foreach(ShopItem item in items)
+            {
+                textBox1.AppendText(item.Type + " " + item.ItemName + " " + item.Price + "\n");
             }
         }
 
         private void bntUpload_Click(object sender, EventArgs e)
         {
-            _resultTextString  = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
-
-            TextManager tm = new TextManager();
-            List<ShopItem> items;
-            items = tm.GetListOfProducts(_resultTextString);
-
             DBController cntrl = new DBController();
             cntrl.PushToDatabase(items);
             label2.Show();
-
         }
 
         private void label2_Click(object sender, EventArgs e)
