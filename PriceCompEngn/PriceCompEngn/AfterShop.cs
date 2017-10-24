@@ -20,7 +20,6 @@ namespace PriceCompEngn
         private string _resultTextString;
         List<ShopItem> items;
 
-
         public AfterShop()
         {
             InitializeComponent();
@@ -53,9 +52,6 @@ namespace PriceCompEngn
             foreach(ShopItem item in items)
             {
                 textBox1.AppendText(item.Type + " " + item.ItemName + " " + item.Price + "\n");
-            }
-                    btnAddImage.Enabled = true;
-                }
             }
         }
 

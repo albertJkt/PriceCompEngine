@@ -36,7 +36,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +61,6 @@
             // bntUpload
             // 
             this.bntUpload.Location = new System.Drawing.Point(15, 464);
-
             this.bntUpload.Name = "bntUpload";
             this.bntUpload.Size = new System.Drawing.Size(428, 23);
             this.bntUpload.TabIndex = 2;
@@ -107,25 +105,14 @@
             this.button1.Text = "Redaguoti nuskaitytas prekės";
             this.button1.UseVisualStyleBackColor = true;
             // 
-
-            this.label2.Location = new System.Drawing.Point(179, 440);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Duomenys sėkmingai patalpinti";
-            this.label2.Visible = false;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // AfterShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
             this.ClientSize = new System.Drawing.Size(501, 536);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
-            this.ClientSize = new System.Drawing.Size(501, 501);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bntUpload);
             this.Controls.Add(this.btnAddImage);
