@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddImage = new System.Windows.Forms.Button();
             this.bntUpload = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -68,17 +67,31 @@
             this.bntUpload.UseVisualStyleBackColor = true;
             this.bntUpload.Click += new System.EventHandler(this.bntUpload_Click);
             // 
-            // label2
+            // pictureBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(114, 505);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Kvito informacija sėkmingai patalpinta duomenų bazėje";
-            this.label2.Visible = false;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 129);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(201, 274);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(244, 129);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(199, 274);
+            this.textBox1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 426);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Redaguoti nuskaitytas prekės";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -113,7 +126,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.bntUpload);
             this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.label1);
@@ -130,7 +142,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.Button bntUpload;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
