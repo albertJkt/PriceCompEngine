@@ -47,24 +47,46 @@ namespace PriceCompEngn
             }
             _resultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
             TextManager tm = new TextManager();
-            items = tm.GetListOfProducts(_resultTextString);
-
-            foreach(ShopItem item in items)
-            {
-                textBox1.AppendText(item.Type + " " + item.ItemName + " " + item.Price + "\n");
-            }
+            textBox1.Text = _resultTextString;
+            
         }
 
         private void bntUpload_Click(object sender, EventArgs e)
         {
+            TextManager tm = new TextManager();
+            items = tm.GetListOfProducts(_resultTextString);
             DBController cntrl = new DBController();
             cntrl.PushToDatabase(items);
-            label2.Show();
+            MessageBox.Show("Kvito informacija sėkmingai patalpinta duomenų bazėje");
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string _previous = textBox1.Text;
+            string _current = null;
+
+            if (!String.Equals(_previous,_current))
+            {
+                _current = textBox1.Text;
+                if (_current.Length==_previous.Length)
+                {
+                    _resultTextString = _current;
+                    MessageBox.Show("Nuskaitytos prekės buvo sėkmingai redaguotos. Ačiū!");  
+                }
+                else
+                {
+                    MessageBox.Show("Ilgis įvesto teksto yra mažesnis už pradinį!");
+                }
+                }
+            else
+            {
+                MessageBox.Show("Tekstas nebuvo pakeistas!");
+            }
         }
     }
 }
