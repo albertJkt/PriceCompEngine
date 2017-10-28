@@ -2,7 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
 using System.Device.Location;
-using System.Collections.Generic;
+using System.Threading;
+
 
 namespace LogicTests
 {
@@ -10,51 +11,21 @@ namespace LogicTests
     public class UserLocationTest
     {
         [TestMethod]
-        public void ReverseGeocodeTest()
+        public void UserCoordinatesTest()
         {
+            UserLocation ul = UserLocation.Instance;
 
-            UserLocation address = UserLocation.Instance;
-            UserLocation.Instance.watcher = new GeoCoordinateWatcher();
-            UserLocation.Instance.coordinate = new GeoCoordinate();
+            ThreadStart threaddelegate = new ThreadStart(ul.FindUserLocation);
+            Thread ulThread = new Thread(threaddelegate);
 
-            UserLocation.Instance.watcher.StatusChanged += watcher_StatusChanged;
-            UserLocation.Instance.watcher.TryStart(false, TimeSpan.FromSeconds(5));
+            ulThread.Start();
+            ulThread.Join();
 
+            Thread test = new Thread(new ThreadStart(ul.FindAddress));
+            test.Start();
+            test.Join();
 
-
-            while (UserLocation.Instance.watcher.Status != GeoPositionStatus.Ready)
-            {
-
-            }
-
-
-            var city = address.ReverseGeocode();
-            Assert.IsNotNull(city);
-
-
-        }
-
-        private void watcher_StatusChanged(Object sender, GeoPositionStatusChangedEventArgs e)
-        {
-            switch (e.Status)
-            {
-                case GeoPositionStatus.Initializing:
-                    Console.WriteLine("Working on location fix");
-
-                    break;
-
-                case GeoPositionStatus.Ready:
-                    UserLocation.Instance.coordinate = UserLocation.Instance.watcher.Position.Location;
-                    break;
-
-                case GeoPositionStatus.NoData:
-                    Console.WriteLine("No data");
-                    break;
-
-                case GeoPositionStatus.Disabled:
-                    Console.WriteLine("Disabled");
-                    break;
-            }
+            //Assert.AreEqual("Vilnius",ul.GetAddress()["locality"]);
         }
     }
 }
