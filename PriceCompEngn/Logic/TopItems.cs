@@ -13,8 +13,15 @@ namespace Logic
         {
             DBController controller = new DBController();
             List<ShopItem> shopItems = controller.GetShopItemsList();
-            var items = (shopItems.GroupBy(x => x.ItemName).Take(rows)
-                 .ToDictionary(g => g.Key, g => g.Count()));
+
+            var items = (shopItems.GroupBy(x => x.ItemName)
+                .Select(group => new
+                {
+                    Name = group.Key,
+                    Count = group.Count()
+                })).Take(rows)
+                .OrderByDescending(x => x.Count)
+                .ToDictionary(g => g.Name, g=> g.Count) ;
 
             return items;
         }
@@ -23,8 +30,15 @@ namespace Logic
         {
             DBController controller = new DBController();
             List<ShopItem> shopItems = controller.GetShopItemsList(days);
-            var items = (shopItems.GroupBy(x => x.ItemName).Take(rows)
-                .ToDictionary(g => g.Key, g => g.Count()));
+
+            var items = (shopItems.GroupBy(x => x.ItemName)
+                .Select(group => new
+                {
+                    Name = group.Key,
+                    Count = group.Count()
+                })).Take(rows)
+                .OrderByDescending(x => x.Count)
+                .ToDictionary(g => g.Name, g => g.Count);
 
             return items;
         }
