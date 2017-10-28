@@ -48,7 +48,6 @@ namespace PriceCompEngn
             _resultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
             TextManager tm = new TextManager();
             textBox1.Text = _resultTextString;
-            
         }
 
         private void bntUpload_Click(object sender, EventArgs e)

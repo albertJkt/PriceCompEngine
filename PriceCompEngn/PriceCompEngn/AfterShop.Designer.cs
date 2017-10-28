@@ -92,6 +92,40 @@
             this.button1.Text = "Redaguoti nuskaitytas prekės";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label2.AutoSize = true;
+            this.label2.Enabled = false;
+            this.label2.Location = new System.Drawing.Point(114, 505);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(264, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Kvito informacija sėkmingai patalpinta duomenų bazėje";
+            this.label2.Visible = false;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(15, 129);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(201, 274);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(244, 129);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(199, 274);
+            this.textBox1.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 426);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Redaguoti nuskaitytas prekės";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // AfterShop
             // 
