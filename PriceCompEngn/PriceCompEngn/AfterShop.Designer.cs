@@ -92,15 +92,6 @@
             this.button1.Text = "Redaguoti nuskaitytas prekės";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.Location = new System.Drawing.Point(114, 505);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Kvito informacija sėkmingai patalpinta duomenų bazėje";
-            this.label2.Visible = false;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
