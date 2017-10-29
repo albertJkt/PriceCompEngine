@@ -132,8 +132,6 @@ namespace PriceCompEngn
                 item.SubItems.RemoveAt(1);
 
                 listView2.Items.Add(item);
-
-                
             }
         }
 
@@ -144,7 +142,6 @@ namespace PriceCompEngn
                 listView2.SelectedItems[0].Remove();
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
            Bucket = listView2.Items.Cast<ListViewItem>()

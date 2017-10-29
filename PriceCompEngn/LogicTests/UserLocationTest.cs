@@ -4,6 +4,7 @@ using Logic;
 using System.Device.Location;
 using System.Threading;
 
+
 namespace LogicTests
 {
     [TestClass]
@@ -12,7 +13,6 @@ namespace LogicTests
         [TestMethod]
         public void UserCoordinatesTest()
         {
-
             UserLocation ul = UserLocation.Instance;
 
             ThreadStart threaddelegate = new ThreadStart(ul.FindUserLocation);
@@ -26,7 +26,6 @@ namespace LogicTests
             test.Join();
 
             //Assert.AreEqual("Vilnius",ul.GetAddress()["locality"]);
-
         }
     }
 }
