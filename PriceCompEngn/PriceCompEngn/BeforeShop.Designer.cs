@@ -32,20 +32,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAroundMe = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkIki = new System.Windows.Forms.CheckBox();
-            this.checkMaxima = new System.Windows.Forms.CheckBox();
-            this.checkNorfa = new System.Windows.Forms.CheckBox();
-            this.checkRimi = new System.Windows.Forms.CheckBox();
-            this.checkLidl = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -82,158 +81,113 @@
             this.btnAroundMe.UseVisualStyleBackColor = true;
             this.btnAroundMe.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
+            // listView1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 422);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Prekių paieška pagal pavadinimą:";
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.GridLines = true;
+            this.listView1.Location = new System.Drawing.Point(12, 25);
+            this.listView1.Name = "listView1";
+            this.listView1.Scrollable = false;
+            this.listView1.ShowGroups = false;
+            this.listView1.Size = new System.Drawing.Size(198, 127);
+            this.listView1.TabIndex = 19;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // textBox1
+            // columnHeader1
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 465);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 20);
-            this.textBox1.TabIndex = 5;
+            this.columnHeader1.Text = "Nr";
+            this.columnHeader1.Width = 24;
             // 
-            // button1
+            // columnHeader2
             // 
-            this.button1.Location = new System.Drawing.Point(527, 462);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ieškoti";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.columnHeader2.Text = "Pavadinimas";
+            this.columnHeader2.Width = 111;
             // 
-            // label5
+            // columnHeader3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 515);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "label5";
-            this.label5.Visible = false;
+            this.columnHeader3.Text = "Kiekis";
             // 
-            // button2
+            // listView2
             // 
-            this.button2.Location = new System.Drawing.Point(527, 631);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Ieškoti";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listView2.GridLines = true;
+            this.listView2.Location = new System.Drawing.Point(219, 25);
+            this.listView2.Name = "listView2";
+            this.listView2.Scrollable = false;
+            this.listView2.Size = new System.Drawing.Size(202, 127);
+            this.listView2.TabIndex = 20;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
             // 
-            // textBox2
+            // columnHeader4
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 634);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 20);
-            this.textBox2.TabIndex = 9;
+            this.columnHeader4.Text = "Nr";
+            this.columnHeader4.Width = 23;
             // 
-            // label6
+            // columnHeader5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(225, 591);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Prekių paieška pagal tipą:";
+            this.columnHeader5.Text = "Pavadinimas";
+            this.columnHeader5.Width = 135;
             // 
-            // label7
+            // columnHeader6
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 698);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "label7";
-            this.label7.Visible = false;
+            this.columnHeader6.Text = "€";
             // 
-            // checkIki
+            // listView3
             // 
-            this.checkIki.AutoSize = true;
-            this.checkIki.Location = new System.Drawing.Point(20, 315);
-            this.checkIki.Name = "checkIki";
-            this.checkIki.Size = new System.Drawing.Size(37, 17);
-            this.checkIki.TabIndex = 13;
-            this.checkIki.Text = "Iki";
-            this.checkIki.UseVisualStyleBackColor = true;
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9});
+            this.listView3.GridLines = true;
+            this.listView3.Location = new System.Drawing.Point(430, 25);
+            this.listView3.Name = "listView3";
+            this.listView3.Scrollable = false;
+            this.listView3.Size = new System.Drawing.Size(172, 127);
+            this.listView3.TabIndex = 21;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
             // 
-            // checkMaxima
+            // columnHeader7
             // 
-            this.checkMaxima.AutoSize = true;
-            this.checkMaxima.Location = new System.Drawing.Point(85, 315);
-            this.checkMaxima.Name = "checkMaxima";
-            this.checkMaxima.Size = new System.Drawing.Size(62, 17);
-            this.checkMaxima.TabIndex = 14;
-            this.checkMaxima.Text = "Maxima";
-            this.checkMaxima.UseVisualStyleBackColor = true;
+            this.columnHeader7.Text = "Nr";
+            this.columnHeader7.Width = 26;
             // 
-            // checkNorfa
+            // columnHeader8
             // 
-            this.checkNorfa.AutoSize = true;
-            this.checkNorfa.Location = new System.Drawing.Point(178, 315);
-            this.checkNorfa.Name = "checkNorfa";
-            this.checkNorfa.Size = new System.Drawing.Size(52, 17);
-            this.checkNorfa.TabIndex = 15;
-            this.checkNorfa.Text = "Norfa";
-            this.checkNorfa.UseVisualStyleBackColor = true;
+            this.columnHeader8.Text = "Pavadinimas";
+            this.columnHeader8.Width = 82;
             // 
-            // checkRimi
+            // columnHeader9
             // 
-            this.checkRimi.AutoSize = true;
-            this.checkRimi.Location = new System.Drawing.Point(264, 315);
-            this.checkRimi.Name = "checkRimi";
-            this.checkRimi.Size = new System.Drawing.Size(46, 17);
-            this.checkRimi.TabIndex = 16;
-            this.checkRimi.Text = "Rimi";
-            this.checkRimi.UseVisualStyleBackColor = true;
+            this.columnHeader9.Text = "Kiekis";
             // 
-            // checkLidl
+            // button4
             // 
-            this.checkLidl.AutoSize = true;
-            this.checkLidl.Location = new System.Drawing.Point(345, 315);
-            this.checkLidl.Name = "checkLidl";
-            this.checkLidl.Size = new System.Drawing.Size(42, 17);
-            this.checkLidl.TabIndex = 17;
-            this.checkLidl.Text = "Lidl";
-            this.checkLidl.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(527, 311);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Nuskaityti";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button4.Location = new System.Drawing.Point(15, 257);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(587, 20);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Prekių krepšelis";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // BeforeShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 735);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.checkLidl);
-            this.Controls.Add(this.checkRimi);
-            this.Controls.Add(this.checkNorfa);
-            this.Controls.Add(this.checkMaxima);
-            this.Controls.Add(this.checkIki);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.listView3);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnAroundMe);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -242,7 +196,6 @@
             this.Text = "BeforeShop";
             this.Load += new System.EventHandler(this.BeforeShop_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -252,19 +205,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAroundMe;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkIki;
-        private System.Windows.Forms.CheckBox checkMaxima;
-        private System.Windows.Forms.CheckBox checkNorfa;
-        private System.Windows.Forms.CheckBox checkRimi;
-        private System.Windows.Forms.CheckBox checkLidl;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Button button4;
     }
 }
