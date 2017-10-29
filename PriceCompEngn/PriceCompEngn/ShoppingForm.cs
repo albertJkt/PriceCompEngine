@@ -144,12 +144,18 @@ namespace PriceCompEngn
         }
         private void button2_Click(object sender, EventArgs e)
         {
-           Bucket = listView2.Items.Cast<ListViewItem>()
+            Bucket = listView2.Items.Cast<ListViewItem>()
                                  .Select(item => item.Text)
                                  .ToList();
 
-            // cia reikes bucket'a paduot i Rycio konstruktoriu ir po to istrint komentara
-            // nes destytojas nemegsta lietuvisku komentaru xD
+            ShoppingCart shoppingCart = new ShoppingCart(Bucket, shops);
+            label3.Text = "Pigiausia apsipirkti " + shoppingCart.BestShop + " parduotuveje";
+            label4.Text = "Apsipirkimas parduotuveje " + shoppingCart.BestShop + " kainuotu " + shoppingCart.LowestPrice.ToString("n2") + " Eu";
+            label5.Text = "Vidutine apsipirkimo kaina kitose parduotuvese: " + shoppingCart.AveragePrice + " Eu";
+
+            label3.Show();
+            label4.Show();
+            label5.Show();
         }
     }
 }

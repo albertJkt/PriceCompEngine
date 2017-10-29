@@ -43,7 +43,7 @@ namespace Logic
             }
 
             LowestPrice = _shopPrices.Values.Min();
-            AveragePrice = _shopPrices.Values.Average();
+            AveragePrice = (float)Math.Round((decimal)_shopPrices.Values.Average(),2);
             BestShop = _shopPrices.Where(shop => shop.Value == LowestPrice).Select(shop => shop.Key).First();
         }
 
