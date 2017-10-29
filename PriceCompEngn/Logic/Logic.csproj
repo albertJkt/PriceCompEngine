@@ -52,6 +52,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ShoppingCart.cs" />
     <Compile Include="TextManager.cs" />
     <Compile Include="TopItems.cs" />
     <Compile Include="UserLocation.cs" />
