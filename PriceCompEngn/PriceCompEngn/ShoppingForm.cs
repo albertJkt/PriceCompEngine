@@ -17,6 +17,7 @@ namespace PriceCompEngn
         string[] shops;
         List<ShopItem> shopItems = new DBController().GetShopItemsList();
         int index = 1;
+        public List<string> Bucket;
         public ShoppingForm()
         {
             InitializeComponent();
@@ -140,6 +141,15 @@ namespace PriceCompEngn
             {
                 listView2.SelectedItems[0].Remove();
             }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+           Bucket = listView2.Items.Cast<ListViewItem>()
+                                 .Select(item => item.Text)
+                                 .ToList();
+
+            // cia reikes bucket'a paduot i Rycio konstruktoriu ir po to istrint komentara
+            // nes destytojas nemegsta lietuvisku komentaru xD
         }
     }
 }

@@ -47,12 +47,13 @@
             this.listView2 = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkIki
             // 
             this.checkIki.AutoSize = true;
-            this.checkIki.Location = new System.Drawing.Point(17, 287);
+            this.checkIki.Location = new System.Drawing.Point(18, 404);
             this.checkIki.Name = "checkIki";
             this.checkIki.Size = new System.Drawing.Size(37, 17);
             this.checkIki.TabIndex = 0;
@@ -62,7 +63,7 @@
             // checkMaxima
             // 
             this.checkMaxima.AutoSize = true;
-            this.checkMaxima.Location = new System.Drawing.Point(60, 287);
+            this.checkMaxima.Location = new System.Drawing.Point(61, 404);
             this.checkMaxima.Name = "checkMaxima";
             this.checkMaxima.Size = new System.Drawing.Size(62, 17);
             this.checkMaxima.TabIndex = 1;
@@ -72,7 +73,7 @@
             // checkNorfa
             // 
             this.checkNorfa.AutoSize = true;
-            this.checkNorfa.Location = new System.Drawing.Point(128, 287);
+            this.checkNorfa.Location = new System.Drawing.Point(129, 404);
             this.checkNorfa.Name = "checkNorfa";
             this.checkNorfa.Size = new System.Drawing.Size(52, 17);
             this.checkNorfa.TabIndex = 2;
@@ -82,7 +83,7 @@
             // checkLidl
             // 
             this.checkLidl.AutoSize = true;
-            this.checkLidl.Location = new System.Drawing.Point(238, 287);
+            this.checkLidl.Location = new System.Drawing.Point(239, 404);
             this.checkLidl.Name = "checkLidl";
             this.checkLidl.Size = new System.Drawing.Size(42, 17);
             this.checkLidl.TabIndex = 3;
@@ -92,7 +93,7 @@
             // checkRimi
             // 
             this.checkRimi.AutoSize = true;
-            this.checkRimi.Location = new System.Drawing.Point(186, 287);
+            this.checkRimi.Location = new System.Drawing.Point(187, 404);
             this.checkRimi.Name = "checkRimi";
             this.checkRimi.Size = new System.Drawing.Size(46, 17);
             this.checkRimi.TabIndex = 4;
@@ -102,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 345);
+            this.label1.Location = new System.Drawing.Point(14, 435);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 5;
@@ -110,14 +111,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 361);
+            this.textBox1.Location = new System.Drawing.Point(17, 451);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(288, 20);
             this.textBox1.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(331, 380);
+            this.button1.Location = new System.Drawing.Point(333, 470);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(73, 29);
             this.button1.TabIndex = 7;
@@ -128,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 396);
+            this.label2.Location = new System.Drawing.Point(16, 486);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 13);
             this.label2.TabIndex = 9;
@@ -136,7 +137,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 412);
+            this.textBox2.Location = new System.Drawing.Point(17, 502);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(288, 20);
             this.textBox2.TabIndex = 10;
@@ -206,11 +207,22 @@
             // 
             this.columnHeader7.Text = "€";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(331, 258);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Sudaryti prekių krepšelį";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ShoppingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 459);
+            this.ClientSize = new System.Drawing.Size(493, 536);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.textBox2);
@@ -251,5 +263,6 @@
         private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Button button2;
     }
 }
