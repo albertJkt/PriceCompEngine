@@ -53,9 +53,13 @@ namespace Logic
             {
                 items.RemoveRange(topPlaces - 1, items.Count - 1);
             }
-            
 
-            return items;
+            if (items.Count > 0)
+            {
+                return items;
+            }
+            else return null;
+                
         }
 
         public List<ShopItem> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)

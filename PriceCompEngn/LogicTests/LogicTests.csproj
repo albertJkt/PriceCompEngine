@@ -56,6 +56,7 @@
     <Compile Include="TextManagerTest.cs" />
     <Compile Include="PriceComparatorTest.cs" />
     <Compile Include="TopItemsTest.cs" />
+    <Compile Include="ShoppingCartTest.cs" />
     <Compile Include="UserLocationTest.cs" />
   </ItemGroup>
   <ItemGroup>
