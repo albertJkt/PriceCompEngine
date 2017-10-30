@@ -149,9 +149,9 @@ namespace PriceCompEngn
                                  .ToList();
 
             ShoppingCart shoppingCart = new ShoppingCart(Bucket, shops);
-            label3.Text = "Pigiausia apsipirkti " + shoppingCart.BestShop + " parduotuveje";
-            label4.Text = "Apsipirkimas parduotuveje " + shoppingCart.BestShop + " kainuotu " + shoppingCart.LowestPrice.ToString("n2") + " Eu";
-            label5.Text = "Vidutine apsipirkimo kaina kitose parduotuvese: " + shoppingCart.AveragePrice + " Eu";
+            label3.Text = "Pigiausia apsipirkti " + shoppingCart.BestShop + " parduotuvėje";
+            label4.Text = "Apsipirkimas parduotuvėje " + shoppingCart.BestShop + " kainuotų " + shoppingCart.LowestPrice.ToString("n2") + " €";
+            label5.Text = "Vidutinė apsipirkimo kaina kitose parduotuvėse: " + shoppingCart.AveragePrice + " €";
 
             label3.Show();
             label4.Show();
