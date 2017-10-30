@@ -33,7 +33,22 @@ namespace Logic
 
             foreach(string itemName in _itemNames)
             {
-                _bestPricedItems.AddRange(comparator.GetCheapestItemList(itemName, _shops, _shops.Length));
+                List<ShopItem> items = comparator.GetCheapestItemList(itemName, _shops, _shops.Length);
+                _bestPricedItems.AddRange(items);
+                foreach(string shopName in _shops)
+                {
+                    if (!items.Where(item => item.ShopName == shopName).Select(item => item).Any())
+                    {
+                        _bestPricedItems.Add(new ShopItem()
+                        {
+                            ItemName = itemName,
+                            ShopName = shopName,
+                            Type = items.First().Type,
+                            Price = (float)Math.Round((decimal)items.Select(item => item.Price).Average(), 2),
+                            PurchaseTime = items.First().PurchaseTime
+                        });
+                    }
+                }
             }
 
 
