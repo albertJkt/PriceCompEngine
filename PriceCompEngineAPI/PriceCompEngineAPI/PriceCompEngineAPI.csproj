@@ -261,10 +261,6 @@
       <Project>{bed55bec-7388-42f3-b1d0-bdb66699a8cf}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleDirections\GoogleDirections.csproj">
-      <Project>{7c6447b2-d889-4306-ad8b-da5542054c66}</Project>
-      <Name>GoogleDirections</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{2cdee47b-1da5-4cdf-be08-85c847cf4ea2}</Project>
       <Name>Logic</Name>

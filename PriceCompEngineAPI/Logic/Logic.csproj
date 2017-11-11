@@ -53,7 +53,6 @@
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="TextManager.cs" />
     <Compile Include="TopItems.cs" />
-    <Compile Include="UserLocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GMap.NET.Core">
@@ -74,10 +73,6 @@
     <ProjectReference Include="..\DataBase\DataBase.csproj">
       <Project>{bed55bec-7388-42f3-b1d0-bdb66699a8cf}</Project>
       <Name>DataBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleDirections\GoogleDirections.csproj">
-      <Project>{7c6447b2-d889-4306-ad8b-da5542054c66}</Project>
-      <Name>GoogleDirections</Name>
     </ProjectReference>
     <ProjectReference Include="..\OCREngine\OCREngine.csproj">
       <Project>{21128456-3063-46ca-8b62-77b26553326a}</Project>
