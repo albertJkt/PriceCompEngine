@@ -74,10 +74,6 @@
       <Project>{bed55bec-7388-42f3-b1d0-bdb66699a8cf}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OCREngine\OCREngine.csproj">
-      <Project>{21128456-3063-46ca-8b62-77b26553326a}</Project>
-      <Name>OCREngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

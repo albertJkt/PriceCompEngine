@@ -18,28 +18,5 @@ namespace PriceCompEngineAPI.Controllers
 
             return shoppingCart;
         }
-
-
-        /*
-        // GET: api/ShoppingCart/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/ShoppingCart
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/ShoppingCart/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/ShoppingCart/5
-        public void Delete(int id)
-        {
-        }*/
     }
 }
