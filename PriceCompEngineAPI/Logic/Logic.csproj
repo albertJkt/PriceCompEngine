@@ -44,8 +44,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Map.cs" />
-    <Compile Include="MapController.cs" />
     <Compile Include="PriceComparator.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,10 +78,6 @@
     <ProjectReference Include="..\GoogleDirections\GoogleDirections.csproj">
       <Project>{7c6447b2-d889-4306-ad8b-da5542054c66}</Project>
       <Name>GoogleDirections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JSONResponse\JSONResponse.csproj">
-      <Project>{6ca193d3-aa30-4fa3-a9ae-873217d2d143}</Project>
-      <Name>JSONResponse</Name>
     </ProjectReference>
     <ProjectReference Include="..\OCREngine\OCREngine.csproj">
       <Project>{21128456-3063-46ca-8b62-77b26553326a}</Project>

@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngineAPI", "PriceCompEngineAPI\PriceCompEngineAPI.csproj", "{EA08CDFC-F919-427E-96FB-7AD52A75E5AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{BED55BEC-7388-42F3-B1D0-BDB66699A8CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleDirections", "GoogleDirections\GoogleDirections.csproj", "{7C6447B2-D889-4306-AD8B-DA5542054C66}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONResponse", "JSONResponse\JSONResponse.csproj", "{6CA193D3-AA30-4FA3-A9AE-873217D2D143}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{2CDEE47B-1DA5-4CDF-BE08-85C847CF4EA2}"
 EndProject
@@ -33,10 +31,6 @@ Global
 		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6447B2-D889-4306-AD8B-DA5542054C66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CA193D3-AA30-4FA3-A9AE-873217D2D143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CA193D3-AA30-4FA3-A9AE-873217D2D143}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CA193D3-AA30-4FA3-A9AE-873217D2D143}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CA193D3-AA30-4FA3-A9AE-873217D2D143}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CDEE47B-1DA5-4CDF-BE08-85C847CF4EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CDEE47B-1DA5-4CDF-BE08-85C847CF4EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CDEE47B-1DA5-4CDF-BE08-85C847CF4EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU

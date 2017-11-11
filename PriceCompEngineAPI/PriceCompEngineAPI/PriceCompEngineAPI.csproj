@@ -265,10 +265,6 @@
       <Project>{7c6447b2-d889-4306-ad8b-da5542054c66}</Project>
       <Name>GoogleDirections</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JSONResponse\JSONResponse.csproj">
-      <Project>{6ca193d3-aa30-4fa3-a9ae-873217d2d143}</Project>
-      <Name>JSONResponse</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{2cdee47b-1da5-4cdf-be08-85c847cf4ea2}</Project>
       <Name>Logic</Name>
