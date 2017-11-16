@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace OCREngine
@@ -22,7 +23,7 @@ namespace OCREngine
 
         private string JsonKeypath
         {
-            get { return Application.StartupPath + "\\PriceComparisonEngine-6efc463cda92.json"; }
+            get { return HttpContext.Current.Server.MapPath("~/") + "\\PriceComparisonEngine-6efc463cda92.json"; }
         }
 
         private GoogleCredential _credential;
@@ -51,10 +52,9 @@ namespace OCREngine
         }
 
 
-        public void GetText(string imgPath, string language)
+        public void GetText(byte[] image, string language)
         {
             TextResult = JsonResult = "";
-            byte[] file = File.ReadAllBytes(imgPath);
 
             var credential = CreateCredential();
             var service = CreateService(credential);
@@ -66,7 +66,7 @@ namespace OCREngine
             {
                 Features = new List<Feature>() { new Feature() { Type = "TEXT_DETECTION", MaxResults = 1 }, },
                 ImageContext = new ImageContext() { LanguageHints = new List<string>() { language } },
-                Image = new Image() { Content = Convert.ToBase64String(file) }
+                Image = new Image() { Content = Convert.ToBase64String(image) }
             });
 
             var annotate = service.Images.Annotate(batchRequest);
