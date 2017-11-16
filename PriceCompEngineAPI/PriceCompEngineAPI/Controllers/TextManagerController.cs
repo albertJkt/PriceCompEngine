@@ -19,7 +19,6 @@ namespace PriceCompEngineAPI.Controllers
 {
     public class TextManagerController : ApiController
     {
-        // GET: api/TextManager/
         [HttpPost]
         public async Task<List<ShopItem>> Post(HttpRequestMessage request)
         {

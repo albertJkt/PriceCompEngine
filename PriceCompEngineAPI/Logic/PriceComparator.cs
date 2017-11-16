@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
+    public enum ComparisonType
+    {
+        ItemName,
+        ItemType
+    };
+
     public class PriceComparator
     {
         public ShopItem GetCheapestItem(string itemName, string[] shops)
@@ -21,21 +27,35 @@ namespace Logic
                     items.Add(newItem);
             }
 
-            var queryableList = items.AsQueryable<ShopItem>();
+            var queryableList = items.AsQueryable();
 
-            List<ShopItem> sortedList = items.OrderBy(item => item.Price).ToList<ShopItem>();
+            List<ShopItem> sortedList = items.OrderBy(item => item.Price).ToList();
 
             if (sortedList.Count > 0)
             {
-                ShopItem cheapestItem = sortedList.First<ShopItem>();
+                ShopItem cheapestItem = sortedList.First();
                 return cheapestItem;
             }
 
             else return null;
         }
 
+        public List<ShopItem> GetOrderedItemsList(string itemName, string[] shops, int topPlaces, ComparisonType type)
+        {
+            if (type == ComparisonType.ItemName)
+            {
+                List<ShopItem> items = GetCheapestItemList(itemName, shops, topPlaces);
+                return items;
+            }
+            else if (type == ComparisonType.ItemType)
+            {
+                List<ShopItem> items = GetCheapestItemTypeList(itemName, shops, topPlaces);
+                return items;
+            }
+            else return new List<ShopItem>();
+        }
 
-        public List<ShopItem> GetCheapestItemList(string itemName, string[] shops, int topPlaces)
+        private List<ShopItem> GetCheapestItemList(string itemName, string[] shops, int topPlaces)
         {
             List<ShopItem> items = new List<ShopItem>();
             DBController db = new DBController();
@@ -47,7 +67,7 @@ namespace Logic
                     items.Add(newItem);
             }
 
-            items = items.OrderBy(item => item.Price).ToList<ShopItem>();
+            items = items.OrderBy(item => item.Price).ToList();
 
             if (items.Count > topPlaces)
             {
@@ -62,13 +82,13 @@ namespace Logic
                 
         }
 
-        public List<ShopItem> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
+        private List<ShopItem> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
         {
             DBController controller = new DBController();
             List<ShopItem> items = controller.GetShopItemsList(itemType, shops);
 
 
-            var filteredItems = items.GroupBy(item => item.ShopName).Select(group => group.First()).ToList<ShopItem>();
+            var filteredItems = items.GroupBy(item => item.ShopName).Select(group => group.First()).ToList();
 
             return filteredItems;
         }

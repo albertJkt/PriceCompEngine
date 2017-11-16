@@ -33,7 +33,7 @@ namespace Logic
 
             foreach(string itemName in _itemNames)
             {
-                List<ShopItem> items = comparator.GetCheapestItemList(itemName, _shops, _shops.Length);
+                List<ShopItem> items = comparator.GetOrderedItemsList(itemName, _shops, _shops.Length, ComparisonType.ItemName);
                 _bestPricedItems.AddRange(items);
                 foreach(string shopName in _shops)
                 {
