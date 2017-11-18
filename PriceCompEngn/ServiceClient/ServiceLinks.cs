@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ServiceClient
+{
+    public static class ServiceLinks
+    {
+        public const string ServiceBaseUrl = "http://pricecompengineapi.azurewebsites.net";
+        public const string TextManagerUrl = "/api/TextManager";
+        public const string PriceComparatorUrl = "/api/PriceComparator?";
+        public const string TopItemsUrl = "/api/TopItems?";
+        public const string CheapestItemsUrl = "/api/CheapestItems?";
+        public const string ShoppingCartUrl = "/api/ShoppingCart?";
+
+        public static string GetResourceUrl(Resources resource)
+        {
+            switch (resource)
+            {
+                case Resources.TextManager:
+                    return TextManagerUrl;
+
+                case Resources.PriceComparator:
+                    return PriceComparatorUrl;
+
+                case Resources.TopItems:
+                    return TopItemsUrl;
+
+                case Resources.CheapestItems:
+                    return CheapestItemsUrl;
+
+                case Resources.ShoppingCart:
+                    return ShoppingCartUrl;
+
+                default:
+                    return null;
+            }
+        }
+    }
+}

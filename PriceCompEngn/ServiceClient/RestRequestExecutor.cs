@@ -10,7 +10,7 @@ namespace ServiceClient
 {
     public class RestRequestExecutor
     {
-        public async Task<string> ExecuteRestGetRequest(URIBuilder builder)
+        public async Task<string> ExecuteRestGetRequest(PCEUriBuilder builder)
         {
             var client = new RestClient(builder.ServerAddress);
 
@@ -23,7 +23,7 @@ namespace ServiceClient
             return result;
         }
 
-        public async Task<string> ExecuteRestPostRequest(URIBuilder builder, byte[] image)
+        public async Task<string> ExecuteRestPostRequest(PCEUriBuilder builder, byte[] image)
         {
             var client = new RestClient(builder.ServerAddress);
 
