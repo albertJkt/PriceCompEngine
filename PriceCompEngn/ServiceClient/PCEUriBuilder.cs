@@ -14,7 +14,8 @@ namespace ServiceClient
         CheapestItems,
         TopItems,
         ShoppingCart,
-        PriceComparator
+        PriceComparator,
+        ShopItems
     };
 
     public class PCEUriBuilder

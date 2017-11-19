@@ -14,6 +14,7 @@ namespace ServiceClient
         public const string TopItemsUrl = "/api/TopItems?";
         public const string CheapestItemsUrl = "/api/CheapestItems?";
         public const string ShoppingCartUrl = "/api/ShoppingCart?";
+        public const string ShopItemsUrl = "/api/ShopItems?";
 
         public static string GetResourceUrl(Resources resource)
         {
@@ -33,6 +34,9 @@ namespace ServiceClient
 
                 case Resources.ShoppingCart:
                     return ShoppingCartUrl;
+
+                case Resources.ShopItems:
+                    return ShopItemsUrl;
 
                 default:
                     return null;
