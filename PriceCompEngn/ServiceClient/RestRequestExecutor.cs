@@ -37,5 +37,14 @@ namespace ServiceClient
 
             return result;
         }
+
+        public async void ExecuteRestPostRequest(PCEUriBuilder builder)
+        {
+            var client = new RestClient(builder.ServerAddress);
+
+            var request = new RestRequest(builder.Uri, Method.POST);
+
+            var asyncQueryResult = await client.ExecuteTaskAsync(request);
+        }
     }
 }

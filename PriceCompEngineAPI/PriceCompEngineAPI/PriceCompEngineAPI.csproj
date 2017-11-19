@@ -203,6 +203,7 @@
     <Compile Include="Controllers\CheapestItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PriceComparatorController.cs" />
+    <Compile Include="Controllers\ShopItemsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\TextManagerController.cs" />
     <Compile Include="Controllers\TopItemsController.cs" />
