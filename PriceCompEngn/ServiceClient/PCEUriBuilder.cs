@@ -45,7 +45,7 @@ namespace ServiceClient
         {
             if (args != null)
             {
-                foreach(KeyValuePair<string, string> entry in args)
+                foreach (KeyValuePair<string, string> entry in args)
                 {
                     _uri.Append(entry.Key);
                     _uri.Append('=');
@@ -59,7 +59,7 @@ namespace ServiceClient
         {
             if (args != null)
             {
-                foreach(KeyValuePair<string, int> entry in args)
+                foreach (KeyValuePair<string, int> entry in args)
                 {
                     _uri.Append(entry.Key);
                     _uri.Append('=');
@@ -80,7 +80,7 @@ namespace ServiceClient
                     _uri.Append(item.ToString());
                     _uri.Append('&');
                 }
-            }            
+            }
         }
 
         public override string ToString()
