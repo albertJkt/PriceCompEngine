@@ -7,10 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OCREngine;
 using System.IO;
-using Logic;
-using DataBase;
 using ServiceClient;
 using Newtonsoft.Json;
 
@@ -20,11 +17,9 @@ namespace PriceCompEngn
     {
         public string ImagePath { get; set; }
         private string _resultTextString;
-        List<ShopItem> items;
         string response;
         RestRequestExecutor executor = new RestRequestExecutor();
         byte[] image;
-
 
         public AfterShop()
         {
@@ -33,6 +28,7 @@ namespace PriceCompEngn
 
         private async void btnAddImage_Click(object sender, EventArgs e)
         {
+           
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 btnAddImage.Enabled = false;
@@ -75,14 +71,16 @@ namespace PriceCompEngn
             var result = JsonConvert.DeserializeAnonymousType(response, typeList);
             var result2 = JsonConvert.SerializeObject(result);
 
+            double sum = 0.00;
             StringBuilder sb = new StringBuilder("");
             sb.Append(result.First().ShopName+""+Environment.NewLine);
 
             foreach (var x in result)
             {
-                sb.Append(x.Type+" "+x.ItemName+"   "+x.Price+" Eur"+Environment.NewLine);
+                sb.Append(x.Type+" \""+x.ItemName+"\"   "+x.Price+" Eur"+Environment.NewLine);
+                sum += x.Price;
             }
-
+            sb.Append("Iš viso: " +Math.Round(sum, 2)+""+Environment.NewLine);
             sb.Append(result.First().PurchaseTime.Year+"-"+result.First().PurchaseTime.Month+"-"+result.First().PurchaseTime.Day);
 
             _resultTextString = sb.ToString();          
@@ -128,20 +126,6 @@ namespace PriceCompEngn
                 }
             else
             {
-                var typeList = new[]
-                {
-                    new
-                     {
-                         ItemName = "",
-                         ShopName = "",
-                         Type = "",
-                         Price = (float)0.00,
-                         PurchaseTime = new DateTime(),
-                         Id = 1
-                    }
-                }.ToList();
-
-
                 MessageBox.Show("Tekstas nebuvo pakeistas!");
             }
         }
