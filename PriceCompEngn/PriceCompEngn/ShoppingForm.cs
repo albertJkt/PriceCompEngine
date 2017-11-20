@@ -1,5 +1,4 @@
 ﻿using DataBase;
-using Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,10 +21,9 @@ namespace PriceCompEngn
 
         
 
-        string[] shops;
-        List<ShopItem> shopItems = new DBController().GetShopItemsList();
+        string[] shops; 
         int index = 1;
-        public List<string> Bucket;
+        public string[] Bucket;
         public ShoppingForm()
         {
             
@@ -73,8 +71,6 @@ namespace PriceCompEngn
             string _text = textBox1.Text;
             string _type = textBox2.Text;
 
-            /**/
-
             PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
             shops = AddShops().ToArray();
             var response = await executor.ExecuteRestGetRequest(builder);
@@ -93,7 +89,6 @@ namespace PriceCompEngn
             }.ToList();
 
             var result = JsonConvert.DeserializeAnonymousType(response, typeList);
-            /**/
 
             shops = AddShops().ToArray();
            
@@ -159,16 +154,24 @@ namespace PriceCompEngn
                 listView2.SelectedItems[0].Remove();
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             Bucket = listView2.Items.Cast<ListViewItem>()
                                  .Select(item => item.Text)
-                                 .ToList();
+                                 .ToArray();
+            
 
-            ShoppingCart shoppingCart = new ShoppingCart(Bucket, shops);
-            label3.Text = "Pigiausia apsipirkti " + shoppingCart.BestShop + " parduotuvėje";
-            label4.Text = "Apsipirkimas parduotuvėje " + shoppingCart.BestShop + " kainuotų " + shoppingCart.LowestPrice.ToString("n2") + " €";
-            label5.Text = "Vidutinė apsipirkimo kaina kitose parduotuvėse: " + shoppingCart.AveragePrice + " €";
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShoppingCart);
+            builder.AppendArrayArgs("items", Bucket);
+            builder.AppendArrayArgs("shops", shops);
+
+            var response = await executor.ExecuteRestGetRequest(builder);
+
+            var result = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
+        
+            label3.Text = "Pigiausia apsipirkti " + result["BestShop"] +" parduotuvėje";
+            label4.Text = "Apsipirkimas parduotuvėje " + result["BestShop"] + Math.Round(Convert.ToDecimal(result["LowestPrice"]), 2) + " €";
+            label5.Text = "Vidutinė apsipirkimo kaina kitose parduotuvėse: " +Math.Round(Convert.ToDecimal(result["AveragePrice"]), 2) + " €";
 
             label3.Show();
             label4.Show();
