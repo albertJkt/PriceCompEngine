@@ -9,33 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ServiceClient;
+using Newtonsoft.Json;
 
 namespace PriceCompEngn
 {
     public partial class ShoppingForm : Form
     {
+        
+
+        RestRequestExecutor executor = new RestRequestExecutor();
+
+        
+
         string[] shops;
         List<ShopItem> shopItems = new DBController().GetShopItemsList();
         int index = 1;
         public List<string> Bucket;
         public ShoppingForm()
         {
+            
             InitializeComponent();
-
-            shops = AddShops().ToArray();
-
-            var temp = (from x in shopItems
-                    where shops.Contains(x.ShopName.ToLower())
-                    select x).ToList();
-
-            foreach (var x in temp)
-            {
-                string[] row = { index.ToString(), x.ItemName, x.Type, x.ShopName, x.Price.ToString() };
-                var i = new ListViewItem(row);
-                listView1.Items.Add(i);
-                index++;
-            }
-            index = 1;
         }
 
         List<string> AddShops()
@@ -73,43 +67,66 @@ namespace PriceCompEngn
             return shops;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+
             string _text = textBox1.Text;
             string _type = textBox2.Text;
-            PriceComparator pc = new PriceComparator();
+
+            /**/
+
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
             shops = AddShops().ToArray();
-            var temp = new List<ShopItem>();
+            var response = await executor.ExecuteRestGetRequest(builder);
+
+            var typeList = new[]
+            {
+                new
+                {
+                    ItemName = "",
+                    ShopName = "",
+                    Type = "",
+                    Price = (float)0.00,
+                    PurchaseTime = new DateTime(),
+                    Id = 1
+                }
+            }.ToList();
+
+            var result = JsonConvert.DeserializeAnonymousType(response, typeList);
+            /**/
+
+            shops = AddShops().ToArray();
+           
             
             if (!String.IsNullOrEmpty(_text) && !String.IsNullOrEmpty(_type))
             {
-                 temp = (from x in shopItems
+                 result = (from x in result
                            where shops.Contains(x.ShopName.ToLower()) && x.ItemName.Contains(_text) && x.Type.Contains(_type)
                            select x).ToList();
             }
             if (String.IsNullOrEmpty(_text) && !String.IsNullOrEmpty(_type))
             {
-                temp = (from x in shopItems
-                        where shops.Contains(x.ShopName.ToLower()) && x.Type.Contains(_type)
+                result = (from x in result
+                          where shops.Contains(x.ShopName.ToLower()) && x.Type.Contains(_type)
                         select x).ToList();
             }
             if (!String.IsNullOrEmpty(_text) && String.IsNullOrEmpty(_type))
             {
-                temp = (from x in shopItems
-                        where shops.Contains(x.ShopName.ToLower()) && x.ItemName.Contains(_text)
+                result = (from x in result
+                          where shops.Contains(x.ShopName.ToLower()) && x.ItemName.Contains(_text)
                         select x).ToList();
             }
 
             if(String.IsNullOrEmpty(_text) && String.IsNullOrEmpty(_type))
             {
-                 temp = (from x in shopItems
-                           where shops.Contains(x.ShopName.ToLower())
+                result = (from x in result
+                          where shops.Contains(x.ShopName.ToLower())
                            select x).ToList();
             }
 
             listView1.Items.Clear();
 
-            foreach (var x in temp)
+            foreach (var x in result)
             {
                 string[] row = { index.ToString(), x.ItemName, x.Type, x.ShopName, x.Price.ToString() };
                 var i = new ListViewItem(row);
@@ -156,6 +173,37 @@ namespace PriceCompEngn
             label3.Show();
             label4.Show();
             label5.Show();
+        }
+
+        private async void On_Load(object sender, EventArgs e)
+        {
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
+            shops = AddShops().ToArray();
+            var response = await executor.ExecuteRestGetRequest(builder);
+
+            var typeList = new[]
+            {
+                new
+                {
+                    ItemName = "",
+                    ShopName = "",
+                    Type = "",
+                    Price = (float)0.00,
+                    PurchaseTime = new DateTime(),
+                    Id = 1
+                }
+            }.ToList();
+
+            var result = JsonConvert.DeserializeAnonymousType(response, typeList);
+
+            foreach (var x in result)
+            {
+                string[] row = { index.ToString(), x.ItemName, x.Type, x.ShopName.ToLower(), x.Price.ToString() };
+                var i = new ListViewItem(row);
+                listView1.Items.Add(i);
+                index++;
+            }
+            index = 1;
         }
     }
 }
