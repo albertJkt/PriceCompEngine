@@ -115,6 +115,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\List.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceClient\ServiceClient.csproj">
+      <Project>{82c0f38d-df31-42f5-b785-81e45f0bd81f}</Project>
+      <Name>ServiceClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
