@@ -9,7 +9,18 @@ using System.Data.Objects;
 
 namespace DataBase
 {
-    public class DBController
+    public interface IDBController
+    {
+        List<ShopItem> GetShopItemsList(string type, string[] shops, int days);
+        List<ShopItem> GetShopItemsList(string type, string[] shops);
+        List<ShopItem> GetShopItemsList(int days);
+        List<ShopItem> GetShopItemsList();
+        ShopItem GetLatestEntry(string itemName, string shop);
+        void InsertEntry(ShopItem item);
+        void PushToDatabase(List<ShopItem> items);
+    }
+
+    public class DBController : IDBController
     {
         public List<ShopItem> GetShopItemsList(string type, string[] shops, int days)
         {
@@ -29,7 +40,6 @@ namespace DataBase
             }
             return items;
         }
-
 
         public List<ShopItem> GetShopItemsList(int days)
         {
@@ -76,7 +86,6 @@ namespace DataBase
             return items;
         }
 
-
         public ShopItem GetLatestEntry(string itemName, string shop)
         {
             using (var context = new PriceCompEngineEntities())
@@ -101,13 +110,11 @@ namespace DataBase
         }
         
         public void PushToDatabase (List<ShopItem> items)
-
         {
             foreach (var item in items)
             {
                 InsertEntry(item);
             }
         }
-
     }
 }

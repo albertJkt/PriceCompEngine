@@ -17,9 +17,11 @@ namespace Logic
         private string[] _shops;
         private List<ShopItem> _bestPricedItems;
         private Dictionary<string, float> _shopPrices;
+        private IDBController _controller;
 
-        public ShoppingCart(List<string> itemNames, string[] shops)
+        public ShoppingCart(List<string> itemNames, string[] shops, IDBController controller)
         {
+            _controller = controller;
             _itemNames = itemNames;
             _shops = shops;
             _bestPricedItems = new List<ShopItem>();
@@ -29,7 +31,7 @@ namespace Logic
 
         private void AnalyzeShoppingCart()
         {
-            PriceComparator comparator = new PriceComparator();
+            PriceComparator comparator = new PriceComparator(_controller);
 
             foreach(string itemName in _itemNames)
             {

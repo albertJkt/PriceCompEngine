@@ -61,7 +61,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application database.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Connection.cs" />
     <Compile Include="DBController.cs" />
     <Compile Include="ShopItem.cs">
       <DependentUpon>Application database.tt</DependentUpon>

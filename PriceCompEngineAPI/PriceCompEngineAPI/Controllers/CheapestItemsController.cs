@@ -11,10 +11,16 @@ namespace PriceCompEngineAPI.Controllers
 {
     public class CheapestItemsController : ApiController
     {
-        // GET: api/CheapestItems
+        private IDBController _controller;
+
+        public CheapestItemsController(IDBController controller)
+        {
+            _controller = controller;
+        }
+
         public List<ShopItem> Get(int rows)
         {
-            TopItems topItems = new TopItems();
+            TopItems topItems = new TopItems(_controller);
             List<ShopItem> items = topItems.GetCheapestShopItemsList(rows);
 
             return items;
@@ -22,12 +28,10 @@ namespace PriceCompEngineAPI.Controllers
 
         public List<ShopItem> Get(int rows, int days)
         {
-            TopItems topItems = new TopItems();
+            TopItems topItems = new TopItems(_controller);
             List<ShopItem> items = topItems.GetCheapestShopItemsList(rows, days);
 
             return items;
         }
-
-
     }
 }

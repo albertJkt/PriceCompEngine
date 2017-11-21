@@ -15,14 +15,20 @@ namespace Logic
 
     public class PriceComparator
     {
+        private IDBController _controller;
+
+        public PriceComparator(IDBController controller)
+        {
+            _controller = controller;
+        }
+
         public ShopItem GetCheapestItem(string itemName, string[] shops)
         {
             List<ShopItem> items = new List<ShopItem>();
-            DBController db = new DBController();
 
             foreach(string shop in shops)
             {
-                ShopItem newItem = db.GetLatestEntry(itemName, shop);
+                ShopItem newItem = _controller.GetLatestEntry(itemName, shop);
                 if (newItem != null)
                     items.Add(newItem);
             }
@@ -58,11 +64,10 @@ namespace Logic
         private List<ShopItem> GetCheapestItemList(string itemName, string[] shops, int topPlaces)
         {
             List<ShopItem> items = new List<ShopItem>();
-            DBController db = new DBController();
 
             foreach (string shop in shops)
             {
-                ShopItem newItem = db.GetLatestEntry(itemName, shop);
+                ShopItem newItem = _controller.GetLatestEntry(itemName, shop);
                 if (newItem != null)
                     items.Add(newItem);
             }
@@ -84,8 +89,7 @@ namespace Logic
 
         private List<ShopItem> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
         {
-            DBController controller = new DBController();
-            List<ShopItem> items = controller.GetShopItemsList(itemType, shops);
+            List<ShopItem> items = _controller.GetShopItemsList(itemType, shops);
 
 
             var filteredItems = items.GroupBy(item => item.ShopName).Select(group => group.First()).ToList();

@@ -11,6 +11,13 @@ namespace PriceCompEngineAPI.Controllers
 {
     public class ShopItemsController : ApiController
     {
+        private IDBController _controller;
+
+        public ShopItemsController(IDBController controller)
+        {
+            _controller = controller;
+        }
+
         public List<ShopItem> Get()
         {
             DBController controller = new DBController();
