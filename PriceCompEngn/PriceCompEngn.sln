@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClientTest", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngnMobile", "PriceCompEngnMobile\PriceCompEngnMobile.csproj", "{D26F41FD-2EAE-4112-9A93-BB1764E622E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{5D9136EB-3B72-4B37-8B67-5103E356E653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

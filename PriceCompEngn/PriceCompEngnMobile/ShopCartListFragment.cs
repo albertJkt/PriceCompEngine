@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Models;
 
 namespace PriceCompEngnMobile
 {
@@ -21,17 +22,17 @@ namespace PriceCompEngnMobile
             return view;
         }
 
-        public override void OnActivityCreated(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnActivityCreated(savedInstanceState);
+            base.OnCreate(savedInstanceState);
         }
     }
 
     public class ShopCartListAdapter : ArrayAdapter
     {
-        private List<Dictionary<string, string>> _objects;
+        private List<ShopItem> _objects;
 
-        public ShopCartListAdapter(Context context, int resource, List<Dictionary<string, string>> objects)
+        public ShopCartListAdapter(Context context, int resource, List<ShopItem> objects)
             : base(context, resource, objects)
         {
             _objects = objects;
@@ -39,7 +40,7 @@ namespace PriceCompEngnMobile
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            Dictionary<string, string> item = _objects[position];
+            ShopItem item = _objects[position];
 
             if (convertView == null)
             {
@@ -50,12 +51,9 @@ namespace PriceCompEngnMobile
             TextView price = convertView.FindViewById<TextView>(Resource.Id.text_price);
             TextView type = convertView.FindViewById<TextView>(Resource.Id.text_type);
 
-            if (item.ContainsKey("ItemName") && item.ContainsKey("Price") && item.ContainsKey("Type"))
-            {
-                name.Text = item["ItemName"];
-                price.Text = item["Price"];
-                type.Text = item["Type"];
-            }
+            name.Text = item.ItemName;
+            price.Text = item.Price.ToString();
+            type.Text = item.Type;
 
             return convertView;
         }

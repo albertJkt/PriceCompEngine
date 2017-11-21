@@ -96,7 +96,15 @@ namespace DataBase
                                              orderby item.PurchaseTime descending
                                              select item;
 
-                return query.FirstOrDefault<ShopItem>();
+                if (query.Any())
+                {
+                    var item = query.FirstOrDefault();
+                    return item;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 

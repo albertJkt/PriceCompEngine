@@ -20,11 +20,25 @@ namespace PriceCompEngineAPI.Controllers
 
         public List<ShopItem> Get()
         {
-            DBController controller = new DBController();
-            List<ShopItem> items = controller.GetShopItemsList();
+            List<ShopItem> items = _controller.GetShopItemsList();
 
             return items;
         }
+
+        public List<ShopItem> Get([FromUri] string itemName, [FromUri] string[] shops)
+        {
+            List<ShopItem> items = new List<ShopItem>();
+            foreach (string shop in shops)
+            {
+                ShopItem item = _controller.GetLatestEntry(itemName, shop);
+                if (item != null)
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
+        }
+     
 
         public void Post([FromUri] string itemListJson)
         {
