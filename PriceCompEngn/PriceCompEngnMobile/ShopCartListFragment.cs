@@ -25,22 +25,30 @@ namespace PriceCompEngnMobile
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            List<ShopItem> items = Arguments.GetGenericList<ShopItem>("shopCartItems");
+            ListAdapter = new ShopCartListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
         }
     }
 
     public class ShopCartListAdapter : ArrayAdapter
     {
-        private List<ShopItem> _objects;
+        public List<ShopItem> Items;
 
         public ShopCartListAdapter(Context context, int resource, List<ShopItem> objects)
             : base(context, resource, objects)
         {
-            _objects = objects;
+            Items = objects;
+        }
+
+        public ShopItem GetItemByIndex(int index)
+        {
+            return Items[index];
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            ShopItem item = _objects[position];
+            ShopItem item = Items[position];
 
             if (convertView == null)
             {
@@ -52,7 +60,7 @@ namespace PriceCompEngnMobile
             TextView type = convertView.FindViewById<TextView>(Resource.Id.text_type);
 
             name.Text = item.ItemName;
-            price.Text = item.Price.ToString();
+            price.Text = item.Price.ToString("0.00 €");
             type.Text = item.Type;
 
             return convertView;

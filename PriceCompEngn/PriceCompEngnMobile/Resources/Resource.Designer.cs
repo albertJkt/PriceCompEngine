@@ -82,10 +82,7 @@ namespace PriceCompEngnMobile
 			public const int checkBox7 = 2131034114;
 			
 			// aapt resource value: 0x7f050008
-			public const int imageButton1 = 2131034120;
-			
-			// aapt resource value: 0x7f05000c
-			public const int list = 2131034124;
+			public const int compare_button = 2131034120;
 			
 			// aapt resource value: 0x7f05000a
 			public const int search_button = 2131034122;
@@ -102,14 +99,14 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050007
 			public const int textView = 2131034119;
 			
+			// aapt resource value: 0x7f05000c
+			public const int text_name = 2131034124;
+			
 			// aapt resource value: 0x7f05000d
-			public const int text_name = 2131034125;
+			public const int text_price = 2131034125;
 			
 			// aapt resource value: 0x7f05000e
-			public const int text_price = 2131034126;
-			
-			// aapt resource value: 0x7f05000f
-			public const int text_type = 2131034127;
+			public const int text_type = 2131034126;
 			
 			static Id()
 			{

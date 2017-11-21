@@ -14,14 +14,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/text_name"
-            android:layout_weight="4"
+            android:layout_weight="8"
             android:textSize="19sp" />
         <TextView
-            android:text="1.22 Eu"
+            android:text="1.22 €"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/text_price"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:textSize="19sp"
             android:gravity="center_horizontal" />
     </LinearLayout>
