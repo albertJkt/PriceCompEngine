@@ -26,14 +26,34 @@ namespace PriceCompEngnMobile
         {
             base.OnCreate(savedInstanceState);
 
-            List<ShopItem> items = Arguments.GetGenericList<ShopItem>("shopCartItems");
-            ListAdapter = new ShopCartListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
+            try
+            {
+                List<ShopItem> items = Arguments.GetGenericList<ShopItem>("shopCartItems");
+                ListAdapter = new ShopCartListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
+            } 
+            catch (ArgumentException)
+            {
+                List<ShopItem> items = new List<ShopItem>();
+                ListAdapter = new ShopCartListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
+            }
+        }
+
+        public override void OnListItemClick(ListView l, View v, int position, long id)
+        {
+            base.OnListItemClick(l, v, position, id);
+
+            ShopCartListAdapter adapter = ListAdapter as ShopCartListAdapter;
+            ShopItem item = adapter.Items[position];
+            adapter.Items.Remove(item);
+
+            MainActivity activity = Activity as MainActivity;
+            activity.RecreateShopCartFragment(adapter.Items, this);
         }
     }
 
     public class ShopCartListAdapter : ArrayAdapter
     {
-        public List<ShopItem> Items;
+        public List<ShopItem> Items { get; set; }
 
         public ShopCartListAdapter(Context context, int resource, List<ShopItem> objects)
             : base(context, resource, objects)

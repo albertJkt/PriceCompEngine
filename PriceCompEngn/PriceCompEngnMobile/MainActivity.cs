@@ -85,6 +85,70 @@ namespace PriceCompEngnMobile
                     dialog.Dismiss();
                 };
             };
+
+            ImageButton compare_prices = FindViewById<ImageButton>(Resource.Id.compare_button);
+            compare_prices.Click += delegate
+            {
+                string[] selectedShops = GetMarkedShops();
+                string[] selectedItems = GetItemNames();
+
+                PCEUriBuilder uriBuilder = new PCEUriBuilder(ServiceClient.Resources.ShoppingCart);
+                uriBuilder.AppendArrayArgs("shops", selectedShops);
+                uriBuilder.AppendArrayArgs("items", selectedItems);
+
+                TextView firstRow = FindViewById<TextView>(Resource.Id.result_text_row1);
+                TextView secondRow = FindViewById<TextView>(Resource.Id.result_text_row2);
+                TextView thirdRow = FindViewById<TextView>(Resource.Id.result_text_row3);
+
+                ExecuteComparisonAsync(uriBuilder, firstRow, secondRow, thirdRow);
+            };
+        }
+
+        private async void ExecuteComparisonAsync(PCEUriBuilder builder,TextView row1, TextView row2, TextView row3)
+        {
+            RestRequestExecutor executor = new RestRequestExecutor();
+
+            string jsonResponse = await executor.ExecuteRestGetRequest(builder);
+
+            ShoppingCart cart = JsonConvert.DeserializeObject<ShoppingCart>(jsonResponse);
+
+            row1.Text = "Pigiausia: " + cart.BestShop + " parduotuveje";
+            row2.Text = "Kaina parduotuveje " + cart.BestShop + ": " + cart.LowestPrice.ToString("0.00 €");
+            row3.Text = "Vidutine kaina kitur: " + cart.AveragePrice.ToString("0.00 €");
+        }
+        
+        private string[] GetItemNames()
+        {
+            List<string> itemNames = new List<string>();
+            foreach(ShopItem item in _args)
+            {
+                itemNames.Add(item.ItemName);
+            }
+            string[] itemNamesArray = itemNames.ToArray();
+            return itemNamesArray;
+        }
+
+        private string[] GetMarkedShops()
+        {
+            CheckBox[] checkBoxes = new CheckBox[]
+            {
+                FindViewById<CheckBox>(Resource.Id.checkbox_rimi),
+                FindViewById<CheckBox>(Resource.Id.checkbox_maxima),
+                FindViewById<CheckBox>(Resource.Id.checkbox_norfa),
+                FindViewById<CheckBox>(Resource.Id.checkbox_lidl),
+                FindViewById<CheckBox>(Resource.Id.checkbox_iki)
+            };
+
+            List<string> shopNames = new List<string>();
+            foreach (CheckBox box in checkBoxes)
+            {
+                if (box.Checked)
+                {
+                    shopNames.Add(box.Text.ToLower());
+                }
+            }
+            string[] result = shopNames.ToArray();
+            return result;
         }
 
         private async void ExecuteSearchAsync(ListView searchResults, PCEUriBuilder uriBuilder)
@@ -108,8 +172,25 @@ namespace PriceCompEngnMobile
 
                 searchResults.Adapter = adapter;
             }
-            else Toast.MakeText(this, "The item you're searching for can't be found", ToastLength.Long).Show();
-            
+            else Toast.MakeText(this, "The item you're searching for can't be found", ToastLength.Long).Show();           
+        }
+        
+
+        public void RecreateShopCartFragment(List<ShopItem> listItems, Fragment fragment)
+        {
+            _args = new List<ShopItem>(listItems);
+            Bundle arguments = new Bundle();
+            arguments.PutGenericList("shopCartItems", _args);
+
+            FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            transaction.Remove(fragment);
+            Fragment newFragment = new ShopCartListFragment
+            {
+                Arguments = arguments
+            };
+
+            transaction.Replace(Resource.Id.shop_cart_fragment_container, newFragment);
+            transaction.Commit();
         }
     }
 }
