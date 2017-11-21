@@ -84,12 +84,6 @@ namespace PriceCompEngnMobile
                     transaction.Commit();
                     dialog.Dismiss();
                 };
-
-                ImageButton compare = FindViewById<ImageButton>(Resource.Id.compare_button);
-                compare.Click += delegate
-                {
-
-                };
             };
         }
 
@@ -101,16 +95,21 @@ namespace PriceCompEngnMobile
 
             List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(jsonString);
  
-            ShopItem averagePriceItem = items.First();
-            averagePriceItem.Price = items.Average(item => item.Price);
-            List<ShopItem> toDisplay = new List<ShopItem>()
+            if (items != null && items.Count > 0)
             {
-                averagePriceItem
-            };
+                ShopItem averagePriceItem = items.First();
+                averagePriceItem.Price = items.Average(item => item.Price);
+                List<ShopItem> toDisplay = new List<ShopItem>()
+                {
+                    averagePriceItem
+                };
 
-            ShopCartListAdapter adapter = new ShopCartListAdapter(this, Resource.Id.search_items_list, toDisplay);
+                ShopCartListAdapter adapter = new ShopCartListAdapter(this, Resource.Id.search_items_list, toDisplay);
 
-            searchResults.Adapter = adapter;
+                searchResults.Adapter = adapter;
+            }
+            else Toast.MakeText(this, "The item you're searching for can't be found", ToastLength.Long).Show();
+            
         }
     }
 }
