@@ -88,7 +88,7 @@ public class TextManager
         DateTime DateT = GetDate(text);
         List<ShopItem> items = new List<ShopItem>();
         string Products = GetProducts(text);
-        string pattern = " *\" ?| *eu *";
+        string pattern = " ?\\\\ ?\" ?| *eu *";
         string[] substrings = Regex.Split(Products, pattern);
 
         for (int i = 0; i < (substrings.Length / 3); i++)
