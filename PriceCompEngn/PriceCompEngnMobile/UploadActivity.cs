@@ -19,6 +19,7 @@ using Android.Media;
 using Newtonsoft.Json;
 using Models;
 
+
 namespace PriceCompEngnMobile{
     [Activity(Label = "UploadActivity")]
     public class UploadActivity : Activity
@@ -70,14 +71,15 @@ namespace PriceCompEngnMobile{
                 response = await executor.ExecuteRestPostRequest(builder, bitmapData);
 
                 PCEUriBuilder build = new PCEUriBuilder(ServiceClient.Resources.TextManager);
-                builder.AppendStringArgs(new Dictionary<string, string>()
-                {
-                    { "imageText", response }  // raktas butinai toks turi but
-                });
+               
                 RestRequestExecutor exc = new RestRequestExecutor();
-                string json = await exc.ExecuteRestGetRequest(builder);
+                string json = await exc.ExecuteRestPostRequest(build,response);
 
                 List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
+                //TextManager tm = new TextManager();
+                //tm.GetListOfProducts(response);
+
+
             }  
         }
 

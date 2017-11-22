@@ -46,5 +46,27 @@ namespace ServiceClient
 
             var asyncQueryResult = await client.ExecuteTaskAsync(request);
         }
+
+        public async Task<string> ExecuteRestPostRequest(PCEUriBuilder builder, string ocrText)
+        {
+            var client = new RestClient(builder.ServerAddress);
+
+            var request = new RestRequest(builder.Uri, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddBody(new
+            {
+                Text = ocrText
+            });
+
+            var asyncQueryresult = await client.ExecuteTaskAsync(request);
+
+            var result = asyncQueryresult.Content;
+
+            return result;
+        }
     }
 }

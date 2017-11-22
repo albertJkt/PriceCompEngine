@@ -89,6 +89,7 @@
     <Compile Include="UploadActivity.cs" />
     <Compile Include="ShopingActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="TextManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
