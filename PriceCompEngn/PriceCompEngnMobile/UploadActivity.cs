@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Drawing;
 
 using Android.App;
 using Android.Content;
@@ -10,15 +12,21 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ServiceClient;
+using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Media;
+using Newtonsoft.Json;
+using Models;
 
 namespace PriceCompEngnMobile{
     [Activity(Label = "UploadActivity")]
     public class UploadActivity : Activity
     {
-        public delegate void MyDelegate(object sender, EventArgs ea);
         public static readonly int PickImageId = 1000;
+        string response = String.Empty;
         ImageView _imageView;
-        EventArgs argg = new EventArgs();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -41,12 +49,38 @@ namespace PriceCompEngnMobile{
             intent.SetAction(Intent.ActionGetContent);  
             StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), PickImageId);  
         } 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {  
+        protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data) {  
             if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {  
-                Android.Net.Uri uri = data.Data;  
-                _imageView.SetImageURI(uri);  
+                Android.Net.Uri uri = data.Data; 
 
+                _imageView.SetImageURI(uri);
+
+                PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.OCR);
+                RestRequestExecutor executor = new RestRequestExecutor();
+
+                BitmapDrawable bd = (BitmapDrawable)_imageView.Drawable;
+                Bitmap bitmap = bd.Bitmap;
+
+                byte[] bitmapData;
+                using (var stream = new MemoryStream())
+                {
+                    bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                    bitmapData = stream.ToArray();
+                }
+                response = await executor.ExecuteRestPostRequest(builder, bitmapData);
+
+                PCEUriBuilder build = new PCEUriBuilder(ServiceClient.Resources.TextManager);
+                builder.AppendStringArgs(new Dictionary<string, string>()
+                {
+                    { "imageText", response }  // raktas butinai toks turi but
+                });
+                RestRequestExecutor exc = new RestRequestExecutor();
+                string json = await exc.ExecuteRestGetRequest(builder);
+
+                List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
             }  
-        }  
+        }
+
+       
     }
 }
