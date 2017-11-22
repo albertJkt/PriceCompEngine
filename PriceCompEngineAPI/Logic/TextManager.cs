@@ -76,7 +76,7 @@ namespace Logic
         private string RemoveLast2Lines(string text)
         {
             text = text.Remove(text.TrimEnd().LastIndexOf(Environment.NewLine));
-            //text = text.Remove(text.TrimEnd().LastIndexOf(Environment.NewLine));
+            text = text.Remove(text.TrimEnd().LastIndexOf(Environment.NewLine));
 
             return text;
         }
