@@ -45,10 +45,55 @@ namespace PriceCompEngnMobile
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int cmpr_btn = 2130837504;
+			public const int AddBtn = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int List = 2130837505;
+			public const int Cart = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int check = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int cmpr = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Group = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int List = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Location = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int Logo = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Options = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int scan = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int shop = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int Shopping = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int stats = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int trend = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int trend2 = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int upload = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int Validate = 2130837520;
 			
 			static Drawable()
 			{
@@ -63,8 +108,14 @@ namespace PriceCompEngnMobile
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050016
+			public const int addBtn = 2131034134;
+			
 			// aapt resource value: 0x7f050001
 			public const int add_item = 2131034113;
+			
+			// aapt resource value: 0x7f050013
+			public const int cartBtn = 2131034131;
 			
 			// aapt resource value: 0x7f050006
 			public const int checkBox3 = 2131034118;
@@ -81,11 +132,20 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050002
 			public const int checkBox7 = 2131034114;
 			
+			// aapt resource value: 0x7f05000f
+			public const int image = 2131034127;
+			
 			// aapt resource value: 0x7f050008
 			public const int imageButton1 = 2131034120;
 			
 			// aapt resource value: 0x7f05000c
 			public const int list = 2131034124;
+			
+			// aapt resource value: 0x7f050014
+			public const int locationBtn = 2131034132;
+			
+			// aapt resource value: 0x7f05000d
+			public const int scan = 2131034125;
 			
 			// aapt resource value: 0x7f05000a
 			public const int search_button = 2131034122;
@@ -96,20 +156,35 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050009
 			public const int search_items_text = 2131034121;
 			
+			// aapt resource value: 0x7f05000e
+			public const int shop = 2131034126;
+			
 			// aapt resource value: 0x7f050000
 			public const int shop_cart_fragment_container = 2131034112;
+			
+			// aapt resource value: 0x7f050015
+			public const int statsBtn = 2131034133;
 			
 			// aapt resource value: 0x7f050007
 			public const int textView = 2131034119;
 			
-			// aapt resource value: 0x7f05000d
-			public const int text_name = 2131034125;
+			// aapt resource value: 0x7f050010
+			public const int text_name = 2131034128;
 			
-			// aapt resource value: 0x7f05000e
-			public const int text_price = 2131034126;
+			// aapt resource value: 0x7f050011
+			public const int text_price = 2131034129;
 			
-			// aapt resource value: 0x7f05000f
-			public const int text_type = 2131034127;
+			// aapt resource value: 0x7f050012
+			public const int text_type = 2131034130;
+			
+			// aapt resource value: 0x7f050018
+			public const int uploadBtn = 2131034136;
+			
+			// aapt resource value: 0x7f050017
+			public const int validBtn = 2131034135;
+			
+			// aapt resource value: 0x7f050019
+			public const int validateBtn = 2131034137;
 			
 			static Id()
 			{
@@ -137,7 +212,19 @@ namespace PriceCompEngnMobile
 			public const int fragment_shop_cart_list = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int shop_cart_list_row = 2130903044;
+			public const int Main = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int shop_cart_list_row = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int Shoping = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int Upload = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int validate = 2130903048;
 			
 			static Layout()
 			{
