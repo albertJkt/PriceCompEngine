@@ -76,13 +76,7 @@ namespace PriceCompEngnMobile{
                 string json = await exc.ExecuteRestPostRequest(build,response);
 
                 List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
-                //TextManager tm = new TextManager();
-                //tm.GetListOfProducts(response);
-
-
             }  
-        }
-
-       
+        } 
     }
 }
