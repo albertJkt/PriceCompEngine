@@ -85,6 +85,9 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopCartListFragment.cs" />
+    <Compile Include="MainMenuActivity.cs" />
+    <Compile Include="UploadActivity.cs" />
+    <Compile Include="ShopingActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
   </ItemGroup>
   <ItemGroup>

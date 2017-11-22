@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "PriceCompEngnMobile", MainLauncher = true, Theme = "@android:style/Theme.DeviceDefault.Light")]
+    [Activity(Label = "PriceCompEngnMobile", MainLauncher = false, Theme = "@android:style/Theme.DeviceDefault.Light")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
