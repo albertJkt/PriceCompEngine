@@ -229,6 +229,7 @@
     <Compile Include="Controllers\PriceComparatorController.cs" />
     <Compile Include="Controllers\ShopItemsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\OCRController.cs" />
     <Compile Include="Controllers\TextManagerController.cs" />
     <Compile Include="Controllers\TopItemsController.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
