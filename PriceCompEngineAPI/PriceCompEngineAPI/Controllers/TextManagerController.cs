@@ -11,17 +11,22 @@ namespace PriceCompEngineAPI.Controllers
 {
     public class TextManagerController : ApiController
     {
-        public List<ShopItem> Get([FromUri] string imageText)
+        public List<ShopItem> Post([FromBody] StringObject imageText)
         {
-            if (string.IsNullOrEmpty(imageText))
+            if (string.IsNullOrEmpty(imageText.Text))
             {
                 throw new ArgumentException("Argument imageText is null or empty");
             }
 
             TextManager manager = new TextManager();
 
-            List<ShopItem> items = manager.GetListOfProducts(imageText);
+            List<ShopItem> items = manager.GetListOfProducts(imageText.Text);
             return items;
+        }
+
+        public class StringObject
+        {
+            public string Text { get; set; }
         }
     }
 }
