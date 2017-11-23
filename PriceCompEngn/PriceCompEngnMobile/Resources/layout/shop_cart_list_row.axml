@@ -5,30 +5,30 @@
     android:layout_height="wrap_content"
     android:minWidth="25px"
     android:minHeight="25px">
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:text="Monster"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_name"
-            android:layout_weight="4"
-            android:textSize="19sp" />
-        <TextView
-            android:text="1.22 Eu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_price"
-            android:layout_weight="1"
-            android:textSize="19sp"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
+  <LinearLayout
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="horizontal">
     <TextView
-        android:text="Energetinis gerimas"
-        android:layout_width="match_parent"
+        android:text="Monster"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:id="@+id/text_type" />
+        android:id="@+id/text_name"
+        android:layout_weight="8"
+        android:textSize="19sp" />
+    <TextView
+        android:text="1.22 €"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_price"
+        android:layout_weight="3"
+        android:textSize="19sp"
+        android:gravity="center_horizontal" />
+  </LinearLayout>
+  <TextView
+      android:text="Energetinis gerimas"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="14sp"
+      android:id="@+id/text_type" />
 </LinearLayout>

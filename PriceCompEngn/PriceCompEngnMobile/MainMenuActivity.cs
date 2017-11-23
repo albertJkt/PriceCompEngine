@@ -33,7 +33,7 @@ namespace PriceCompEngnMobile
             var ShopBtn = FindViewById<ImageButton>(Resource.Id.shop);
 
             ShopBtn.Click += delegate {
-                var intent = new Intent(this, typeof(MainActivity));
+                var intent = new Intent(this, typeof(ShoppingCartActivity));
                 StartActivity(intent);
             };
         }

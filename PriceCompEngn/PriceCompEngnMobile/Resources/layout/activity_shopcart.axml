@@ -12,8 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="265dp"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:orientation="vertical">
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -30,7 +29,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:orientation="horizontal"
             android:layout_marginTop="15dp">
             <CheckBox
@@ -39,35 +37,40 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:text="Rimi" />
+                android:text="Rimi"
+                android:checked="true" />
             <CheckBox
                 android:id="@+id/checkbox_maxima"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:text="Maxima" />
+                android:text="Maxima"
+                android:checked="true" />
             <CheckBox
                 android:id="@+id/checkbox_lidl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:text="Lidl" />
+                android:text="Lidl"
+                android:checked="true" />
             <CheckBox
                 android:id="@+id/checkbox_norfa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:text="Norfa" />
+                android:text="Norfa"
+                android:checked="true" />
             <CheckBox
                 android:id="@+id/checkbox_iki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="12sp"
-                android:text="Iki" />
+                android:text="Iki"
+                android:checked="true" />
         </LinearLayout>
         <TextView
             android:id="@+id/result_text_row1"

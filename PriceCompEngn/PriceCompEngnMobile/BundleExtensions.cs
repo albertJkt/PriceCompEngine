@@ -17,13 +17,10 @@ namespace PriceCompEngnMobile
     {
         public static void PutGenericList<T>(this Bundle bundle, string key, List<T> collection)
         {
-            IEnumerator<T> enumerator = collection.GetEnumerator();
-
-            for (int  i = 0; i < collection.Count(); i++)
+            for (int i = 0; i < collection.Count(); i++)
             {
                 string objectSpecificKey = key + i;
-                bundle.PutString(objectSpecificKey, JsonConvert.SerializeObject(enumerator.Current));
-                enumerator.MoveNext();
+                bundle.PutString(objectSpecificKey, JsonConvert.SerializeObject(collection[i]));
             }
         }
 
@@ -38,12 +35,12 @@ namespace PriceCompEngnMobile
 
             int index = 0;
             string objectSpecificKey = key + index;
-            do
+            while (bundle.ContainsKey(objectSpecificKey))
             {
                 string jsonString = bundle.GetString(objectSpecificKey);
                 list.Add(JsonConvert.DeserializeObject<T>(jsonString));
                 objectSpecificKey = key + ++index;
-            } while (!bundle.ContainsKey(objectSpecificKey));
+            }
 
             return list;
         }
