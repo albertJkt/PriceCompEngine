@@ -49,7 +49,8 @@ namespace PriceCompEngnMobile{
             intent.SetType("image/*");  
             intent.SetAction(Intent.ActionGetContent);  
             StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), PickImageId);  
-        } 
+        }
+        
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data) {  
             if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {  
                 Android.Net.Uri uri = data.Data; 

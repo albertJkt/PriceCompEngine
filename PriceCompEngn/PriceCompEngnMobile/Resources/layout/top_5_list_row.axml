@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:text="Monster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_name"
+            android:layout_weight="8"
+            android:textSize="19sp" />
+        <TextView
+            android:text="11 pirkimu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_purchase_times"
+            android:layout_weight="3"
+            android:textSize="17sp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>

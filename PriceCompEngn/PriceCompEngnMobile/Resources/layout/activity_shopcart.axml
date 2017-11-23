@@ -12,6 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="265dp"
+            android:layout_weight="1"
             android:orientation="vertical">
             <FrameLayout
                 android:layout_width="match_parent"
@@ -30,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_weight="0"
             android:layout_marginTop="15dp">
             <CheckBox
                 android:id="@+id/checkbox_rimi"
@@ -77,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
+            android:layout_weight="0"
             android:textSize="18sp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp" />
@@ -85,6 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
+            android:layout_weight="0"
             android:textSize="18sp"
             android:layout_marginLeft="10dp" />
         <TextView
@@ -92,11 +96,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
+            android:layout_weight="0"
             android:textSize="18sp"
             android:layout_marginLeft="10dp" />
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0"
             android:id="@+id/compare_button"
             android:background="@drawable/cmpr"
             android:layout_marginTop="40dp"

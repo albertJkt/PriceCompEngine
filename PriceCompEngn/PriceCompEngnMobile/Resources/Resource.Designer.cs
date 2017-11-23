@@ -108,14 +108,14 @@ namespace PriceCompEngnMobile
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050018
-			public const int addBtn = 2131034136;
+			// aapt resource value: 0x7f05001d
+			public const int addBtn = 2131034141;
 			
 			// aapt resource value: 0x7f050001
 			public const int add_item = 2131034113;
 			
-			// aapt resource value: 0x7f050014
-			public const int cartBtn = 2131034132;
+			// aapt resource value: 0x7f050018
+			public const int cartBtn = 2131034136;
 			
 			// aapt resource value: 0x7f050006
 			public const int checkbox_iki = 2131034118;
@@ -138,11 +138,26 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050010
 			public const int image = 2131034128;
 			
+			// aapt resource value: 0x7f05001c
+			public const int imgView = 2131034140;
+			
+			// aapt resource value: 0x7f05001a
+			public const int item_name = 2131034138;
+			
+			// aapt resource value: 0x7f05001b
+			public const int item_purchase_times = 2131034139;
+			
 			// aapt resource value: 0x7f050017
-			public const int imgView = 2131034135;
+			public const int list_cheapest = 2131034135;
+			
+			// aapt resource value: 0x7f050016
+			public const int list_pop_alltime = 2131034134;
 			
 			// aapt resource value: 0x7f050015
-			public const int locationBtn = 2131034133;
+			public const int list_pop_week = 2131034133;
+			
+			// aapt resource value: 0x7f050019
+			public const int locationBtn = 2131034137;
 			
 			// aapt resource value: 0x7f050007
 			public const int result_text_row1 = 2131034119;
@@ -171,8 +186,8 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050000
 			public const int shop_cart_fragment_container = 2131034112;
 			
-			// aapt resource value: 0x7f050016
-			public const int statsBtn = 2131034134;
+			// aapt resource value: 0x7f050014
+			public const int textView2 = 2131034132;
 			
 			// aapt resource value: 0x7f050011
 			public const int text_name = 2131034129;
@@ -183,14 +198,14 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050013
 			public const int text_type = 2131034131;
 			
-			// aapt resource value: 0x7f05001a
-			public const int uploadBtn = 2131034138;
+			// aapt resource value: 0x7f05001f
+			public const int uploadBtn = 2131034143;
 			
-			// aapt resource value: 0x7f050019
-			public const int validBtn = 2131034137;
+			// aapt resource value: 0x7f05001e
+			public const int validBtn = 2131034142;
 			
-			// aapt resource value: 0x7f05001b
-			public const int validateBtn = 2131034139;
+			// aapt resource value: 0x7f050020
+			public const int validateBtn = 2131034144;
 			
 			static Id()
 			{
@@ -224,10 +239,13 @@ namespace PriceCompEngnMobile
 			public const int Shoping = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Upload = 2130903046;
+			public const int top_5_list_row = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int validate = 2130903047;
+			public const int Upload = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int validate = 2130903048;
 			
 			static Layout()
 			{
