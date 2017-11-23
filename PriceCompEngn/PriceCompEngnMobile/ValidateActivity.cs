@@ -59,8 +59,7 @@ namespace PriceCompEngnMobile
 
                 Thread.Sleep(500);
 
-                var intent = new Intent(this, typeof(UploadActivity));
-                StartActivity(intent);
+                Finish();
 
             };
 

@@ -42,22 +42,21 @@ namespace PriceCompEngnMobile{
             var uplBtn = FindViewById<ImageButton>(Resource.Id.uploadBtn);
             _imageView = FindViewById<ImageView>(Resource.Id.imgView);
 
-            if (items == null)
-            {
-                addBtn.Click += ButtonOnClick;
-
-            }
-            else
-            {
-                addBtn.Visibility = ViewStates.Invisible;
-            }
+            addBtn.Click += ButtonOnClick;
 
             validateBtn.Click += delegate {
-                var intent = new Intent(this, typeof(ValidateActivity));
-                StartActivity(intent);
+                if (items!=null)
+                {
+                    var intent = new Intent(this, typeof(ValidateActivity));
+                    StartActivity(intent);
+                }
+                else
+                {
+                    Toast.MakeText(this, "Items were not parsed yet", ToastLength.Short).Show();
+                }
             };
 
-                uplBtn.Click +=delegate
+            uplBtn.Click +=delegate
             {
                 PCEUriBuilder pub = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
                 RestRequestExecutor executor = new RestRequestExecutor();
@@ -72,7 +71,11 @@ namespace PriceCompEngnMobile{
                 executor.ExecuteRestPostRequest(pub);
 
                 Toast.MakeText(this, "Information was successfully uploaded into the Database!", ToastLength.Short).Show();
-                uplBtn.Visibility = ViewStates.Invisible;
+
+                response = String.Empty;
+                items = null;
+                _imageView = null;
+                Finish();
             };
         }
 
