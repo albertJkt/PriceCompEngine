@@ -37,9 +37,10 @@ namespace PriceCompEngnMobile
             };
 
             ImageButton LocationBtn = FindViewById<ImageButton>(Resource.Id.locationBtn);
-            LocationBtn.Click += delegate
+            LocationBtn.Click += async delegate
             {
-                //TODO: add GPS layout
+                Intent intent = new Intent(this, typeof(LocationActivity));
+                StartActivity(intent);
             };
 
             FillFirstList();

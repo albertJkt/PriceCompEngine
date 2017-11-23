@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidLogic;
 
 namespace PriceCompEngnMobile
 {
@@ -22,7 +23,7 @@ namespace PriceCompEngnMobile
 
             // Create your application here
             SetContentView(Resource.Layout.Main);
-
+            StartMonitoringLocation();
             var ScanBtn = FindViewById<ImageButton>(Resource.Id.scan);
 
             ScanBtn.Click += delegate {
@@ -33,9 +34,19 @@ namespace PriceCompEngnMobile
             var ShopBtn = FindViewById<ImageButton>(Resource.Id.shop);
 
             ShopBtn.Click += delegate {
+
                 var intent = new Intent(this, typeof(ShoppingActivity));
                 StartActivity(intent);
             };
         }
+
+        private async void StartMonitoringLocation()
+        {
+            if (UserLocation.Instance.Lat == 0 && UserLocation.Instance.Longt == 0)
+            {
+                await UserLocation.Instance.FindUserLocation();
+            }
+        }
     }
+
 }
