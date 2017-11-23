@@ -87,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopItemsListFragment.cs" />
     <Compile Include="MainMenuActivity.cs" />
+    <Compile Include="TopFiveListAdapter.cs" />
     <Compile Include="UploadActivity.cs" />
     <Compile Include="ShoppingActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -131,6 +132,9 @@
     <AndroidResource Include="Resources\drawable\upload.png" />
     <AndroidResource Include="Resources\drawable\Validate.png" />
     <AndroidResource Include="Resources\Layout\validate.axml" />
+    <AndroidResource Include="Resources\Layout\top_5_list_row.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

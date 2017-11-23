@@ -13,6 +13,7 @@ using Android.Widget;
 using Models;
 using ServiceClient;
 using Newtonsoft.Json;
+using PriceCompEngnMobile.PriceCompEngnMobile;
 
 namespace PriceCompEngnMobile
 {
@@ -57,7 +58,10 @@ namespace PriceCompEngnMobile
 
             string result = await _exc.ExecuteRestGetRequest(builder);
             Dictionary<string, int> topItems = JsonConvert.DeserializeObject<Dictionary<string, int>>(result);
-            //TODO: display result
+            List<KeyValuePair<string, int>> entryList = topItems.ToList();
+
+            ListView list = FindViewById<ListView>(Resource.Id.list_pop_week);
+            list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
         }
 
         private async void FillSecondList()
@@ -70,7 +74,10 @@ namespace PriceCompEngnMobile
 
             string result = await _exc.ExecuteRestGetRequest(builder);
             Dictionary<string, int> topItems = JsonConvert.DeserializeObject<Dictionary<string, int>>(result);
-            //TODO: display result
+            List<KeyValuePair<string, int>> entryList = topItems.ToList();
+
+            ListView list = FindViewById<ListView>(Resource.Id.list_pop_alltime);
+            list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
         }
 
         private async void FillThirdList()
@@ -84,7 +91,11 @@ namespace PriceCompEngnMobile
 
             string result = await _exc.ExecuteRestGetRequest(builder);
             List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(result);
-            //TODO: display result
+
+            ListView list = FindViewById<ListView>(Resource.Id.list_cheapest);
+            list.Adapter = new ShopItemListAdapter(this, Resource.Id.list_cheapest, items);
+
+
         }
     }
 }
