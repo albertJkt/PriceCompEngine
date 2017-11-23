@@ -19,6 +19,7 @@ using Android.Media;
 using Newtonsoft.Json;
 using Models;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PriceCompEngnMobile{
     [Activity(Label = "UploadActivity")]
@@ -26,7 +27,7 @@ namespace PriceCompEngnMobile{
     {
         public static readonly int PickImageId = 1000;
         string response = String.Empty;
-        List<ShopItem> items;
+        public static List<ShopItem> items;
         ImageView _imageView;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -41,7 +42,38 @@ namespace PriceCompEngnMobile{
             var uplBtn = FindViewById<ImageButton>(Resource.Id.uploadBtn);
             _imageView = FindViewById<ImageView>(Resource.Id.imgView);
 
-            addBtn.Click += ButtonOnClick;
+            if (items == null)
+            {
+                addBtn.Click += ButtonOnClick;
+
+            }
+            else
+            {
+                addBtn.Visibility = ViewStates.Invisible;
+            }
+
+            validateBtn.Click += delegate {
+                var intent = new Intent(this, typeof(ValidateActivity));
+                StartActivity(intent);
+            };
+
+                uplBtn.Click +=delegate
+            {
+                PCEUriBuilder pub = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
+                RestRequestExecutor executor = new RestRequestExecutor();
+                var json = JsonConvert.SerializeObject(items);
+
+                pub.AppendStringArgs(new Dictionary<string, string>()
+                {
+                    { "itemListJson", json }
+
+                });
+
+                executor.ExecuteRestPostRequest(pub);
+
+                Toast.MakeText(this, "Information was successfully uploaded into the Database!", ToastLength.Short).Show();
+                uplBtn.Visibility = ViewStates.Invisible;
+            };
         }
 
         void ButtonOnClick(object sender, EventArgs eventArgs)
@@ -61,7 +93,7 @@ namespace PriceCompEngnMobile{
                 await GetOcrText();
 
                 await GetItemList();
-                string test = items[0].ItemName;
+                Thread.Sleep(500);
             }  
         } 
 

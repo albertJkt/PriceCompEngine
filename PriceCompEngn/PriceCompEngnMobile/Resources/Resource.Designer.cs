@@ -183,6 +183,9 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050014
 			public const int textView2 = 2131034132;
 			
+			// aapt resource value: 0x7f05001e
+			public const int textVw = 2131034142;
+			
 			// aapt resource value: 0x7f050011
 			public const int text_name = 2131034129;
 			
@@ -198,8 +201,8 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f05001c
 			public const int validBtn = 2131034140;
 			
-			// aapt resource value: 0x7f05001e
-			public const int validateBtn = 2131034142;
+			// aapt resource value: 0x7f05001f
+			public const int validateBtn = 2131034143;
 			
 			static Id()
 			{
