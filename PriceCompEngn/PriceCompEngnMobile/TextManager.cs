@@ -54,7 +54,7 @@ public class TextManager
             result = RemoveEndlines(text);
             return result;
         }
-        public static string RemoveEndlines(string text)
+        private string RemoveEndlines(string text)
         {
             string result="";
             using (StringReader reader = new StringReader(text))
