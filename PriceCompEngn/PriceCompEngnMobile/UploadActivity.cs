@@ -18,7 +18,7 @@ using Android.Graphics.Drawables;
 using Android.Media;
 using Newtonsoft.Json;
 using Models;
-
+using System.Threading.Tasks;
 
 namespace PriceCompEngnMobile{
     [Activity(Label = "UploadActivity")]
@@ -26,6 +26,7 @@ namespace PriceCompEngnMobile{
     {
         public static readonly int PickImageId = 1000;
         string response = String.Empty;
+        List<ShopItem> items;
         ImageView _imageView;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -57,27 +58,38 @@ namespace PriceCompEngnMobile{
 
                 _imageView.SetImageURI(uri);
 
-                PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.OCR);
-                RestRequestExecutor executor = new RestRequestExecutor();
+                await GetOcrText();
 
-                BitmapDrawable bd = (BitmapDrawable)_imageView.Drawable;
-                Bitmap bitmap = bd.Bitmap;
-
-                byte[] bitmapData;
-                using (var stream = new MemoryStream())
-                {
-                    bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
-                    bitmapData = stream.ToArray();
-                }
-                response = await executor.ExecuteRestPostRequest(builder, bitmapData);
-
-                PCEUriBuilder build = new PCEUriBuilder(ServiceClient.Resources.TextManager);
-               
-                RestRequestExecutor exc = new RestRequestExecutor();
-                string json = await exc.ExecuteRestPostRequest(build,response);
-
-                List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
+                await GetItemList();
+                string test = items[0].ItemName;
             }  
         } 
+
+        private async Task GetOcrText()
+        {
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.OCR);
+            RestRequestExecutor executor = new RestRequestExecutor();
+
+            BitmapDrawable bd = (BitmapDrawable)_imageView.Drawable;
+            Bitmap bitmap = bd.Bitmap;
+
+            byte[] bitmapData;
+            using (var stream = new MemoryStream())
+            {
+                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                bitmapData = stream.ToArray();
+            }
+            response = await executor.ExecuteRestPostRequest(builder, bitmapData);
+        }
+
+        private async Task GetItemList()
+        {
+            PCEUriBuilder build = new PCEUriBuilder(ServiceClient.Resources.TextManager);
+
+            RestRequestExecutor exc = new RestRequestExecutor();
+            string json = await exc.ExecuteRestPostRequest(build, response);
+
+            items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
+        }
     }
 }
