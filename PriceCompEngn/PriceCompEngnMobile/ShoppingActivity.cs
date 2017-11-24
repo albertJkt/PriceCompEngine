@@ -95,8 +95,6 @@ namespace PriceCompEngnMobile
 
             ListView list = FindViewById<ListView>(Resource.Id.list_cheapest);
             list.Adapter = new ShopItemListAdapter(this, Resource.Id.list_cheapest, items);
-
-
         }
     }
 }

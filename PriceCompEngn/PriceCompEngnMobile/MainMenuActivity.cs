@@ -26,14 +26,16 @@ namespace PriceCompEngnMobile
             StartMonitoringLocation();
             var ScanBtn = FindViewById<ImageButton>(Resource.Id.scan);
 
-            ScanBtn.Click += delegate {
+            ScanBtn.Click += delegate 
+            {
                 var intent = new Intent(this, typeof(UploadActivity));
                 StartActivity(intent);
             };
 
             var ShopBtn = FindViewById<ImageButton>(Resource.Id.shop);
 
-            ShopBtn.Click += delegate {
+            ShopBtn.Click += delegate 
+            {
 
                 var intent = new Intent(this, typeof(ShoppingActivity));
                 StartActivity(intent);
