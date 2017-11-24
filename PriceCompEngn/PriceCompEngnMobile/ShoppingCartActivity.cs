@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "PriceCompEngnMobile", MainLauncher = false, Theme = "@android:style/Theme.DeviceDefault.Light")]
+    [Activity(Label = "PriceCompEngnMobile", MainLauncher = false, Theme = "@android:style/Theme.DeviceDefault.Light.NoActionBar")]
     public class ShoppingCartActivity : Activity
     {
         private List<ShopItem> _args = new List<ShopItem>();

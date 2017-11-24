@@ -17,7 +17,7 @@ using System.Text.RegularExpressions;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "LocationActivity", Theme = "@android:style/Theme.DeviceDefault.Light")]
+    [Activity(Label = "LocationActivity", Theme = "@android:style/Theme.DeviceDefault.Light.NoActionBar")]
     public class LocationActivity : Activity, IOnMapReadyCallback
     {
         private GoogleMap _map;

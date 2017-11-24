@@ -22,7 +22,10 @@ using System.Threading.Tasks;
 using System.Threading;
 
 namespace PriceCompEngnMobile{
-    [Activity(Label = "UploadActivity")]
+
+    delegate void OnClick(object sender, EventArgs args);
+
+    [Activity(Label = "UploadActivity", Theme = "@android:style/Theme.DeviceDefault.NoActionBar")]
     public class UploadActivity : Activity
     {
         public static readonly int PickImageId = 1000;

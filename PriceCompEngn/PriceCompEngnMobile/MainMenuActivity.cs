@@ -14,7 +14,7 @@ using AndroidLogic;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar.Fullscreen")]
+    [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class MainMenuActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -26,14 +26,16 @@ namespace PriceCompEngnMobile
             StartMonitoringLocation();
             var ScanBtn = FindViewById<ImageButton>(Resource.Id.scan);
 
-            ScanBtn.Click += delegate {
+            ScanBtn.Click += delegate 
+            {
                 var intent = new Intent(this, typeof(UploadActivity));
                 StartActivity(intent);
             };
 
             var ShopBtn = FindViewById<ImageButton>(Resource.Id.shop);
 
-            ShopBtn.Click += delegate {
+            ShopBtn.Click += delegate 
+            {
 
                 var intent = new Intent(this, typeof(ShoppingActivity));
                 StartActivity(intent);

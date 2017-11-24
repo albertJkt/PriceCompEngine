@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "ValidateActivity")]
+    [Activity(Label = "ValidateActivity", Theme = "@android:style/Theme.DeviceDefault.NoActionBar")]
     public class ValidateActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
