@@ -14,7 +14,7 @@ using AndroidLogic;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar.Fullscreen")]
+    [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class MainMenuActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
