@@ -1,49 +1,32 @@
-﻿using DataBase;
-using OCREngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Logic;
-using System.Diagnostics;
-using System.IO;
-using System.Drawing;
-using System.Web.Hosting;
-using System.Threading.Tasks;
-using System.Web;
-using PriceCompEngineAPI.Extensions;
+using DataBase;
 
 namespace PriceCompEngineAPI.Controllers
 {
     public class TextManagerController : ApiController
     {
-        [HttpPost]
-        public async Task<List<ShopItem>> Post(HttpRequestMessage request)
+        public List<ShopItem> Post([FromBody] StringObject imageText)
         {
-            if (!request.Content.IsMimeMultipartContent())
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-
-            var data = await request.Content.ParseMultipartAsync();
-
-            if (data.Files.ContainsKey("image"))
+            if (string.IsNullOrEmpty(imageText.Text))
             {
-                var file = data.Files["image"].File;
-                string imageText = OCREngineAPI.GetImageText(file, "lt", ResultFormat.TEXT);
-
-                TextManager manager = new TextManager();
-                List<ShopItem> items = manager.GetListOfProducts(imageText);
-
-                return items;
+                throw new ArgumentException("Argument imageText is null or empty");
             }
-            else return new List<ShopItem>();
+
+            TextManager manager = new TextManager();
+
+            List<ShopItem> items = manager.GetListOfProducts(imageText.Text);
+            return items;
         }
-        
-    }
-    
-    public class JsonString
-    {
-        public string Text { get; set; }
+
+        public class StringObject
+        {
+            public string Text { get; set; }
+        }
     }
 }
