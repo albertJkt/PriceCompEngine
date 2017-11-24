@@ -40,7 +40,7 @@ namespace PriceCompEngnMobile
             around_me.Click += delegate
             {
                 if(!string.IsNullOrEmpty(shopText.Text) &&
-                Regex.Match(shopText.Text, @"^([rimi]|[norfa]|[iki]|[maxima]|[lidl])$", RegexOptions.IgnoreCase).Success &&
+                Regex.Match(shopText.Text, @"^([rimi]|[norfa]|[iki]|[maxima]|[lidl])", RegexOptions.IgnoreCase).Success &&
                 Regex.Match(radiusText.Text, @"^(([1-4][0-9]{0,3})|([1-9][0-9]{0,2})|(5000))$").Success)
                 {
                     new MapController(_map).FindShops(Convert.ToInt32(radiusText.Text), shopText.Text);
@@ -51,8 +51,7 @@ namespace PriceCompEngnMobile
                     new MapController(_map).FindShops(Convert.ToInt32(radiusText.Text));
                     return;
                 }              
-                    Toast.MakeText(this, "Please put in the desired radius and shop name (optional) correctly", ToastLength.Long).Show();
-                  
+                Toast.MakeText(this, "Please put in the desired radius and shop name (optional) correctly", ToastLength.Long).Show();                 
             };
         }
 

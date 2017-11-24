@@ -44,7 +44,8 @@ namespace PriceCompEngnMobile{
 
             addBtn.Click += ButtonOnClick;
 
-            validateBtn.Click += delegate {
+            validateBtn.Click += delegate 
+            {
                 if (items!=null)
                 {
                     var intent = new Intent(this, typeof(ValidateActivity));
