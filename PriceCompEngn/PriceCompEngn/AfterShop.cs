@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OCREngine;
 using System.IO;
-using Logic;
-using DataBase;
+using ServiceClient;
+using Newtonsoft.Json;
 
 namespace PriceCompEngn
 {
@@ -18,15 +17,18 @@ namespace PriceCompEngn
     {
         public string ImagePath { get; set; }
         private string _resultTextString;
-        List<ShopItem> items;
+        string response;
+        RestRequestExecutor executor = new RestRequestExecutor();
+        byte[] image;
 
         public AfterShop()
         {
             InitializeComponent();
         }
 
-        private void btnAddImage_Click(object sender, EventArgs e)
+        private async void btnAddImage_Click(object sender, EventArgs e)
         {
+           
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 btnAddImage.Enabled = false;
@@ -40,22 +42,62 @@ namespace PriceCompEngn
                         return;
                     }
                     ImagePath = dialog.FileName;
+
+                    image = File.ReadAllBytes(ImagePath);
+
                     pictureBox1.Image = Image.FromFile(dialog.FileName);
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     btnAddImage.Enabled = true;
                 }
             }
-            _resultTextString = OCREngineAPI.GetImageText(ImagePath, "lt", ResultFormat.TEXT);
-            TextManager tm = new TextManager();
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.TextManager);
+            
+
+            response = await executor.ExecuteRestPostRequest(builder, image);
+
+            var typeList = new[]
+            {
+                new
+                {
+                    ItemName = "",
+                    ShopName = "",
+                    Type = "",
+                    Price = (float)0.00,
+                    PurchaseTime = new DateTime(),
+                    Id = 1
+                }
+            }.ToList();
+
+            var result = JsonConvert.DeserializeAnonymousType(response, typeList);
+            var result2 = JsonConvert.SerializeObject(result);
+
+            double sum = 0.00;
+            StringBuilder sb = new StringBuilder("");
+            sb.Append(result.First().ShopName+""+Environment.NewLine);
+
+            foreach (var x in result)
+            {
+                sb.Append(x.Type+" \""+x.ItemName+"\"   "+x.Price+" Eur"+Environment.NewLine);
+                sum += x.Price;
+            }
+            sb.Append("Iš viso: " +Math.Round(sum, 2)+""+Environment.NewLine);
+            sb.Append(result.First().PurchaseTime.Year+"-"+result.First().PurchaseTime.Month+"-"+result.First().PurchaseTime.Day);
+
+            _resultTextString = sb.ToString();          
             textBox1.Text = _resultTextString;
         }
 
         private void bntUpload_Click(object sender, EventArgs e)
         {
-            TextManager tm = new TextManager();
-            items = tm.GetListOfProducts(_resultTextString);
-            DBController cntrl = new DBController();
-            cntrl.PushToDatabase(items);
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
+
+            Dictionary<string, string> arguments = new Dictionary<string, string>()
+            {
+                {"itemListJson", response }
+            };
+            builder.AppendStringArgs(arguments);
+            executor.ExecuteRestPostRequest(builder);
+
             MessageBox.Show("Kvito informacija sėkmingai patalpinta duomenų bazėje");
         }
 

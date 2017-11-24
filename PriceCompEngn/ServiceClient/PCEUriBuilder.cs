@@ -14,10 +14,12 @@ namespace ServiceClient
         CheapestItems,
         TopItems,
         ShoppingCart,
-        PriceComparator
+        PriceComparator,
+        ShopItems,
+        OCR
     };
 
-    public class URIBuilder
+    public class PCEUriBuilder
     {
         private StringBuilder _uri;
         public string Uri
@@ -31,12 +33,12 @@ namespace ServiceClient
         }
         public string ServerAddress { get; private set; }
 
-        public URIBuilder(Resources resource)
+        public PCEUriBuilder(Resources resource)
         {
-            string resourcePath = ConfigurationManager.AppSettings[resource.ToString() + "Url"];
+            string resourcePath = ServiceLinks.GetResourceUrl(resource);
             _uri = new StringBuilder(resourcePath);
 
-            string serverPath = ConfigurationManager.AppSettings.Get("ServiceBaseUrl");
+            string serverPath = ServiceLinks.ServiceBaseUrl;
             ServerAddress = serverPath;
         }
 
@@ -44,7 +46,7 @@ namespace ServiceClient
         {
             if (args != null)
             {
-                foreach(KeyValuePair<string, string> entry in args)
+                foreach (KeyValuePair<string, string> entry in args)
                 {
                     _uri.Append(entry.Key);
                     _uri.Append('=');
@@ -58,7 +60,7 @@ namespace ServiceClient
         {
             if (args != null)
             {
-                foreach(KeyValuePair<string, int> entry in args)
+                foreach (KeyValuePair<string, int> entry in args)
                 {
                     _uri.Append(entry.Key);
                     _uri.Append('=');
@@ -79,7 +81,7 @@ namespace ServiceClient
                     _uri.Append(item.ToString());
                     _uri.Append('&');
                 }
-            }            
+            }
         }
 
         public override string ToString()

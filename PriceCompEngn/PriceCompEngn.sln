@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngn", "PriceCompEngn\PriceCompEngn.csproj", "{6D968374-AE7E-425F-A3B5-F2779ADD17A2}"
 EndProject
@@ -22,6 +22,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClient", "ServiceClient\ServiceClient.csproj", "{82C0F38D-DF31-42F5-B785-81E45F0BD81F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClientTest", "ServiceClientTest\ServiceClientTest.csproj", "{9D324446-1C9B-46F3-BB6E-89DE402F32D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompEngnMobile", "PriceCompEngnMobile\PriceCompEngnMobile.csproj", "{D26F41FD-2EAE-4112-9A93-BB1764E622E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{5D9136EB-3B72-4B37-8B67-5103E356E653}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidLogic", "AndroidLogic\AndroidLogic.csproj", "{1B33F695-EF77-4E31-BC19-F77EBDF563E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,20 @@ Global
 		{9D324446-1C9B-46F3-BB6E-89DE402F32D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D324446-1C9B-46F3-BB6E-89DE402F32D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D324446-1C9B-46F3-BB6E-89DE402F32D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26F41FD-2EAE-4112-9A93-BB1764E622E2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9136EB-3B72-4B37-8B67-5103E356E653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B33F695-EF77-4E31-BC19-F77EBDF563E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B33F695-EF77-4E31-BC19-F77EBDF563E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B33F695-EF77-4E31-BC19-F77EBDF563E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B33F695-EF77-4E31-BC19-F77EBDF563E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

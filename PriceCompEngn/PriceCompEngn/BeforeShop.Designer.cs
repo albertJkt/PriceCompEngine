@@ -194,7 +194,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BeforeShop";
             this.Text = "BeforeShop";
-            this.Load += new System.EventHandler(this.BeforeShop_Load);
+            this.Load += new System.EventHandler(this.BeforeShop_LoadAsync);
             this.ResumeLayout(false);
 
         }

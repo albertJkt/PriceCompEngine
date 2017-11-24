@@ -306,6 +306,7 @@
             this.Controls.Add(this.checkIki);
             this.Name = "ShoppingForm";
             this.Text = "ShoppingForm";
+            this.Load += new System.EventHandler(this.On_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

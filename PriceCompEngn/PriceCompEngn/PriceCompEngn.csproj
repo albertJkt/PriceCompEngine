@@ -161,6 +161,10 @@
       <Project>{21128456-3063-46ca-8b62-77b26553326a}</Project>
       <Name>OCREngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServiceClient\ServiceClient.csproj">
+      <Project>{82c0f38d-df31-42f5-b785-81e45f0bd81f}</Project>
+      <Name>ServiceClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

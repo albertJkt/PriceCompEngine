@@ -10,26 +10,39 @@ using System.Windows.Forms;
 using Logic;
 using DataBase;
 using System.Threading;
+using ServiceClient;
+using Newtonsoft.Json;
 
 namespace PriceCompEngn
 {
     public partial class BeforeShop : Form
     {
-        string[] shops;
+       
         public BeforeShop()
         {           
             InitializeComponent();
         }
 
-        private void BeforeShop_Load(object sender, EventArgs e)
+        private async void BeforeShop_LoadAsync(object sender, EventArgs e)
         {
-            TopItems top = new TopItems();
-            var _perkamiausios = top.GetTopShopItemsList(5);
+            PCEUriBuilder builder = new PCEUriBuilder(Resources.TopItems);
+            int rows = 5;
+            Dictionary<string, int> arguments = new Dictionary<string, int>()
+            {
+                {"rows", rows }
+            };
+            builder.AppendNumericArgs(arguments);
+            RestRequestExecutor executor = new RestRequestExecutor();
+
+            var response = await executor.ExecuteRestGetRequest(builder);
+
+            var result = JsonConvert.DeserializeObject<Dictionary<string, int>>(response);
+
             label1.Text = @"Top 5 Perkamiausios prekės:";
 
             int index = 1;
 
-            foreach (KeyValuePair<string, int> x in _perkamiausios)
+            foreach (var x in result)
             {
                 string[] row = { index.ToString(), x.Key, x.Value.ToString() };
                 var i = new ListViewItem(row);
@@ -39,10 +52,28 @@ namespace PriceCompEngn
 
             index = 1;
 
-            var _pigiausios = top.GetCheapestShopItemsList(5);
+            builder = new PCEUriBuilder(Resources.CheapestItems);
+            builder.AppendNumericArgs(arguments);
+            response = await executor.ExecuteRestGetRequest(builder);
+            var typeList = new[]
+{
+                new
+                {
+                    ItemName = "",
+                    ShopName = "",
+                    Type = "",
+                    Price = (float)0.00,
+                    PurchaseTime = new DateTime(),
+                    Id = 1
+                }
+            }.ToList();
+
+            var result2 = JsonConvert.DeserializeAnonymousType(response, typeList);
+
+    
             label3.Text = @"Top 5 Pigiausios prekės:";
 
-            foreach (var x in _pigiausios)
+            foreach (var x in result2)
             {
                 string[] row = { index.ToString(), x.ItemName, x.Price.ToString() };
                 var i = new ListViewItem(row);
@@ -51,12 +82,23 @@ namespace PriceCompEngn
             }
 
             index = 1;
+            int days = 5;
+            Dictionary<string, int> arguments2 = new Dictionary<string, int>()
+            {
+                { "rows", rows },
+                { "days", days }
+            };
 
-            var _perkamiausios7 = top.GetTopShopItemsList(5,7);
-            var _perk7 = _perkamiausios.Keys.ToList();
+            builder = new PCEUriBuilder(Resources.TopItems);
+            builder.AppendNumericArgs(arguments2);
+            response = await executor.ExecuteRestGetRequest(builder);
+
+            result = JsonConvert.DeserializeObject<Dictionary<string, int>>(response);
+
+
             label2.Text = @"Top 5 Savaitės perkamiausios prekės:";
 
-            foreach (KeyValuePair<string, int> x in _perkamiausios7)
+            foreach (var x in result)
             {
                 string[] row = { index.ToString(), x.Key, x.Value.ToString() };
                 var i = new ListViewItem(row);

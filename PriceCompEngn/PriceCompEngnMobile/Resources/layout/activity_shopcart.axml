@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/shop_cart_fragment_container"
+                android:layout_weight="5"
+                android:background="@drawable/list" />
+            <Button
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:id="@+id/add_item"
+                android:text="Add item"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:layout_marginTop="15dp">
+            <CheckBox
+                android:id="@+id/checkbox_rimi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:text="Rimi"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/checkbox_maxima"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:text="Maxima"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/checkbox_lidl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:text="Lidl"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/checkbox_norfa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:text="Norfa"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/checkbox_iki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:text="Iki"
+                android:checked="true" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/result_text_row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="0"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:id="@+id/result_text_row2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="0"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:id="@+id/result_text_row3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_weight="0"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="0"
+            android:id="@+id/compare_button"
+            android:background="@drawable/cmpr"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
+</LinearLayout>

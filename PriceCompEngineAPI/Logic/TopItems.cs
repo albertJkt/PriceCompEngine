@@ -9,10 +9,16 @@ namespace Logic
 {
     public class TopItems
     {
+        private IDBController _controller;
+
+        public TopItems(IDBController controller)
+        {
+            _controller = controller;
+        }
+
         public Dictionary<string, int> GetTopShopItemsList(int rows)
         {
-            DBController controller = new DBController();
-            List<ShopItem> shopItems = controller.GetShopItemsList();
+            List<ShopItem> shopItems = _controller.GetShopItemsList();
 
             var items = (shopItems.GroupBy(x => x.ItemName)
                 .Select(group => new
@@ -28,8 +34,7 @@ namespace Logic
 
         public Dictionary<string, int> GetTopShopItemsList(int rows, int days)
         {
-            DBController controller = new DBController();
-            List<ShopItem> shopItems = controller.GetShopItemsList(days);
+            List<ShopItem> shopItems = _controller.GetShopItemsList(days);
 
             var items = (shopItems.GroupBy(x => x.ItemName)
                 .Select(group => new
@@ -45,8 +50,7 @@ namespace Logic
 
         public List<ShopItem> GetCheapestShopItemsList(int rows)
         {
-            DBController controller = new DBController();
-            List<ShopItem> shopItems = controller.GetShopItemsList();
+            List<ShopItem> shopItems = _controller.GetShopItemsList();
             var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
                 .ToList<ShopItem>();
 
@@ -56,8 +60,7 @@ namespace Logic
 
         public List<ShopItem> GetCheapestShopItemsList(int rows, int date)
         {
-            DBController controller = new DBController();
-            List<ShopItem> shopItems = controller.GetShopItemsList(date);
+            List<ShopItem> shopItems = _controller.GetShopItemsList(date);
             var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
                 .ToList<ShopItem>();
 
