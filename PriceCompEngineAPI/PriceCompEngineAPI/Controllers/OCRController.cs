@@ -30,7 +30,8 @@ namespace PriceCompEngineAPI.Controllers
             if (data.Files.ContainsKey("image"))
             {
                 var file = data.Files["image"].File;
-                string imageText = OCREngineAPI.GetImageText(file, "lt", ResultFormat.TEXT);
+                VisionAPIReader reader = new VisionAPIReader();
+                string imageText = reader.GetImageText(file);
 
                 return imageText;
             }

@@ -16,7 +16,7 @@ namespace ServiceClientTest
         [TestMethod]
         public async Task PostRequestWorks()
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.TextManager);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
 
             byte[] image = File.ReadAllBytes(Application.StartupPath + "\\template_5.png");
 
@@ -60,7 +60,7 @@ namespace ServiceClientTest
         [TestMethod]
         public async Task GetMethodWorks()
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.TopItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.TopItems);
 
             Dictionary<string, int> arguments = new Dictionary<string, int>()
             {

@@ -75,7 +75,7 @@ namespace PriceCompEngn
 
             /**/
 
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
             shops = AddShops().ToArray();
             var response = await executor.ExecuteRestGetRequest(builder);
 
@@ -177,7 +177,7 @@ namespace PriceCompEngn
 
         private async void On_Load(object sender, EventArgs e)
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
             shops = AddShops().ToArray();
             var response = await executor.ExecuteRestGetRequest(builder);
 

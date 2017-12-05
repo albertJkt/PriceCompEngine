@@ -14,11 +14,11 @@ namespace ServiceClientTest
         {
             PCEUriBuilder[] builders = new PCEUriBuilder[5]
             {
-                new PCEUriBuilder(Resources.CheapestItems),
-                new PCEUriBuilder(Resources.PriceComparator),
-                new PCEUriBuilder(Resources.ShoppingCart),
-                new PCEUriBuilder(Resources.TextManager),
-                new PCEUriBuilder(Resources.TopItems)
+                new PCEUriBuilder(ServiceClient.Resources.CheapestItems),
+                new PCEUriBuilder(ServiceClient.Resources.PriceComparator),
+                new PCEUriBuilder(ServiceClient.Resources.ShoppingCart),
+                new PCEUriBuilder(ServiceClient.Resources.TextManager),
+                new PCEUriBuilder(ServiceClient.Resources.TopItems)
             };
 
             string[] expectedUris = new string[5]
@@ -40,7 +40,7 @@ namespace ServiceClientTest
         [TestMethod]
         public void URIBuilderAppendsArrays()
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShoppingCart);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.ShoppingCart);
 
             string[] items =
             {
@@ -71,7 +71,7 @@ namespace ServiceClientTest
         [TestMethod]
         public void URIBuilderAppendsNumericArguments()
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.CheapestItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.CheapestItems);
 
             int rows = 5;
             int days = 7;
