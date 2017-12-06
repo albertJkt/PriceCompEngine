@@ -50,7 +50,7 @@ namespace PriceCompEngn
                     btnAddImage.Enabled = true;
                 }
             }
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.TextManager);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
             
 
             response = await executor.ExecuteRestPostRequest(builder, image);
@@ -89,7 +89,7 @@ namespace PriceCompEngn
 
         private void bntUpload_Click(object sender, EventArgs e)
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.ShopItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
 
             Dictionary<string, string> arguments = new Dictionary<string, string>()
             {

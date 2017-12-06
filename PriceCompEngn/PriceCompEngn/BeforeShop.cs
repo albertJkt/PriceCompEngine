@@ -25,7 +25,7 @@ namespace PriceCompEngn
 
         private async void BeforeShop_LoadAsync(object sender, EventArgs e)
         {
-            PCEUriBuilder builder = new PCEUriBuilder(Resources.TopItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.TopItems);
             int rows = 5;
             Dictionary<string, int> arguments = new Dictionary<string, int>()
             {
@@ -52,7 +52,7 @@ namespace PriceCompEngn
 
             index = 1;
 
-            builder = new PCEUriBuilder(Resources.CheapestItems);
+            builder = new PCEUriBuilder(ServiceClient.Resources.CheapestItems);
             builder.AppendNumericArgs(arguments);
             response = await executor.ExecuteRestGetRequest(builder);
             var typeList = new[]
@@ -89,7 +89,7 @@ namespace PriceCompEngn
                 { "days", days }
             };
 
-            builder = new PCEUriBuilder(Resources.TopItems);
+            builder = new PCEUriBuilder(ServiceClient.Resources.TopItems);
             builder.AppendNumericArgs(arguments2);
             response = await executor.ExecuteRestGetRequest(builder);
 
