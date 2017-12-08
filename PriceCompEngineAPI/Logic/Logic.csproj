@@ -50,6 +50,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="RimiCheckAnalyzer.cs" />
+    <Compile Include="ShopCheckAnalyzer.cs" />
+    <Compile Include="ShopCheckAnalyzerCreator.cs" />
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="TextManager.cs" />
     <Compile Include="TopItems.cs" />

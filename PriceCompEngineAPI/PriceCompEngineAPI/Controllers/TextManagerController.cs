@@ -18,9 +18,23 @@ namespace PriceCompEngineAPI.Controllers
                 throw new ArgumentException("Argument imageText is null or empty");
             }
 
-            TextManager manager = new TextManager();
+            ShopCheckAnalyzerCreator creator = new ShopCheckAnalyzerCreator();
+            ShopCheckAnalyzer analyzer = creator.Create(imageText.Text);
 
-            List<ShopItem> items = manager.GetListOfProducts(imageText.Text);
+            List<ShopItem> items = new List<ShopItem>();
+            for (int i = 0; i < analyzer.ItemNames.Count; i++)
+            {
+                ShopItem item = new ShopItem()
+                {
+                    ItemName = analyzer.ItemNames[i],
+                    Price = float.Parse(analyzer.Prices[i]),
+                    ShopName = analyzer.ShopName,
+                    PurchaseTime = analyzer.PurchaseTime,
+                    Type = "generic"
+                };
+                items.Add(item);
+            }
+
             return items;
         }
 
