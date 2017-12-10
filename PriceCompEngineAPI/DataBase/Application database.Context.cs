@@ -26,5 +26,8 @@ namespace DataBase
         }
     
         public virtual DbSet<ShopItem> ShopItems { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

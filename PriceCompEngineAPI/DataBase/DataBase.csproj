@@ -62,7 +62,16 @@
       <DependentUpon>Application database.edmx</DependentUpon>
     </Compile>
     <Compile Include="DBController.cs" />
+    <Compile Include="Item.cs">
+      <DependentUpon>Application database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase.cs">
+      <DependentUpon>Application database.tt</DependentUpon>
+    </Compile>
     <Compile Include="ShopItem.cs">
+      <DependentUpon>Application database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
       <DependentUpon>Application database.tt</DependentUpon>
     </Compile>
   </ItemGroup>

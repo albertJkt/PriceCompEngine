@@ -232,6 +232,7 @@
     <Compile Include="Controllers\OCRController.cs" />
     <Compile Include="Controllers\TextManagerController.cs" />
     <Compile Include="Controllers\TopItemsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -310,6 +311,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
