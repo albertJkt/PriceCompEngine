@@ -68,5 +68,19 @@ namespace ServiceClient
 
             return result;
         }
+        public async void ExecuteRestPostRequest(PCEUriBuilder builder, object obj)
+        {
+            var client = new RestClient(builder.ServerAddress);
+
+            var request = new RestRequest(builder.Uri, Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddBody(obj);
+            
+            var asyncQueryResult = await client.ExecuteTaskAsync(request);
+        }
     }
 }
