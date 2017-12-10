@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="PriceCompEngineModel.User" Width="1.5" PointX="3.375" PointY="1.375" />
         <AssociationConnector Association="PriceCompEngineModel.FK_Name_ShopName" />
         <AssociationConnector Association="PriceCompEngineModel.FK_UserName" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
