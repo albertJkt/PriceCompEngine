@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
+using DataBase;
 using System.Web.Mvc;
 
 namespace PriceCompEngineAPI.Controllers
 {
     public class UserController : ApiController
     {
-        private IDBController _controller;
-
-        public CheapestItemsController(IDBController controller)
+        public void Post([FromBody] User newUser)
         {
-            _controller = controller;
+            DBController db = new DBController();
+            db.InsertUser(newUser);
         }
-
-
+        
+        public List<User> Get ()
+        {
+            DBController db = new DBController();
+            List<User> users = db.GetUsers();
+            return users;
+        }
     }
 }

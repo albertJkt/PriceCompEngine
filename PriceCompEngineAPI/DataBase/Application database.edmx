@@ -123,7 +123,6 @@
           <Property Name="ShopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Purchases" Relationship="PriceCompEngineModel.FK_Name_ShopName" FromRole="Item" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -145,7 +144,6 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Purchases" Relationship="PriceCompEngineModel.FK_UserName" FromRole="User" ToRole="Purchase" />
         </EntityType>
         <Association Name="FK_Name_ShopName">
           <End Type="PriceCompEngineModel.Item" Role="Item" Multiplicity="1" />

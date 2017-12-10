@@ -124,5 +124,50 @@ namespace DataBase
                 InsertEntry(item);
             }
         }
+        public void InsertUser (User user)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                context.Entry(user).State = System.Data.Entity.EntityState.Added;
+                context.SaveChanges();
+            }
+        }
+
+        // Check if user already exists
+        // if this method contains at least 1 element -> user exists
+
+        public bool CheckIfExists(string username, string email)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.UserName == username
+                                         where user.Email == email
+                                         select user;
+
+                if (query.Any())
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+            using (var context = new PriceCompEngineEntities())
+            {
+                var query = from user in context.Users
+                            select user;
+                           
+                            
+
+                users = query.ToList();
+            }
+
+            return users;
+        }
+       
+
     }
 }

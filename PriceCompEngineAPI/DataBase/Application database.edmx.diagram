@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="PriceCompEngineModel.ShopItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PriceCompEngineModel.Item" Width="1.5" PointX="3.375" PointY="1.25" />
         <EntityTypeShape EntityType="PriceCompEngineModel.Purchase" Width="1.5" PointX="5.625" PointY="1" />
-        <EntityTypeShape EntityType="PriceCompEngineModel.User" Width="1.5" PointX="3.375" PointY="5.375" />
+        <EntityTypeShape EntityType="PriceCompEngineModel.User" Width="1.5" PointX="3.375" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="PriceCompEngineModel.FK_Name_ShopName" />
         <AssociationConnector Association="PriceCompEngineModel.FK_UserName" />
       </Diagram>
