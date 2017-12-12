@@ -15,6 +15,12 @@ namespace DataBase
         List<ShopItem> GetShopItemsList(string type, string[] shops);
         List<ShopItem> GetShopItemsList(int days);
         List<ShopItem> GetShopItemsList();
+
+        /*nauji metodai*/
+        List<Item> GetShopItemsListt(string type, string[] shops, int days);
+        List<Item> GetShopItemsListt(string type, string[] shops);
+        List<Item> GetShopItemsListt(int days);
+        List<Item> GetShopItemsListt();
         ShopItem GetLatestEntry(string itemName, string shop);
         void InsertEntry(ShopItem item);
         void PushToDatabase(List<ShopItem> items);
@@ -41,6 +47,27 @@ namespace DataBase
             return items;
         }
 
+        /*^naujas*/
+        public List<Item> GetShopItemsListt(string type, string[] shops, int days)
+        {
+            List<Item> items;
+            using (var context = new PriceCompEngineEntities())
+            {
+                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
+
+                IQueryable<Item> query = from item in context.Items
+                                         join p in context.Purchases on item.Name equals p.ItemName
+                                         where item.Type == type
+                                         where shops.Contains(item.ShopName)
+                                         where p.DateTime >= oldestValidTime
+                                         orderby p.DateTime descending
+                                         select item;
+                items = query.ToList();
+            }
+
+            return items;
+        }
+
         public List<ShopItem> GetShopItemsList(int days)
         {
             List<ShopItem> items;
@@ -57,7 +84,25 @@ namespace DataBase
             return items;
         }
 
-        public List<ShopItem> GetShopItemsList()
+        /*^naujas*/
+        public List<Item>  GetShopItemsListt(int days)
+        {
+            List<Item> items;
+            using (var context = new PriceCompEngineEntities())
+            {
+                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
+
+                IQueryable<Item> query = from item in context.Items
+                                         join p in context.Purchases on item.Name equals p.ItemName
+                                         where p.DateTime >= oldestValidTime
+                                         orderby p.DateTime descending
+                                         select item;
+                items = query.ToList();
+            }
+            return items;
+        }
+
+        public List<ShopItem> GetShopItemList()
         {
             List<ShopItem> items;
             using (var context = new PriceCompEngineEntities())
@@ -66,6 +111,21 @@ namespace DataBase
                                              orderby item.PurchaseTime descending
                                              select item;
                 items = query.ToList<ShopItem>();
+            }
+            return items;
+        }
+
+        /*^naujas*/
+        public List<Item> GetShopItemsListt()
+        {
+            List<Item> items;
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<Item> query = from item in context.Items
+                                         join p in context.Purchases on item.Name equals p.ItemName
+                                         orderby p.DateTime descending
+                                         select item;
+                items = query.ToList();       
             }
             return items;
         }
@@ -82,6 +142,23 @@ namespace DataBase
                                              select item;
 
                 items = query.ToList<ShopItem>();
+            }
+            return items;
+        }
+
+        /*^naujas*/
+        public List<Item> GetShopItemsListt(string type, string[] shops)
+        {
+            List<Item> items;
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<Item> query = from item in context.Items
+                                         join p in context.Purchases on item.Name equals p.ItemName
+                                         where item.Type == type
+                                         where shops.Contains(p.ShopName)
+                                         orderby p.DateTime descending
+                                         select item;
+                items = query.ToList();
             }
             return items;
         }
