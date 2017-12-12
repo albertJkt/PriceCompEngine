@@ -14,9 +14,11 @@ namespace DataBase
     
     public partial class Item
     {
+
         public string Name { get; set; }
         public string ShopName { get; set; }
         public string Type { get; set; }
         public double Price { get; set; }
+
     }
 }
