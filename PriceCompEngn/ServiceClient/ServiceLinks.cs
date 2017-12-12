@@ -16,6 +16,7 @@ namespace ServiceClient
         public const string ShoppingCartUrl = "/api/ShoppingCart?";
         public const string ShopItemsUrl = "/api/ShopItems?";
         public const string OCRUrl = "/api/OCR";
+        public const string UserUrl = "/api/User?";
 
         public static string GetResourceUrl(Resources resource)
         {
@@ -41,6 +42,8 @@ namespace ServiceClient
 
                 case Resources.OCR:
                     return OCRUrl;
+                case Resources.User:
+                    return UserUrl;
 
                 default:
                     return null;

@@ -14,18 +14,11 @@ namespace DataBase
     
     public partial class Item
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
-        {
-            this.Purchases = new HashSet<Purchase>();
-        }
-    
+
         public string Name { get; set; }
         public string ShopName { get; set; }
         public string Type { get; set; }
         public double Price { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchase> Purchases { get; set; }
+
     }
 }
