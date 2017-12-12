@@ -17,7 +17,7 @@
         android:contextClickable="true"
         android:shadowColor="#ff2d2d2d" />
     <EditText
-        android:id="@+id/usernameTxt"
+        android:id="@+id/pw1Txt"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="@android:color/black"
@@ -29,7 +29,7 @@
         android:shadowColor="#ff2d2d2d"
         android:password="true" />
     <EditText
-        android:id="@+id/usernameTxt"
+        android:id="@+id/pw2Txt"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="@android:color/black"
@@ -41,7 +41,7 @@
         android:shadowColor="#ff2d2d2d"
         android:password="true" />
     <EditText
-        android:id="@+id/usernameTxt"
+        android:id="@+id/emailTxt"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="@android:color/black"

@@ -121,6 +121,8 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="TextManager.cs" />
     <Compile Include="ValidateActivity.cs" />
+    <Compile Include="RegisterActivity.cs" />
+    <Compile Include="LoginActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />

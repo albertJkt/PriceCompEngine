@@ -29,7 +29,7 @@ namespace PriceCompEngineAPI.Controllers
             user.Email = email;
             user.UserName = username;
             user.Password = password;
-            if (string.IsNullOrEmpty(user.Email))
+            if (string.IsNullOrEmpty(user.Email) || user.Email=="null")
             {
                 DBController db = new DBController();
                 User usr = db.GetUser(user.UserName, user.Password);
