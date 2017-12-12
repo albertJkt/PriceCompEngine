@@ -20,6 +20,8 @@ using Newtonsoft.Json;
 using Models;
 using System.Threading.Tasks;
 using System.Threading;
+using Java.Nio;
+using Android.Provider;
 
 namespace PriceCompEngnMobile{
 
@@ -32,6 +34,8 @@ namespace PriceCompEngnMobile{
         string response = String.Empty;
         public static List<ShopItem> items;
         ImageView _imageView;
+        private byte[] bytes;
+        private string _result;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -49,9 +53,10 @@ namespace PriceCompEngnMobile{
 
             validateBtn.Click += delegate 
             {
-                if (items!=null)
+                if (!string.IsNullOrEmpty(_result))
                 {
                     var intent = new Intent(this, typeof(ValidateActivity));
+                    intent.PutExtra("response", _result);
                     StartActivity(intent);
                 }
                 else
@@ -97,10 +102,20 @@ namespace PriceCompEngnMobile{
 
                 _imageView.SetImageURI(uri);
 
-                await GetOcrText();
+                Bitmap bitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, data.Data);
+                int count = bitmap.ByteCount;
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    bitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                    byte[] array = stream.ToArray();
+                    bytes = array;
+                }
 
-                await GetItemList();
-                Thread.Sleep(500);
+                await GetOcrText();
+            }
+            else if (requestCode == 1 && resultCode == Result.Ok && data != null)
+            {
+                _result = data.GetStringExtra("validation");
             }  
         } 
 
@@ -111,14 +126,29 @@ namespace PriceCompEngnMobile{
 
             BitmapDrawable bd = (BitmapDrawable)_imageView.Drawable;
             Bitmap bitmap = bd.Bitmap;
+            int b = bitmap.ByteCount;                       
+
+            ByteBuffer byteBuffer = ByteBuffer.Allocate(bitmap.ByteCount);
+            bitmap.CopyPixelsToBuffer(byteBuffer);
 
             byte[] bitmapData;
             using (var stream = new MemoryStream())
             {
-                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                bitmap.Compress(Bitmap.CompressFormat.Png, 100, stream);
                 bitmapData = stream.ToArray();
+                double megabytes = (double)bitmapData.Count() / 1024 / 1024;
+                int bytesI = bytes.Count();
             }
-            response = await executor.ExecuteRestPostRequest(builder, bitmapData);
+            response = await executor.ExecuteRestPostRequest(builder, bytes);
+            response = response.Replace("\\n", "\n");
+            if (!string.IsNullOrEmpty(response))
+            {
+                var intent = new Intent(this, typeof(ValidateActivity));
+                intent.PutExtra("response", response);
+                StartActivity(intent);
+            }
+            else
+                Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();
         }
 
         private async Task GetItemList()

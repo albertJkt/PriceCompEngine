@@ -11,13 +11,18 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Models;
+using Newtonsoft.Json;
+using ServiceClient;
 
 namespace PriceCompEngnMobile
 {
     [Activity(Label = "ValidateActivity", Theme = "@android:style/Theme.DeviceDefault.NoActionBar")]
     public class ValidateActivity : Activity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        private Analyzer _analyzer;
+
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -30,6 +35,7 @@ namespace PriceCompEngnMobile
             var validate = FindViewById<ImageButton>(Resource.Id.validateBtn);
 
             // get string before validation
+            /*
             if(UploadActivity.items!=null){
                 foreach (var item in UploadActivity.items)
                 {
@@ -38,9 +44,25 @@ namespace PriceCompEngnMobile
                     temp = String.Empty;
                 }
                 previous = TextManager.DeleteLines(previous, 1, true);
+            }*/
+
+            //DisplayItems(text);
+
+            try
+            {
+                string response = Intent.GetStringExtra("response");
+                PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
+                string analyzerJson = await(new RestRequestExecutor()).ExecuteRestPostRequest(newBuilder, response);
+                _analyzer = JsonConvert.DeserializeObject<Analyzer>(analyzerJson);
+                for(int i = 0; i < _analyzer.ItemNames.Count; i++)
+                {
+                    text.Append(_analyzer.ItemNames[i] + "\n" + _analyzer.PayedPrices[i] + "\n");
+                }
             }
-                        
-            DisplayItems(text);
+            catch (JsonSerializationException)
+            {
+                Toast.MakeText(this, "error has occured", ToastLength.Short).Show();
+            }
 
             validate.Click+=delegate {
 
@@ -59,12 +81,11 @@ namespace PriceCompEngnMobile
 
                 Thread.Sleep(500);
 
-                Finish();
-
+                Intent resultIntent = new Intent();
+                resultIntent.PutExtra("validation", JsonConvert.SerializeObject(_analyzer));
+                SetResult(Result.Ok, resultIntent);
+                Finish();             
             };
-
-
-
         }
 
         void DisplayItems(EditText x)
