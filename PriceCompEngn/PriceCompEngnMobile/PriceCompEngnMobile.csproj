@@ -165,6 +165,10 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\map.axml" />
+    <AndroidResource Include="Resources\drawable\Login.png" />
+    <AndroidResource Include="Resources\drawable\reg.png" />
+    <AndroidResource Include="Resources\Layout\login.axml" />
+    <AndroidResource Include="Resources\Layout\register.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

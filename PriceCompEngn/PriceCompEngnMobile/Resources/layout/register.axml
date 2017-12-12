@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.DeviceDefault.Light"
+    android:background="#ffffffff">
+    <EditText
+        android:id="@+id/usernameTxt"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Choose your user name"
+        android:textColorHint="#ff757575"
+        android:contextClickable="true"
+        android:shadowColor="#ff2d2d2d" />
+    <EditText
+        android:id="@+id/usernameTxt"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="110dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Choose your password"
+        android:textColorHint="#ff757575"
+        android:contextClickable="true"
+        android:shadowColor="#ff2d2d2d"
+        android:password="true" />
+    <EditText
+        android:id="@+id/usernameTxt"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter your password again"
+        android:textColorHint="#ff757575"
+        android:contextClickable="true"
+        android:shadowColor="#ff2d2d2d"
+        android:password="true" />
+    <EditText
+        android:id="@+id/usernameTxt"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="230dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Choose your email address"
+        android:textColorHint="#ff757575"
+        android:contextClickable="true"
+        android:shadowColor="#ff2d2d2d" />
+    <ImageButton
+        android:src="@drawable/reg"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/regBtn"
+        android:background="#ffffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
