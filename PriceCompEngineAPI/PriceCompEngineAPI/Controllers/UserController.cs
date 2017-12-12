@@ -51,6 +51,7 @@ namespace PriceCompEngineAPI.Controllers
                 {
                     User useris = new User();
                     useris.Password = "1";
+                    useris.UserName = "x";
                     return useris;
                 }
             }
