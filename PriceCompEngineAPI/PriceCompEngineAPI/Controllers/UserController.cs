@@ -23,8 +23,12 @@ namespace PriceCompEngineAPI.Controllers
         /// <returns>User object if user tries to login and it's successful
         /// Null - if user doesn't exist or username (and/or email) is taken
         /// User object with password 1 if username and email is not taken</returns>
-        public User Get([FromUri] User user)
+        public User Get([FromUri] string username,[FromUri] string password, [FromUri] string email )
         {
+            User user = new User();
+            user.Email = email;
+            user.UserName = username;
+            user.Password = password;
             if (string.IsNullOrEmpty(user.Email))
             {
                 DBController db = new DBController();
