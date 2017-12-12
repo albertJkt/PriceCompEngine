@@ -21,6 +21,7 @@ namespace DataBase
         List<Item> GetShopItemsListt(string type, string[] shops);
         List<Item> GetShopItemsListt(int days);
         List<Item> GetShopItemsListt();
+
         ShopItem GetLatestEntry(string itemName, string shop);
         void InsertEntry(ShopItem item);
         void PushToDatabase(List<ShopItem> items);
@@ -102,7 +103,7 @@ namespace DataBase
             return items;
         }
 
-        public List<ShopItem> GetShopItemList()
+        public List<ShopItem> GetShopItemsList()
         {
             List<ShopItem> items;
             using (var context = new PriceCompEngineEntities())
