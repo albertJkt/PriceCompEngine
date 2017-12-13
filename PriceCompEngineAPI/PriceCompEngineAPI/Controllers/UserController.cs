@@ -16,13 +16,13 @@ namespace PriceCompEngineAPI.Controllers
             db.InsertUser(newUser);
         }
         
-
         /// <summary>
         /// Get the specified user.
         /// </summary>
         /// <returns>User object if user tries to login and it's successful
         /// Null - if user doesn't exist or username (and/or email) is taken
         /// User object with password 1 if username and email is not taken</returns>
+
         public User Get([FromUri] string username,[FromUri] string password, [FromUri] string email )
         {
             User user = new User();
@@ -57,4 +57,7 @@ namespace PriceCompEngineAPI.Controllers
             }
         }
     }
+
 }
+
+
