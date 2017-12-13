@@ -69,6 +69,7 @@ namespace PriceCompEngnMobile
                             PCEUriBuilder bldr = new PCEUriBuilder(ServiceClient.Resources.User);
 
                             executor.ExecuteRestPostRequest(bldr,useris);
+                            Toast.MakeText(this, "User has been succesfully registered!", ToastLength.Long).Show();
                             Finish();
                         }
                         else

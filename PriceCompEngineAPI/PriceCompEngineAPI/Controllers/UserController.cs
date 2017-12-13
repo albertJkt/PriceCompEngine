@@ -29,7 +29,7 @@ namespace PriceCompEngineAPI.Controllers
             user.Email = email;
             user.UserName = username;
             user.Password = password;
-            if (string.IsNullOrEmpty(user.Email) || user.Email=="null")
+            if (string.IsNullOrEmpty(user.Email))
             {
                 DBController db = new DBController();
                 User usr = db.GetUser(user.UserName, user.Password);
@@ -42,8 +42,9 @@ namespace PriceCompEngineAPI.Controllers
             else
             {
                 DBController db = new DBController();
-                bool Exists = db.CheckIfExists(user.UserName, user.Email);
-                if (Exists)
+                bool Exists = db.CheckEmail(email);
+                bool Ex = db.CheckUsername(username);
+                if (Exists && Ex)
                 {
                     return null;
                 }

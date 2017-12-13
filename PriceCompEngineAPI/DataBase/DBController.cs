@@ -133,25 +133,6 @@ namespace DataBase
             }
         }
 
-        // Check if user already exists
-        // if this method contains at least 1 element -> user exists
-
-        public bool CheckIfExists(string username, string email)
-        {
-            using (var context = new PriceCompEngineEntities())
-            {
-                IQueryable<User> query = from user in context.Users
-                                         where user.UserName == username
-                                         where user.Email == email
-                                         select user;
-
-                if (query.Any())
-                {
-                    return true;
-                }
-                else return false;
-            }
-        }
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
@@ -187,6 +168,37 @@ namespace DataBase
                 {
                     return null;
                 }
+            }
+        }
+
+        public bool CheckUsername (string username)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.UserName == username
+                                         select user;
+
+                if (query.Any())
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+        public bool CheckEmail(string email)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.Email == email
+                                         select user;
+
+                if (query.Any())
+                {
+                    return true;
+                }
+                else return false;
             }
         }
        
