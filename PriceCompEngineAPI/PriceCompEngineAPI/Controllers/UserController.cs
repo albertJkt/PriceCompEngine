@@ -44,7 +44,7 @@ namespace PriceCompEngineAPI.Controllers
                 DBController db = new DBController();
                 bool Exists = db.CheckEmail(email);
                 bool Ex = db.CheckUsername(username);
-                if (Exists && Ex)
+                if (!Exists && !Ex)
                 {
                 	User useris = new User();
                     useris.Password = "1";
