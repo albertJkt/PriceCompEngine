@@ -6,7 +6,7 @@
     android:theme="@android:style/Theme.DeviceDefault.Light"
     android:background="#ffffffff">
     <EditText
-        android:id="@+id/usernameTxt"
+        android:id="@+id/userTxt"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="@android:color/black"
