@@ -167,7 +167,28 @@ namespace DataBase
 
             return users;
         }
-       
+        
+        public User GetUser(string username, string password)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.UserName == username
+                                         where user.Password == password
+                                         select user;
 
+                User usr;
+                try
+                {
+                    usr = query.Single();
+                    return usr;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return null;
+                }
+            }
+        }
+       
     }
 }
