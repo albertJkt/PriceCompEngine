@@ -376,14 +376,14 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f07000c
 			public const int light = 2131165196;
 			
-			// aapt resource value: 0x7f070031
-			public const int list_cheapest = 2131165233;
-			
 			// aapt resource value: 0x7f070030
 			public const int list_pop_alltime = 2131165232;
 			
 			// aapt resource value: 0x7f07002f
 			public const int list_pop_week = 2131165231;
+			
+			// aapt resource value: 0x7f070031
+			public const int list_shops = 2131165233;
 			
 			// aapt resource value: 0x7f070033
 			public const int locationBtn = 2131165235;

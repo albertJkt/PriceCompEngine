@@ -37,7 +37,7 @@ namespace PriceCompEngnMobile
             };
 
             ImageButton LocationBtn = FindViewById<ImageButton>(Resource.Id.locationBtn);
-            LocationBtn.Click += async delegate
+            LocationBtn.Click +=  delegate
             {
                 Intent intent = new Intent(this, typeof(LocationActivity));
                 StartActivity(intent);
@@ -45,7 +45,7 @@ namespace PriceCompEngnMobile
 
             FillFirstList();
             FillSecondList();
-            FillThirdList();
+            //FillThirdList();
         }
 
         private async void FillFirstList()
@@ -80,7 +80,7 @@ namespace PriceCompEngnMobile
             ListView list = FindViewById<ListView>(Resource.Id.list_pop_alltime);
             list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
         }
-
+        /*
         private async void FillThirdList()
         {
             PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.CheapestItems);
@@ -95,6 +95,6 @@ namespace PriceCompEngnMobile
 
             ListView list = FindViewById<ListView>(Resource.Id.list_cheapest);
             list.Adapter = new ShopItemListAdapter(this, Resource.Id.list_cheapest, items);
-        }
+        }*/
     }
 }
