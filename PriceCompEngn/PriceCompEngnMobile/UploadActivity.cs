@@ -145,7 +145,7 @@ namespace PriceCompEngnMobile{
             {
                 var intent = new Intent(this, typeof(ValidateActivity));
                 intent.PutExtra("response", response);
-                StartActivity(intent);
+                StartActivityForResult(intent, 1);
             }
             else
                 Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();
