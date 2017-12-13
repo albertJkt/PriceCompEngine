@@ -16,11 +16,38 @@ namespace PriceCompEngineAPI.Controllers
             db.InsertUser(newUser);
         }
         
-        public List<User> Get ()
+        public User Get([FromUri] string username,[FromUri] string password, [FromUri] string email )
         {
-            DBController db = new DBController();
-            List<User> users = db.GetUsers();
-            return users;
+            User user = new User();
+            user.Email = email;
+            user.UserName = username;
+            user.Password = password;
+            if (string.IsNullOrEmpty(user.Email) || user.Email=="null")
+            {
+                DBController db = new DBController();
+                User usr = db.GetUser(user.UserName, user.Password);
+                if (usr != null)
+                {
+                    return usr;
+                }
+                else return null;
+            }
+            else
+            {
+                DBController db = new DBController();
+                bool Exists = db.CheckIfExists(user.UserName, user.Email);
+                if (Exists)
+                {
+                    return null;
+                }
+                else
+                {
+                    User useris = new User();
+                    useris.Password = "1";
+                    useris.UserName = "x";
+                    return useris;
+                }
+            }
         }
     }
 }
