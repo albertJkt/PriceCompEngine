@@ -11,7 +11,7 @@ namespace PriceCompEngineAPI.Controllers
 {
     public class TextManagerController : ApiController
     {
-        public List<ShopItem> Post([FromBody] StringObject imageText)
+        public ShopCheckAnalyzer Post([FromBody] StringObject imageText)
         {
             if (string.IsNullOrEmpty(imageText.Text))
             {
@@ -21,21 +21,7 @@ namespace PriceCompEngineAPI.Controllers
             ShopCheckAnalyzerCreator creator = new ShopCheckAnalyzerCreator();
             ShopCheckAnalyzer analyzer = creator.Create(imageText.Text);
 
-            List<ShopItem> items = new List<ShopItem>();
-            for (int i = 0; i < analyzer.ItemNames.Count; i++)
-            {
-                ShopItem item = new ShopItem()
-                {
-                    ItemName = analyzer.ItemNames[i],
-                    Price = float.Parse(analyzer.Prices[i]),
-                    ShopName = analyzer.ShopName,
-                    PurchaseTime = analyzer.PurchaseTime,
-                    Type = "generic"
-                };
-                items.Add(item);
-            }
-
-            return items;
+            return analyzer;
         }
 
         public class StringObject

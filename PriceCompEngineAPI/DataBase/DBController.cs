@@ -157,7 +157,6 @@ namespace DataBase
                                          where user.UserName == username
                                          where user.Password == password
                                          select user;
-
                 User usr;
                 try
                 {
@@ -202,5 +201,64 @@ namespace DataBase
             }
         }
        
+        public void UpdateItems(List<Item> items)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                foreach(var i in items)
+                {
+                    var query = context.Items.Where(item => item.Name == i.Name && item.ShopName == i.ShopName);
+
+                    if (query.Any())
+                    {
+                        var toChange = query.Single();
+                        toChange.Price = i.Price;
+                    }
+                    else
+                    {
+                        var newItem = new Item()
+                        {
+                            Name = i.Name,
+                            ShopName = i.ShopName,
+                            Price = i.Price
+                        };
+                        context.Items.Add(newItem);
+                    }
+                }
+                context.SaveChanges();
+            }
+        }
+
+        public List<Item> GetAllItems()
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var items = context.Items.Select(item => item).ToList();
+
+                return items;
+            }
+        }
+
+        public void UploadPurchases(List<Purchase> purchases)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                foreach(var purchase in purchases)
+                {
+                    context.Purchases.Add(purchase);
+                }
+                context.SaveChanges();
+            }
+        }
+
+        public List<Purchase> GetAllPurchases()
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var purchases = context.Purchases.Select(p => p).ToList();
+
+                return purchases;
+            }
+        }
     }
 }
