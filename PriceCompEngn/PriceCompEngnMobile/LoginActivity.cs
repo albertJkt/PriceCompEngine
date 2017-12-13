@@ -56,6 +56,8 @@ namespace PriceCompEngnMobile
             if (user != null)
             {
                 var intent = new Intent(this, typeof(MainMenuActivity));
+
+                intent.PutExtra("user", result);
                 StartActivity(intent);
                 Finish();
             }
