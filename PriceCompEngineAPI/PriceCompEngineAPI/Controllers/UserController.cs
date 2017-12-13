@@ -48,5 +48,6 @@ namespace PriceCompEngineAPI.Controllers
                     return useris;
                 }
             }
+        }
     }
 }
