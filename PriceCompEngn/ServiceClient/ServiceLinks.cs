@@ -8,7 +8,7 @@ namespace ServiceClient
 {
     public static class ServiceLinks
     {
-        public const string ServiceBaseUrl = "http://pricecompengineapi.azurewebsites.net";
+        public const string ServiceBaseUrl = "https://pricecompengineapi.azurewebsites.net";
         public const string TextManagerUrl = "/api/TextManager";
         public const string PriceComparatorUrl = "/api/PriceComparator?";
         public const string TopItemsUrl = "/api/TopItems?";

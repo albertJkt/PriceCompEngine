@@ -12,19 +12,21 @@ using Android.Views;
 using Android.Widget;
 using ServiceClient;
 using Models;
+using System.Net;
 
 namespace PriceCompEngnMobile
 {
     [Activity(Label = "RegisterActivity", Theme = "@android:style/Theme.DeviceDefault.NoActionBar")]
     public class RegisterActivity : Activity
     {
+        RestRequestExecutor executor = new RestRequestExecutor();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
             SetContentView(Resource.Layout.register);
-
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             var username = FindViewById<ImageButton>(Resource.Id.regBtn);
 
             username.Click += ButtonOnClick;
@@ -46,7 +48,7 @@ namespace PriceCompEngnMobile
                     { "Email",Email}
                 });
             
-            RestRequestExecutor executor = new RestRequestExecutor();
+           
             string result = await executor.ExecuteRestGetRequest(builder);
 
             User user = JsonConvert.DeserializeObject<User>(result);
@@ -65,8 +67,8 @@ namespace PriceCompEngnMobile
                             useris.UserName = Username;
 
                             PCEUriBuilder bldr = new PCEUriBuilder(ServiceClient.Resources.User);
-                            RestRequestExecutor ex = new RestRequestExecutor();
-                            ex.ExecuteRestPostRequest(bldr,useris);
+
+                            executor.ExecuteRestPostRequest(bldr,useris);
                             Finish();
                         }
                         else
