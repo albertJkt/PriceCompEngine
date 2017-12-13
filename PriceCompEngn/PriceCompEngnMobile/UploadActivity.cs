@@ -57,11 +57,11 @@ namespace PriceCompEngnMobile{
                 {
                     var intent = new Intent(this, typeof(ValidateActivity));
                     intent.PutExtra("response", _result);
-                    StartActivity(intent);
+                    StartActivityForResult(intent, 1);
                 }
                 else
                 {
-                    Toast.MakeText(this, "Items were not parsed yet", ToastLength.Short).Show();
+                    Toast.MakeText(this, "Check has not been read yet", ToastLength.Short).Show();
                 }
             };
 
@@ -100,16 +100,27 @@ namespace PriceCompEngnMobile{
             };
         }
 
-        private void SavePurchases(List<Item> items, List<Purchase> purchases)
+        private async void SavePurchases(List<Item> items, List<Purchase> purchases)
         {
             PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.Items);
             RestRequestExecutor exc = new RestRequestExecutor();
 
-            exc.ExecuteRestPostRequestTask(builder, items).Wait();
+            string saveItems = await exc.ExecuteRestPostRequestTask(builder, items);
 
             PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.Purchases);
 
-            exc.ExecuteRestPostRequest(newBuilder, purchases);
+            string savePurchases = await exc.ExecuteRestPostRequestTask(newBuilder, purchases);
+
+            if (saveItems.Equals("\"\"") && savePurchases.Equals("\"\""))
+            {
+                Toast.MakeText(this, "Purchase succesfully uploaded", ToastLength.Short).Show();
+                Finish();
+            }
+            else
+            {
+                Toast.MakeText(this, "Failed to upload", ToastLength.Short).Show();
+                Finish();
+            }
         }
 
         void ButtonOnClick(object sender, EventArgs eventArgs)
@@ -152,9 +163,10 @@ namespace PriceCompEngnMobile{
             response = response.Replace("\\n", "\n");
             if (!string.IsNullOrEmpty(response))
             {
-                var intent = new Intent(this, typeof(ValidateActivity));
-                intent.PutExtra("response", response);
-                StartActivityForResult(intent, 1);
+                PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
+                string analyzerJson = await (new RestRequestExecutor()).ExecuteRestPostRequest(newBuilder, response);
+                _result = analyzerJson;
+                Toast.MakeText(this, "Check has been read", ToastLength.Short).Show();
             }
             else
                 Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();

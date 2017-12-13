@@ -84,7 +84,7 @@ namespace ServiceClient
             var asyncQueryResult = await client.ExecuteTaskAsync(request);
         }
 
-        public async Task ExecuteRestPostRequestTask(PCEUriBuilder builder, object obj)
+        public async Task<string> ExecuteRestPostRequestTask(PCEUriBuilder builder, object obj)
         {
             var client = new RestClient(builder.ServerAddress);
 
@@ -97,6 +97,8 @@ namespace ServiceClient
             request.AddBody(obj);
 
             var asyncQueryResult = await client.ExecuteTaskAsync(request);
+
+            return asyncQueryResult.Content;
         }
     }
 }
