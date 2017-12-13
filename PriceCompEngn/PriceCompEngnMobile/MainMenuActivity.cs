@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Newtonsoft.Json;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,10 +11,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidLogic;
+using Models;
 
 namespace PriceCompEngnMobile
 {
-    [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
+    [Activity(Label = "CSE", MainLauncher = false, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class MainMenuActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -23,6 +24,8 @@ namespace PriceCompEngnMobile
 
             // Create your application here
             SetContentView(Resource.Layout.Main);
+            var text = Intent.GetStringExtra("user");
+            var user = JsonConvert.DeserializeObject<User>(text);
             StartMonitoringLocation();
             var ScanBtn = FindViewById<ImageButton>(Resource.Id.scan);
 

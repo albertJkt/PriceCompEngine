@@ -20,8 +20,5 @@ namespace DataBase
         public string ItemName { get; set; }
         public string ShopName { get; set; }
         public double Price { get; set; }
-    
-        public virtual Item Item { get; set; }
-        public virtual User User { get; set; }
     }
 }
