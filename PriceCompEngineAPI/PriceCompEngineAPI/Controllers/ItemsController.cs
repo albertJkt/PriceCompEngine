@@ -11,10 +11,12 @@ namespace PriceCompEngineAPI.Controllers
     public class ItemsController : ApiController
     {
         [HttpPost]
-        public void SaveItems([FromBody] List<Item> items)
+        public string SaveItems([FromBody] List<Item> items)
         {
             DBController controller = new DBController();
             controller.UpdateItems(items);
+
+            return "";
         }
 
         [HttpGet]

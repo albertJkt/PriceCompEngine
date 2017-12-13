@@ -18,6 +18,8 @@ namespace PriceCompEngnMobile
     [Activity(Label = "CSE", MainLauncher = false, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class MainMenuActivity : Activity
     {
+        public static User User { get; set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -25,7 +27,7 @@ namespace PriceCompEngnMobile
             // Create your application here
             SetContentView(Resource.Layout.Main);
             var text = Intent.GetStringExtra("user");
-            var user = JsonConvert.DeserializeObject<User>(text);
+            User = JsonConvert.DeserializeObject<User>(text);
             StartMonitoringLocation();
             var ScanBtn = FindViewById<ImageButton>(Resource.Id.scan);
 

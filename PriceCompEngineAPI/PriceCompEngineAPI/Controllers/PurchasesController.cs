@@ -11,10 +11,12 @@ namespace PriceCompEngineAPI.Controllers
     public class PurchasesController : ApiController
     {
         [HttpPost]
-        public void SavePurchases([FromBody] List<Purchase> purchases)
+        public string SavePurchases([FromBody] List<Purchase> purchases)
         {
             DBController controller = new DBController();
             controller.UploadPurchases(purchases);
+
+            return "";
         }
 
         [HttpGet]

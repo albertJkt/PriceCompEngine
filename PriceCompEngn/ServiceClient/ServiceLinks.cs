@@ -17,6 +17,8 @@ namespace ServiceClient
         public const string ShopItemsUrl = "/api/ShopItems?";
         public const string OCRUrl = "/api/OCR";
         public const string UserUrl = "/api/User?";
+        public const string ItemsUrl = "/api/Items";
+        public const string PurchasesUrl = "/api/Purchases";
 
         public static string GetResourceUrl(Resources resource)
         {
@@ -42,8 +44,15 @@ namespace ServiceClient
 
                 case Resources.OCR:
                     return OCRUrl;
+
                 case Resources.User:
                     return UserUrl;
+
+                case Resources.Items:
+                    return ItemsUrl;
+
+                case Resources.Purchases:
+                    return PurchasesUrl;
 
                 default:
                     return null;
@@ -52,14 +61,3 @@ namespace ServiceClient
     }
 }
 
-[Flags]
-public enum Resources
-{
-    TextManager,
-    CheapestItems,
-    TopItems,
-    ShoppingCart,
-    PriceComparator,
-    ShopItems,
-    OCR
-};

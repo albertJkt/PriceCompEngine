@@ -18,12 +18,12 @@ namespace Logic
                 return analyzer;
             }
 
-           /* else if (Regex.IsMatch(text, @"[Pp][Aa][Ll][Ii][Nn][Kk]"))
+            else if (Regex.IsMatch(text, @"[Pp][Aa][Ll][Ii][Nn][Kk]"))
             {
                 ShopCheckAnalyzer analyzer = new IkiCheckAnalyzer();
                 analyzer.AnalyzeText(text);
                 return analyzer;
-            }*/
+            }
 
             else throw new ArgumentException("Text doesn't match any shop signature");
         } 

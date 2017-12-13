@@ -18,9 +18,9 @@ namespace Logic
             ItemNames = GetItemNames();
             ShopName = "Rimi";
             PurchaseTime = DateTime.UtcNow;
-            StandartisePrices();
             CorrectPerWeightPrices();
             CorrectPerUnitPrices();
+            StandartisePrices();
         }
 
         private List<string> GetItemNames()
@@ -98,6 +98,8 @@ namespace Logic
             {
                 Prices[i] = Prices[i].Replace(",", ".")
                                      .Remove(Prices[i].Count() - 2);
+                PayedPrices[i] = PayedPrices[i].Replace(",", ".")
+                                     .Remove(PayedPrices[i].Count() - 2);
             }
         }
 

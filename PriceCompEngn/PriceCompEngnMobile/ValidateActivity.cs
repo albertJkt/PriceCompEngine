@@ -50,9 +50,7 @@ namespace PriceCompEngnMobile
 
             try
             {
-                string response = Intent.GetStringExtra("response");
-                PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
-                string analyzerJson = await(new RestRequestExecutor()).ExecuteRestPostRequest(newBuilder, response);
+                string analyzerJson = Intent.GetStringExtra("response");
                 _analyzer = JsonConvert.DeserializeObject<Analyzer>(analyzerJson);
                 for(int i = 0; i < _analyzer.ItemNames.Count; i++)
                 {
@@ -65,21 +63,6 @@ namespace PriceCompEngnMobile
             }
 
             validate.Click+=delegate {
-
-                result = TextManager.RemoveEndlines(text.Text);
-
-                string pattern = " ?\" ?| *eu *";
-
-                string[] substrings = Regex.Split(result, pattern);
-
-                for (int i = 0; i < (substrings.Length / 3); i++)
-                {
-                    UploadActivity.items[i].Type = substrings[i * 3];
-                    UploadActivity.items[i].ItemName = substrings[i * 3 +1];
-                    UploadActivity.items[i].Price = float.Parse(substrings[i * 3 + 2]);
-                }
-
-                Thread.Sleep(500);
 
                 Intent resultIntent = new Intent();
                 resultIntent.PutExtra("validation", JsonConvert.SerializeObject(_analyzer));

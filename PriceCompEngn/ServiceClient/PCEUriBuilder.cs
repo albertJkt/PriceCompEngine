@@ -16,8 +16,10 @@ namespace ServiceClient
         ShoppingCart,
         PriceComparator,
         ShopItems,
+        User,
         OCR,
-        User
+        Items,
+        Purchases
     };
 
     public class PCEUriBuilder
