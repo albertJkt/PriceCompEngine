@@ -46,14 +46,15 @@ namespace PriceCompEngineAPI.Controllers
                 bool Ex = db.CheckUsername(username);
                 if (Exists && Ex)
                 {
-                    return null;
-                }
-                else
-                {
-                    User useris = new User();
+                	User useris = new User();
                     useris.Password = "1";
                     useris.UserName = "x";
                     return useris;
+                    
+                }
+                else
+                {
+                    return null;
                 }
             }
         }
