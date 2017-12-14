@@ -134,8 +134,6 @@
           <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ShopName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Item" Relationship="PriceCompEngineModel.FK_Name_ShopName" FromRole="Purchase" ToRole="Item" />
-          <NavigationProperty Name="User" Relationship="PriceCompEngineModel.FK_UserName" FromRole="Purchase" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>

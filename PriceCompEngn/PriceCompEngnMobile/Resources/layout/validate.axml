@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffffff">
-    <EditText
-        android:id="@+id/textVw"
-        android:textColor="@android:color/black"
-        android:layout_width="wrap_content"
+    <ListView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:id="@+id/analyzer_listview"
+        android:layout_weight="1"
+        android:dividerHeight="2dp" />
     <ImageButton
         android:src="@drawable/validate"
         android:background="#FFFFFF"
-        android:layout_width="300.0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:id="@+id/validateBtn"
-        android:layout_marginRight="44.0dp"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true" />
-</RelativeLayout>
+        android:layout_weight="0"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

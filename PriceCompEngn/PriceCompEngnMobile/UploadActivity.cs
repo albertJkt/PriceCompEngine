@@ -20,6 +20,8 @@ using Newtonsoft.Json;
 using Models;
 using System.Threading.Tasks;
 using System.Threading;
+using Java.Nio;
+using Android.Provider;
 
 namespace PriceCompEngnMobile{
 
@@ -32,6 +34,8 @@ namespace PriceCompEngnMobile{
         string response = String.Empty;
         public static List<ShopItem> items;
         ImageView _imageView;
+        private byte[] bytes;
+        private string _result;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -49,38 +53,74 @@ namespace PriceCompEngnMobile{
 
             validateBtn.Click += delegate 
             {
-                if (items!=null)
+                if (!string.IsNullOrEmpty(_result))
                 {
                     var intent = new Intent(this, typeof(ValidateActivity));
-                    StartActivity(intent);
+                    intent.PutExtra("response", _result);
+                    StartActivityForResult(intent, 1);
                 }
                 else
                 {
-                    Toast.MakeText(this, "Items were not parsed yet", ToastLength.Short).Show();
+                    Toast.MakeText(this, "Check has not been read yet", ToastLength.Short).Show();
                 }
             };
 
             uplBtn.Click +=delegate
             {
-                PCEUriBuilder pub = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
-                RestRequestExecutor executor = new RestRequestExecutor();
-                var json = JsonConvert.SerializeObject(items);
-
-                pub.AppendStringArgs(new Dictionary<string, string>()
+                if (!string.IsNullOrEmpty(_result))
                 {
-                    { "itemListJson", json }
-
-                });
-
-                executor.ExecuteRestPostRequest(pub);
-
-                Toast.MakeText(this, "Information was successfully uploaded into the Database!", ToastLength.Short).Show();
-
-                response = String.Empty;
-                items = null;
-                _imageView = null;
-                Finish();
+                    Analyzer analyzer = JsonConvert.DeserializeObject<Analyzer>(_result);
+                    List<Item> items = new List<Item>();
+                    List<Purchase> purchases = new List<Purchase>();
+                    for (int i = 0; i < analyzer.ItemNames.Count; i++)
+                    {
+                        Item newItem = new Item()
+                        {
+                            Name = analyzer.ItemNames[i],
+                            Price = double.Parse(analyzer.Prices[i]),
+                            ShopName = analyzer.ShopName
+                        };
+                        items.Add(newItem);
+                        Purchase newPurchase = new Purchase()
+                        {
+                            ItemName = analyzer.ItemNames[i],
+                            ShopName = analyzer.ShopName,
+                            Price = double.Parse(analyzer.PayedPrices[i]),
+                            DateTime = analyzer.PurchaseTime,
+                            UserName = MainMenuActivity.User.UserName
+                        };
+                        purchases.Add(newPurchase);
+                    }
+                    SavePurchases(items, purchases);
+                }
+                else
+                {
+                    Toast.MakeText(this, "No items to upload", ToastLength.Short).Show();
+                }
             };
+        }
+
+        private async void SavePurchases(List<Item> items, List<Purchase> purchases)
+        {
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.Items);
+            RestRequestExecutor exc = new RestRequestExecutor();
+
+            string saveItems = await exc.ExecuteRestPostRequestTask(builder, items);
+
+            PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.Purchases);
+
+            string savePurchases = await exc.ExecuteRestPostRequestTask(newBuilder, purchases);
+
+            if (saveItems.Equals("\"\"") && savePurchases.Equals("\"\""))
+            {
+                Toast.MakeText(this, "Purchase succesfully uploaded", ToastLength.Short).Show();
+                Finish();
+            }
+            else
+            {
+                Toast.MakeText(this, "Failed to upload", ToastLength.Short).Show();
+                Finish();
+            }
         }
 
         void ButtonOnClick(object sender, EventArgs eventArgs)
@@ -97,10 +137,20 @@ namespace PriceCompEngnMobile{
 
                 _imageView.SetImageURI(uri);
 
-                await GetOcrText();
+                Bitmap bitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, data.Data);
+                int count = bitmap.ByteCount;
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    bitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                    byte[] array = stream.ToArray();
+                    bytes = array;
+                }
 
-                await GetItemList();
-                Thread.Sleep(500);
+                await GetOcrText();
+            }
+            else if (requestCode == 1 && resultCode == Result.Ok && data != null)
+            {
+                _result = data.GetStringExtra("validation");
             }  
         } 
 
@@ -109,26 +159,17 @@ namespace PriceCompEngnMobile{
             PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.OCR);
             RestRequestExecutor executor = new RestRequestExecutor();
 
-            BitmapDrawable bd = (BitmapDrawable)_imageView.Drawable;
-            Bitmap bitmap = bd.Bitmap;
-
-            byte[] bitmapData;
-            using (var stream = new MemoryStream())
+            response = await executor.ExecuteRestPostRequest(builder, bytes);
+            response = response.Replace("\\n", "\n");
+            if (!string.IsNullOrEmpty(response))
             {
-                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
-                bitmapData = stream.ToArray();
+                PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
+                string analyzerJson = await (new RestRequestExecutor()).ExecuteRestPostRequest(newBuilder, response);
+                _result = analyzerJson;
+                Toast.MakeText(this, "Check has been read", ToastLength.Short).Show();
             }
-            response = await executor.ExecuteRestPostRequest(builder, bitmapData);
-        }
-
-        private async Task GetItemList()
-        {
-            PCEUriBuilder build = new PCEUriBuilder(ServiceClient.Resources.TextManager);
-
-            RestRequestExecutor exc = new RestRequestExecutor();
-            string json = await exc.ExecuteRestPostRequest(build, response);
-
-            items = JsonConvert.DeserializeObject<List<ShopItem>>(json);
+            else
+                Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();
         }
     }
 }

@@ -41,7 +41,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Top 5 Savaites pigiausios"
+                android:text="Top 5 Shops"
                 android:textSize="18sp"
                 android:gravity="center_horizontal" />
             <ListView
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/list"
-                android:id="@+id/list_cheapest"/>
+                android:id="@+id/list_shops"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout

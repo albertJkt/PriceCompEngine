@@ -18,7 +18,7 @@ namespace OCREngine
 
             var client = ImageAnnotatorClient.Create();
 
-            var imageToRead = Google.Cloud.Vision.V1.Image.FromBytes(image);
+            var imageToRead = Image.FromBytes(image);
 
             var response = client.DetectDocumentText(imageToRead);
 

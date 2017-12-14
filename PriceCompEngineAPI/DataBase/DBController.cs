@@ -99,25 +99,6 @@ namespace DataBase
             }
         }
 
-        // Check if user already exists
-        // if this method contains at least 1 element -> user exists
-
-        public bool CheckIfExists(string username, string email)
-        {
-            using (var context = new PriceCompEngineEntities())
-            {
-                IQueryable<User> query = from user in context.Users
-                                         where user.UserName == username
-                                         where user.Email == email
-                                         select user;
-
-                if (query.Any())
-                {
-                    return true;
-                }
-                else return false;
-            }
-        }
         public List<User> GetUsers()
         {
             List<User> users = new List<User>();
@@ -133,7 +114,117 @@ namespace DataBase
 
             return users;
         }
-       
 
+        public User GetUser(string username, string password)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.UserName == username
+                                         where user.Password == password
+                                         select user;
+                User usr;
+                try
+                {
+                    usr = query.Single();
+                    return usr;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public bool CheckUsername (string username)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.UserName == username
+                                         select user;
+
+                if (query.Any())
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+        public bool CheckEmail(string email)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                IQueryable<User> query = from user in context.Users
+                                         where user.Email == email
+                                         select user;
+
+                if (query.Any())
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+       
+        public void UpdateItems(List<Item> items)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                foreach(var i in items)
+                {
+                    var query = context.Items.Where(item => item.Name == i.Name && item.ShopName == i.ShopName);
+
+                    if (query.Any())
+                    {
+                        var toChange = query.Single();
+                        toChange.Price = i.Price;
+                    }
+                    else
+                    {
+                        var newItem = new Item()
+                        {
+                            Name = i.Name,
+                            ShopName = i.ShopName,
+                            Price = i.Price
+                        };
+                        context.Items.Add(newItem);
+                    }
+                }
+                context.SaveChanges();
+            }
+        }
+
+        public List<Item> GetAllItems()
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var items = context.Items.Select(item => item).ToList();
+
+                return items;
+            }
+        }
+
+        public void UploadPurchases(List<Purchase> purchases)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                foreach(var purchase in purchases)
+                {
+                    context.Purchases.Add(purchase);
+                }
+                context.SaveChanges();
+            }
+        }
+
+        public List<Purchase> GetAllPurchases()
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var purchases = context.Purchases.Select(p => p).ToList();
+
+                return purchases;
+            }
+        }
     }
 }
