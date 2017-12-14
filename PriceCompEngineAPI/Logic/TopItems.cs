@@ -20,16 +20,16 @@ namespace Logic
         /*^naujas*/
         public Dictionary<string, int> GetTopShopItemsList(int rows)
         {
-            List<Item> shopItems = _controller.GetShopItemsList();
+            List<Purchase> shopItems = _controller.GetShopItemsList();
 
-            var items = (shopItems.GroupBy(x => x.Name)
+            var items = (shopItems.GroupBy(x => x.ItemName)
                 .Select(group => new
                 {
-                    Name = group.Key,
+                    ItemName = group.Key,
                     Count = group.Count()
                 })).Take(rows)
                 .OrderByDescending(x => x.Count)
-                .ToDictionary(g => g.Name, g => g.Count);
+                .ToDictionary(g => g.ItemName, g => g.Count);
 
             return items;
         }
@@ -37,34 +37,34 @@ namespace Logic
         /*^naujas*/
         public Dictionary<string, int> GetTopShopItemsList(int rows, int days)
         {
-            List<Item> shopItems = _controller.GetShopItemsList(days);
+            List<Purchase> shopItems = _controller.GetShopItemsList(days);
 
-            var items = (shopItems.GroupBy(x => x.Name)
+            var items = (shopItems.GroupBy(x => x.ItemName)
                 .Select(group => new
                 {
-                    Name = group.Key,
+                    ItemName = group.Key,
                     Count = group.Count()
                 })).Take(rows)
                 .OrderByDescending(x => x.Count)
-                .ToDictionary(g => g.Name, g => g.Count);
+                .ToDictionary(g => g.ItemName, g => g.Count);
 
             return items;
         }
 
         /*^naujas*/
-        public List<Item> GetCheapestShopItemsList(int rows)
+        public List<Purchase> GetCheapestShopItemsList(int rows)
         {
-            List<Item> shopItems = _controller.GetShopItemsList();
+            List<Purchase> shopItems = _controller.GetShopItemsList();
             var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
-                .ToList<Item>();
+                .ToList();
 
             return items;
         }
 
         /*^naujas*/
-        public List<Item> GetCheapestShopItemsList(int rows, int date)
+        public List<Purchase> GetCheapestShopItemsList(int rows, int date)
         {
-            List<Item> shopItems = _controller.GetShopItemsList(date);
+            List<Purchase> shopItems = _controller.GetShopItemsList(date);
             var items = (shopItems.OrderBy(x => x.Price)).Take(rows)
                 .ToList();
 

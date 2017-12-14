@@ -22,52 +22,52 @@ namespace Logic
             _controller = controller;
         }
 
-        public Item GetCheapestItem(string itemName, string[] shops)
+        public Purchase GetCheapestItem(string itemName, string[] shops)
         {
-            List<Item> items = new List<Item>();
+            List<Purchase> items = new List<Purchase>();
 
             foreach(string shop in shops)
             {
-                Item newItem = _controller.GetLatestEntry(itemName, shop);
+                Purchase newItem = _controller.GetLatestEntry(itemName, shop);
                 if (newItem != null)
                     items.Add(newItem);
             }
 
             var queryableList = items.AsQueryable();
 
-            List<Item> sortedList = items.OrderBy(item => item.Price).ToList();
+            List<Purchase> sortedList = items.OrderBy(item => item.Price).ToList();
 
             if (sortedList.Count > 0)
             {
-                Item cheapestItem = sortedList.First();
+                Purchase cheapestItem = sortedList.First();
                 return cheapestItem;
             }
 
             else return null;
         }
 
-        public List<Item> GetOrderedItemsList(string itemName, string[] shops, int topPlaces, ComparisonType type)
+        public List<Purchase> GetOrderedItemsList(string itemName, string[] shops, int topPlaces, ComparisonType type)
         {
             if (type == ComparisonType.ItemName)
             {
-                List<Item> items = GetCheapestItemList(itemName, shops, topPlaces);
+                List<Purchase> items = GetCheapestItemList(itemName, shops, topPlaces);
                 return items;
             }
             else if (type == ComparisonType.ItemType)
             {
-                List<Item> items = GetCheapestItemTypeList(itemName, shops, topPlaces);
+                List<Purchase> items = GetCheapestItemTypeList(itemName, shops, topPlaces);
                 return items;
             }
-            else return new List<Item>();
+            else return new List<Purchase>();
         }
 
-        private List<Item> GetCheapestItemList(string itemName, string[] shops, int topPlaces)
+        private List<Purchase> GetCheapestItemList(string itemName, string[] shops, int topPlaces)
         {
-            List<Item> items = new List<Item>();
+            List<Purchase> items = new List<Purchase>();
 
             foreach (string shop in shops)
             {
-                Item newItem = _controller.GetLatestEntry(itemName, shop);
+                Purchase newItem = _controller.GetLatestEntry(itemName, shop);
                 if (newItem != null)
                     items.Add(newItem);
             }
@@ -87,9 +87,9 @@ namespace Logic
                 
         }
 
-        private List<Item> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
+        private List<Purchase> GetCheapestItemTypeList(string itemType, string[] shops, int topPlaces)
         {
-            List<Item> items = _controller.GetShopItemsList(itemType, shops);
+            List<Purchase> items = _controller.GetShopItemsList(itemType, shops);
 
 
             var filteredItems = items.GroupBy(item => item.ShopName).Select(group => group.First()).ToList();
