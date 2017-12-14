@@ -364,6 +364,21 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
+			// aapt resource value: 0x7f070042
+			public const int edit_confirm = 2131165250;
+			
+			// aapt resource value: 0x7f070043
+			public const int edit_delete = 2131165251;
+			
+			// aapt resource value: 0x7f07003f
+			public const int edit_item_name = 2131165247;
+			
+			// aapt resource value: 0x7f070041
+			public const int edit_item_payedprice = 2131165249;
+			
+			// aapt resource value: 0x7f070040
+			public const int edit_item_price = 2131165248;
+			
 			// aapt resource value: 0x7f07002c
 			public const int emailTxt = 2131165228;
 			
@@ -566,6 +581,9 @@ namespace PriceCompEngnMobile
 			
 			// aapt resource value: 0x7f03000c
 			public const int validate = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int validation_prompt = 2130903053;
 			
 			static Layout()
 			{

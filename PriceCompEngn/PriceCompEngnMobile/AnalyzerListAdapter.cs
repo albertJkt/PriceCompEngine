@@ -42,5 +42,15 @@ namespace PriceCompEngnMobile
 
             return convertView;
         }
+
+        public new AnalyzerEntry GetItem(int position)
+        {
+            return _entries.ElementAt(position);
+        }
+
+        public List<AnalyzerEntry> GetItems()
+        {
+            return _entries;
+        }
     }
 }

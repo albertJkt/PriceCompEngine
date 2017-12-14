@@ -14,6 +14,25 @@ namespace Models
         public string ShopName { get; set; }
         public DateTime PurchaseTime { get; set; }
 
+        public Analyzer()
+        {
+
+        }
+
+        public Analyzer(List<AnalyzerEntry> entries)
+        {
+            Prices = new List<string>();
+            ItemNames = new List<string>();
+            PayedPrices = new List<string>();
+
+            foreach (var entry in entries)
+            {
+                Prices.Add(entry.Price);
+                PayedPrices.Add(entry.PayedPrice);
+                ItemNames.Add(entry.ItemName);
+            }
+        }
+
         public List<AnalyzerEntry> ToList()
         {
             List<AnalyzerEntry> entries = new List<AnalyzerEntry>();
