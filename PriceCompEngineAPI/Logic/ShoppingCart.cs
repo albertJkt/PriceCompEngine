@@ -15,7 +15,7 @@ namespace Logic
 
         private List<string> _itemNames;
         private string[] _shops;
-        private List<ShopItem> _bestPricedItems;
+        private List<Item> _bestPricedItems;
         private Dictionary<string, float> _shopPrices;
         private IDBController _controller;
 
@@ -24,7 +24,7 @@ namespace Logic
             _controller = controller;
             _itemNames = itemNames;
             _shops = shops;
-            _bestPricedItems = new List<ShopItem>();
+            _bestPricedItems = new List<Item>();
             _shopPrices = new Dictionary<string, float>();
             AnalyzeShoppingCart();
         }
@@ -35,15 +35,15 @@ namespace Logic
 
             foreach(string itemName in _itemNames)
             {
-                List<ShopItem> items = comparator.GetOrderedItemsList(itemName, _shops, _shops.Length, ComparisonType.ItemName);
+                List<Item> items = comparator.GetOrderedItemsList(itemName, _shops, _shops.Length, ComparisonType.ItemName);
                 _bestPricedItems.AddRange(items);
                 foreach(string shopName in _shops)
                 {
                     if (!items.Where(item => item.ShopName == shopName).Select(item => item).Any())
                     {
-                        _bestPricedItems.Add(new ShopItem()
+                        _bestPricedItems.Add(new Item()
                         {
-                            ItemName = itemName,
+                            Name = itemName,
                             ShopName = shopName,
                             Type = items.First().Type,
                             Price = (float)Math.Round((decimal)items.Select(item => item.Price).Average(), 2),
