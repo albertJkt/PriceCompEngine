@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzerListAdapter.cs" />
     <Compile Include="BundleExtensions.cs" />
     <Compile Include="LocationActivity.cs" />
     <Compile Include="ShopItemListAdapter.cs" />
@@ -171,6 +172,9 @@
     <AndroidResource Include="Resources\drawable\reg.png" />
     <AndroidResource Include="Resources\Layout\login.axml" />
     <AndroidResource Include="Resources\Layout\register.axml" />
+    <AndroidResource Include="Resources\Layout\analyzed_list_row.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

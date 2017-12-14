@@ -29,33 +29,14 @@ namespace PriceCompEngnMobile
             // Create your application here
             SetContentView(Resource.Layout.validate);
 
-            string previous=String.Empty;
-            string result;
-            var text = FindViewById<EditText>(Resource.Id.textVw);
             var validate = FindViewById<ImageButton>(Resource.Id.validateBtn);
-
-            // get string before validation
-            /*
-            if(UploadActivity.items!=null){
-                foreach (var item in UploadActivity.items)
-                {
-                    string temp = item.Type + " " + '"' + item.ItemName + '"' + " " + item.Price + " eu\n";
-                    previous = String.Concat(previous, temp);
-                    temp = String.Empty;
-                }
-                previous = TextManager.DeleteLines(previous, 1, true);
-            }*/
-
-            //DisplayItems(text);
+            ListView list = FindViewById<ListView>(Resource.Id.analyzer_listview);
 
             try
             {
                 string analyzerJson = Intent.GetStringExtra("response");
                 _analyzer = JsonConvert.DeserializeObject<Analyzer>(analyzerJson);
-                for(int i = 0; i < _analyzer.ItemNames.Count; i++)
-                {
-                    text.Append(_analyzer.ItemNames[i] + "\n" + _analyzer.PayedPrices[i] + "\n");
-                }
+                list.Adapter = new AnalyzerListAdapter(this, Resource.Id.analyzer_listview, _analyzer.ToList());
             }
             catch (JsonSerializationException)
             {
@@ -69,19 +50,6 @@ namespace PriceCompEngnMobile
                 SetResult(Result.Ok, resultIntent);
                 Finish();             
             };
-        }
-
-        void DisplayItems(EditText x)
-        {
-            if (UploadActivity.items != null)
-            {
-                foreach (var item in UploadActivity.items)
-                {
-                    x.Append(item.Type + " " +'"' +item.ItemName +'"' + " " + item.Price + " eu\n");
-                }
-
-                x.Text = TextManager.DeleteLines(x.Text, 1, true);
-            }
         }
     }
 }
