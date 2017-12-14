@@ -14,6 +14,8 @@ namespace DataBase
         List<Purchase> GetShopItemsList(int days);
         List<Purchase> GetShopItemsList();
 
+        List<Item> GetSpecificItem(string itemName, string[] shops);
+
         Purchase GetLatestEntry(string itemName, string shop);
         void InsertEntry(Purchase item);
         void PushToDatabase(List<Purchase> items);
@@ -200,6 +202,18 @@ namespace DataBase
             using (var context = new PriceCompEngineEntities())
             {
                 var items = context.Items.Select(item => item).ToList();
+
+                return items;
+            }
+        }
+
+        public List<Item> GetSpecificItem(string itemName, string[] shops)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var items = context.Items.Where(item => item.Name == itemName && shops.Contains(item.ShopName))
+                                         .Select(item => item)
+                                         .ToList();
 
                 return items;
             }

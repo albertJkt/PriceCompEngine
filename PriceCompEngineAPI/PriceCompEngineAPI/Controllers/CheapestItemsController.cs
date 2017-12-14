@@ -17,7 +17,7 @@ namespace PriceCompEngineAPI.Controllers
         {
             _controller = controller;
         }
-
+        /*
         public List<ShopItem> Get(int rows)
         {
             TopItems topItems = new TopItems(_controller);
@@ -32,6 +32,6 @@ namespace PriceCompEngineAPI.Controllers
             List<ShopItem> items = topItems.GetCheapestShopItemsList(rows, days);
 
             return items;
-        }
+        }*/
     }
 }
