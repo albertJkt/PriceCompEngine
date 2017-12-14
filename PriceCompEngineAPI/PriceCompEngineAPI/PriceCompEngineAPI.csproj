@@ -232,6 +232,7 @@
     <Compile Include="Controllers\OCRController.cs" />
     <Compile Include="Controllers\TextManagerController.cs" />
     <Compile Include="Controllers\TopItemsController.cs" />
+    <Compile Include="Controllers\TopShopsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
     <Compile Include="Global.asax.cs">

@@ -17,21 +17,21 @@ namespace PriceCompEngineAPI.Controllers
         {
             _controller = controller;
         }
-        /*
-        public List<ShopItem> Get(int rows)
+        
+        public List<Purchase> Get(int rows)
         {
             TopItems topItems = new TopItems(_controller);
-            List<ShopItem> items = topItems.GetCheapestShopItemsList(rows);
+            List<Purchase> items = topItems.GetCheapestShopItemsList(rows);
 
             return items;
         }
 
-        public List<ShopItem> Get(int rows, int days)
+        public List<Purchase> Get(int rows, int days)
         {
             TopItems topItems = new TopItems(_controller);
-            List<ShopItem> items = topItems.GetCheapestShopItemsList(rows, days);
+            List<Purchase> items = topItems.GetCheapestShopItemsList(rows, days);
 
             return items;
-        }*/
+        }
     }
 }

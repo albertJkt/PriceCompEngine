@@ -7,6 +7,7 @@ using DataBase;
 
 namespace Logic
 {
+
     public class TopItems
     {
         private IDBController _controller;
@@ -69,6 +70,21 @@ namespace Logic
                 .ToList();
 
             return items;
+        }
+
+        public Dictionary<string, int> GetTopShops(int date)
+        {
+            List<Purchase> shopItems = _controller.GetShopItemsList(date);
+            var shops = (shopItems.GroupBy(x => x.ShopName)
+                .Select(group => new
+                {
+                    ShopName = group.Key,
+                    Count = group.Count()
+                }))
+                .OrderByDescending(x => x.Count)
+                .ToDictionary(g => g.ShopName, g => g.Count);
+
+            return shops;
         }
 
     }
