@@ -24,6 +24,7 @@ namespace PriceCompEngnMobile
     using Android.Runtime;
     using Android.Views;
     using Android.Widget;
+    using Java.Lang;
 
     namespace PriceCompEngnMobile
     {
