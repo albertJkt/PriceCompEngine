@@ -85,13 +85,13 @@ namespace PriceCompEngnMobile
                 .SetSnippet("This Is Where You Are");
             _map.AddMarker(options);
                         
-            _map.MarkerClick += _map_MarkerClick;
+            //_map.MarkerClick += _map_MarkerClick;
         }
 
-        private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
+        /*private void _map_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
         {
             _map.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(e.Marker.Position, 15));
             e.Marker.ShowInfoWindow();           
-        }
+        }*/
     }
 }
