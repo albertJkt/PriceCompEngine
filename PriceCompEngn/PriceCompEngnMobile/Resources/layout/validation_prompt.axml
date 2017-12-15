@@ -6,21 +6,21 @@
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="15sp"
         android:gravity="center_horizontal"
         android:id="@+id/edit_item_name" />
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="13sp"
         android:gravity="center_horizontal"
         android:id="@+id/edit_item_price" />
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="13sp"
         android:gravity="center_horizontal"
         android:id="@+id/edit_item_payedprice" />

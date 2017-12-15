@@ -227,13 +227,12 @@
     <Compile Include="Controllers\CheapestItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
-    <Compile Include="Controllers\PriceComparatorController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
-    <Compile Include="Controllers\ShopItemsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\OCRController.cs" />
     <Compile Include="Controllers\TextManagerController.cs" />
     <Compile Include="Controllers\TopItemsController.cs" />
+    <Compile Include="Controllers\TopShopsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
     <Compile Include="Global.asax.cs">

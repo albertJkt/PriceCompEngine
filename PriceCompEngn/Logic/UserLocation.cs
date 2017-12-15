@@ -31,7 +31,6 @@ namespace Logic
                 {
                     if (instance == null)
                     {
-
                         instance = new UserLocation();
                     }
                     return instance;
