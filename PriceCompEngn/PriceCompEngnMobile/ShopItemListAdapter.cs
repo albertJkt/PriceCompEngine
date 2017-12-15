@@ -15,22 +15,22 @@ namespace PriceCompEngnMobile
 {
     public class ShopItemListAdapter : ArrayAdapter
     {
-        public List<ShopItem> Items { get; set; }
+        public List<KeyValuePair<string, double>> Items { get; set; }
 
-        public ShopItemListAdapter(Context context, int resource, List<ShopItem> objects)
+        public ShopItemListAdapter(Context context, int resource, List<KeyValuePair<string, double>> objects)
             : base(context, resource, objects)
         {
             Items = objects;
         }
 
-        public ShopItem GetItemByIndex(int index)
+        public KeyValuePair<string, double> GetItemByIndex(int index)
         {
             return Items[index];
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            ShopItem item = Items[position];
+            KeyValuePair<string, double> item = Items[position];
 
             if (convertView == null)
             {
@@ -39,11 +39,9 @@ namespace PriceCompEngnMobile
 
             TextView name = convertView.FindViewById<TextView>(Resource.Id.text_name);
             TextView price = convertView.FindViewById<TextView>(Resource.Id.text_price);
-            TextView type = convertView.FindViewById<TextView>(Resource.Id.text_type);
 
-            name.Text = item.ItemName;
-            price.Text = item.Price.ToString("0.00 €");
-            type.Text = item.Type;
+            name.Text = item.Key;
+            price.Text = item.Value.ToString("0.00 €");
 
             return convertView;
         }

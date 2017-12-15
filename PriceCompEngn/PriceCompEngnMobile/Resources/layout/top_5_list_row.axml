@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/item_name"
             android:layout_weight="8"
-            android:textSize="22sp" 
+            android:textSize="20sp" 
             android:textColor="@android:color/black"/>
         <TextView
             android:text="11 pirkimu"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/item_purchase_times"
             android:layout_weight="3"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:gravity="center_horizontal"
             android:textColor="@android:color/black"/>
     </LinearLayout>

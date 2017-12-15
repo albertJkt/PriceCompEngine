@@ -17,8 +17,9 @@ namespace ServiceClient
         public const string ShopItemsUrl = "/api/ShopItems?";
         public const string OCRUrl = "/api/OCR";
         public const string UserUrl = "/api/User?";
-        public const string ItemsUrl = "/api/Items";
+        public const string ItemsUrl = "/api/Items?";
         public const string PurchasesUrl = "/api/Purchases";
+        public const string TopShopsUrl = "/api/TopShops?";
 
         public static string GetResourceUrl(Resources resource)
         {
@@ -26,9 +27,6 @@ namespace ServiceClient
             {
                 case Resources.TextManager:
                     return TextManagerUrl;
-
-                case Resources.PriceComparator:
-                    return PriceComparatorUrl;
 
                 case Resources.TopItems:
                     return TopItemsUrl;
@@ -38,9 +36,6 @@ namespace ServiceClient
 
                 case Resources.ShoppingCart:
                     return ShoppingCartUrl;
-
-                case Resources.ShopItems:
-                    return ShopItemsUrl;
 
                 case Resources.OCR:
                     return OCRUrl;
@@ -53,6 +48,9 @@ namespace ServiceClient
 
                 case Resources.Purchases:
                     return PurchasesUrl;
+
+                case Resources.TopShops:
+                    return TopShopsUrl;
 
                 default:
                     return null;

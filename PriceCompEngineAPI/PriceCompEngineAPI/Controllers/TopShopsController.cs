@@ -8,8 +8,6 @@ using System.Web.Http;
 
 namespace PriceCompEngineAPI.Controllers
 {
-
-
     public class TopShopsController : ApiController
     {
         private IDBController _controller;

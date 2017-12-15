@@ -310,8 +310,8 @@ namespace PriceCompEngnMobile
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f07003a
-			public const int addBtn = 2131165242;
+			// aapt resource value: 0x7f070038
+			public const int addBtn = 2131165240;
 			
 			// aapt resource value: 0x7f07000e
 			public const int add_item = 2131165198;
@@ -331,8 +331,8 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f07001c
 			public const int analyzer_item_price = 2131165212;
 			
-			// aapt resource value: 0x7f07003d
-			public const int analyzer_listview = 2131165245;
+			// aapt resource value: 0x7f07003b
+			public const int analyzer_listview = 2131165243;
 			
 			// aapt resource value: 0x7f070028
 			public const int around_me = 2131165224;
@@ -340,8 +340,8 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
-			// aapt resource value: 0x7f070035
-			public const int cartBtn = 2131165237;
+			// aapt resource value: 0x7f070033
+			public const int cartBtn = 2131165235;
 			
 			// aapt resource value: 0x7f070013
 			public const int checkbox_iki = 2131165203;
@@ -364,20 +364,20 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
-			// aapt resource value: 0x7f070042
-			public const int edit_confirm = 2131165250;
-			
-			// aapt resource value: 0x7f070043
-			public const int edit_delete = 2131165251;
-			
-			// aapt resource value: 0x7f07003f
-			public const int edit_item_name = 2131165247;
+			// aapt resource value: 0x7f070040
+			public const int edit_confirm = 2131165248;
 			
 			// aapt resource value: 0x7f070041
-			public const int edit_item_payedprice = 2131165249;
+			public const int edit_delete = 2131165249;
 			
-			// aapt resource value: 0x7f070040
-			public const int edit_item_price = 2131165248;
+			// aapt resource value: 0x7f07003d
+			public const int edit_item_name = 2131165245;
+			
+			// aapt resource value: 0x7f07003f
+			public const int edit_item_payedprice = 2131165247;
+			
+			// aapt resource value: 0x7f07003e
+			public const int edit_item_price = 2131165246;
 			
 			// aapt resource value: 0x7f07002c
 			public const int emailTxt = 2131165228;
@@ -391,29 +391,29 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f070024
 			public const int image = 2131165220;
 			
-			// aapt resource value: 0x7f070039
-			public const int imgView = 2131165241;
-			
 			// aapt resource value: 0x7f070037
-			public const int item_name = 2131165239;
+			public const int imgView = 2131165239;
 			
-			// aapt resource value: 0x7f070038
-			public const int item_purchase_times = 2131165240;
+			// aapt resource value: 0x7f070035
+			public const int item_name = 2131165237;
+			
+			// aapt resource value: 0x7f070036
+			public const int item_purchase_times = 2131165238;
 			
 			// aapt resource value: 0x7f07000c
 			public const int light = 2131165196;
 			
-			// aapt resource value: 0x7f070033
-			public const int list_pop_alltime = 2131165235;
+			// aapt resource value: 0x7f070031
+			public const int list_pop_alltime = 2131165233;
+			
+			// aapt resource value: 0x7f070030
+			public const int list_pop_week = 2131165232;
 			
 			// aapt resource value: 0x7f070032
-			public const int list_pop_week = 2131165234;
+			public const int list_shops = 2131165234;
 			
 			// aapt resource value: 0x7f070034
-			public const int list_shops = 2131165236;
-			
-			// aapt resource value: 0x7f070036
-			public const int locationBtn = 2131165238;
+			public const int locationBtn = 2131165236;
 			
 			// aapt resource value: 0x7f070021
 			public const int login = 2131165217;
@@ -484,20 +484,14 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f070004
 			public const int terrain = 2131165188;
 			
-			// aapt resource value: 0x7f070031
-			public const int textView2 = 2131165233;
-			
 			// aapt resource value: 0x7f07002e
 			public const int text_name = 2131165230;
 			
 			// aapt resource value: 0x7f07002f
 			public const int text_price = 2131165231;
 			
-			// aapt resource value: 0x7f070030
-			public const int text_type = 2131165232;
-			
-			// aapt resource value: 0x7f07003c
-			public const int uploadBtn = 2131165244;
+			// aapt resource value: 0x7f07003a
+			public const int uploadBtn = 2131165242;
 			
 			// aapt resource value: 0x7f07001e
 			public const int userTxt = 2131165214;
@@ -505,11 +499,11 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f070029
 			public const int usernameTxt = 2131165225;
 			
-			// aapt resource value: 0x7f07003b
-			public const int validBtn = 2131165243;
+			// aapt resource value: 0x7f070039
+			public const int validBtn = 2131165241;
 			
-			// aapt resource value: 0x7f07003e
-			public const int validateBtn = 2131165246;
+			// aapt resource value: 0x7f07003c
+			public const int validateBtn = 2131165244;
 			
 			// aapt resource value: 0x7f070009
 			public const int wide = 2131165193;

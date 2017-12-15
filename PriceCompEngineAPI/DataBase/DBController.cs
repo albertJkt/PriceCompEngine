@@ -53,6 +53,18 @@ namespace DataBase
             return items;
         }
 
+        public List<string> PerformSearch(string keyword)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                var results = context.Items.Where(item => item.Name.ToLower().Contains(keyword))
+                                           .Select(item => item.Name)
+                                           .Distinct()
+                                           .ToList();
+
+                return results;
+            }
+        }
 
         public Purchase GetLatestEntry(string itemName, string shop)
         {
@@ -135,6 +147,22 @@ namespace DataBase
                 {
                     return null;
                 }
+            }
+        }
+
+        public List<double> GetAverageItemPrices(List<string> items)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                List<double> prices = new List<double>();
+                foreach (string item in items)
+                {
+                    double price = context.Items.Where(i => i.Name == item)
+                                                .Average(i => i.Price);
+                    price = Math.Round(price, 2);
+                    prices.Add(price);
+                }
+                return prices;
             }
         }
 

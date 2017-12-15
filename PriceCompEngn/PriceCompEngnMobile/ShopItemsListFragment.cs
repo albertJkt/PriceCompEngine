@@ -28,12 +28,12 @@ namespace PriceCompEngnMobile
 
             try
             {
-                List<ShopItem> items = Arguments.GetGenericList<ShopItem>("shopCartItems");
+                List<KeyValuePair<string, double>> items = Arguments.GetGenericList<KeyValuePair<string, double>>("shopCartItems");
                 ListAdapter = new ShopItemListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
             }
             catch (ArgumentException)
             {
-                List<ShopItem> items = new List<ShopItem>();
+                List<KeyValuePair<string, double>> items = new List<KeyValuePair<string, double>>();
                 ListAdapter = new ShopItemListAdapter(Context, Resource.Layout.fragment_shop_cart_list, items);
             }
         }
@@ -43,7 +43,7 @@ namespace PriceCompEngnMobile
             base.OnListItemClick(l, v, position, id);
 
             ShopItemListAdapter adapter = ListAdapter as ShopItemListAdapter;
-            ShopItem item = adapter.Items[position];
+            KeyValuePair<string, double> item = adapter.Items[position];
             adapter.Items.Remove(item);
 
             ShoppingCartActivity activity = Activity as ShoppingCartActivity;
