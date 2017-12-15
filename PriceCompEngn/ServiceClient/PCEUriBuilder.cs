@@ -14,12 +14,11 @@ namespace ServiceClient
         CheapestItems,
         TopItems,
         ShoppingCart,
-        PriceComparator,
-        ShopItems,
         User,
         OCR,
         Items,
-        Purchases
+        Purchases,
+        TopShops
     };
 
     public class PCEUriBuilder

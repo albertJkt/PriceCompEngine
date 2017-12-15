@@ -15,7 +15,7 @@ namespace PriceCompEngnMobile
     [Activity(Label = "PriceCompEngnMobile", MainLauncher = false, Theme = "@android:style/Theme.DeviceDefault.Light.NoActionBar")]
     public class ShoppingCartActivity : Activity
     {
-        private List<ShopItem> _args = new List<ShopItem>();
+        private List<KeyValuePair<string, double>> _args = new List<KeyValuePair<string, double>>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -44,18 +44,10 @@ namespace PriceCompEngnMobile
 
                 searchButton.Click += delegate
                 {
-                    PCEUriBuilder uriBuilder = new PCEUriBuilder(ServiceClient.Resources.ShopItems);
+                    PCEUriBuilder uriBuilder = new PCEUriBuilder(ServiceClient.Resources.Items);
                     uriBuilder.AppendStringArgs(new Dictionary<string, string>()
                     {
-                        { "itemName", searchText.Text }
-                    });
-                    uriBuilder.AppendArrayArgs("shops", new string[]
-                    {
-                        "rimi",
-                        "maxima",
-                        "iki",
-                        "norfa",
-                        "lidl"
+                        { "keyword", searchText.Text }
                     });
                     ExecuteSearchAsync(searchResults, uriBuilder);
                 };
@@ -66,9 +58,10 @@ namespace PriceCompEngnMobile
                 searchResults.ItemClick += delegate
                 {
                     ShopItemListAdapter adapter = searchResults.Adapter as ShopItemListAdapter;
-                    ShopItem item = adapter.GetItemByIndex(0);
+                    KeyValuePair<string, double> item = adapter.GetItemByIndex(0);
                     _args.Add(item);
 
+                    View view = adapter.GetView(0, null, null);
 
                     Bundle args = new Bundle();
                     args.PutGenericList("shopCartItems", _args);
@@ -120,9 +113,9 @@ namespace PriceCompEngnMobile
         private string[] GetItemNames()
         {
             List<string> itemNames = new List<string>();
-            foreach (ShopItem item in _args)
+            foreach (var item in _args)
             {
-                itemNames.Add(item.ItemName);
+                itemNames.Add(item.Key);
             }
             string[] itemNamesArray = itemNames.ToArray();
             return itemNamesArray;
@@ -144,7 +137,7 @@ namespace PriceCompEngnMobile
             {
                 if (box.Checked)
                 {
-                    shopNames.Add(box.Text.ToLower());
+                    shopNames.Add(box.Text);
                 }
             }
             string[] result = shopNames.ToArray();
@@ -157,18 +150,12 @@ namespace PriceCompEngnMobile
 
             string jsonString = await executor.ExecuteRestGetRequest(uriBuilder);
 
-            List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(jsonString);
-
+            Dictionary<string, double> items = JsonConvert.DeserializeObject<Dictionary<string, double>>(jsonString);
             if (items != null && items.Count > 0)
             {
-                ShopItem averagePriceItem = items.First();
-                averagePriceItem.Price = items.Average(item => item.Price);
-                List<ShopItem> toDisplay = new List<ShopItem>()
-                {
-                    averagePriceItem
-                };
+                List<KeyValuePair<string, double>> listItems = items.ToList();
 
-                ShopItemListAdapter adapter = new ShopItemListAdapter(this, Resource.Id.search_items_list, toDisplay);
+                ShopItemListAdapter adapter = new ShopItemListAdapter(this, Resource.Id.search_items_list, listItems);
 
                 searchResults.Adapter = adapter;
             }
@@ -176,9 +163,9 @@ namespace PriceCompEngnMobile
         }
 
 
-        public void RecreateShopCartFragment(List<ShopItem> listItems, Fragment fragment)
+        public void RecreateShopCartFragment(List<KeyValuePair<string, double>> listItems, Fragment fragment)
         {
-            _args = new List<ShopItem>(listItems);
+            _args = new List<KeyValuePair<string, double>>(listItems);
             Bundle arguments = new Bundle();
             arguments.PutGenericList("shopCartItems", _args);
 

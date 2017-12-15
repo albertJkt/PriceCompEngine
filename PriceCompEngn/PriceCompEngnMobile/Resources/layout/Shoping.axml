@@ -10,46 +10,51 @@
         android:layout_height="0dp"
         android:layout_weight="1">
         <LinearLayout
-            android:layout_height="700dp"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical">
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Top 5 savaites perkamiausios"
+                android:text="Top 5 weekly"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:gravity="center_horizontal"
-                android:id="@+id/textView2" />
+                android:layout_weight="0"
+                android:gravity="center_horizontal" />
             <ListView
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/list"
-                android:id="@+id/list_pop_week"/>
+                android:id="@+id/list_pop_week" />
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Top 5 Perkamiausios"
+                android:text="Top 5 all time"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:layout_weight="0"
                 android:gravity="center_horizontal" />
             <ListView
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/list"
-                android:id="@+id/list_pop_alltime"/>
+                android:id="@+id/list_pop_alltime" />
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="Top 5 Shops"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:layout_weight="0"
                 android:gravity="center_horizontal" />
             <ListView
                 android:layout_height="200dp"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/list"
-                android:id="@+id/list_shops"/>
+                android:id="@+id/list_shops" />
         </LinearLayout>
     </ScrollView>
     <LinearLayout

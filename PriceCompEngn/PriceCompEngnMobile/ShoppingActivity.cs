@@ -45,7 +45,7 @@ namespace PriceCompEngnMobile
 
             FillFirstList();
             FillSecondList();
-            //FillThirdList();
+            FillThirdList();
         }
 
         private async void FillFirstList()
@@ -80,21 +80,21 @@ namespace PriceCompEngnMobile
             ListView list = FindViewById<ListView>(Resource.Id.list_pop_alltime);
             list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
         }
-        /*
+        
         private async void FillThirdList()
         {
-            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.CheapestItems);
+            PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.TopShops);
             builder.AppendNumericArgs(new Dictionary<string, int>()
             {
-                { "rows", 5 },
                 { "days", 7 }
             });
 
             string result = await _exc.ExecuteRestGetRequest(builder);
-            List<ShopItem> items = JsonConvert.DeserializeObject<List<ShopItem>>(result);
+            Dictionary<string, int> topShops = JsonConvert.DeserializeObject<Dictionary<string, int>>(result);
+            List<KeyValuePair<string, int>> entryList = topShops.ToList();
 
-            ListView list = FindViewById<ListView>(Resource.Id.list_cheapest);
-            list.Adapter = new ShopItemListAdapter(this, Resource.Id.list_cheapest, items);
-        }*/
+            ListView list = FindViewById<ListView>(Resource.Id.list_shops);
+            list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_shops, entryList);
+        }
     }
 }
