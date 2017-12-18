@@ -161,8 +161,26 @@ namespace PriceCompEngnMobile{
         }
         
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data) {  
-            if ((requestCode == SELECT_FILE) && (resultCode == Result.Ok) && (data != null) || ((requestCode == REQUEST_CAMERA)&&(resultCode == Result.Ok))) {  
+            if ((requestCode == SELECT_FILE) && (resultCode == Result.Ok) && (data != null)) {  
                 Android.Net.Uri uri = data.Data; 
+
+                _imageView.SetImageURI(uri);
+
+                Bitmap bitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, data.Data);
+                int count = bitmap.ByteCount;
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    bitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                    byte[] array = stream.ToArray();
+                    bytes = array;
+                }
+
+                await GetOcrText();
+            }
+
+            else if ( (requestCode == REQUEST_CAMERA) && (resultCode == Result.Ok))
+            {
+                Android.Net.Uri uri = data.Data;
 
                 _imageView.SetImageURI(uri);
 
