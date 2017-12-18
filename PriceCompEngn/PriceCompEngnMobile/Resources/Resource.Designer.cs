@@ -649,6 +649,9 @@ namespace PriceCompEngnMobile
 			// aapt resource value: 0x7f050012
 			public const int google_maps_key = 2131034130;
 			
+			// aapt resource value: 0x7f050013
+			public const int openCamera = 2131034131;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

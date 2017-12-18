@@ -36,9 +36,13 @@ namespace PriceCompEngnMobile{
         ImageView _imageView;
         private byte[] bytes;
         private string _result;
+        private static readonly Int32 REQUEST_CAMERA = 0;
+        private static readonly Int32 SELECT_FILE = 1;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.SetVmPolicy(builder.Build());
             base.OnCreate(savedInstanceState);
 
             // Create your application here
@@ -124,15 +128,40 @@ namespace PriceCompEngnMobile{
         }
 
         void ButtonOnClick(object sender, EventArgs eventArgs)
-        {  
-            var intent = new Intent();  
-            intent.SetType("image/*");  
-            intent.SetAction(Intent.ActionGetContent);  
-            StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), PickImageId);  
+        {
+            /* var intent = new Intent();  
+             intent.SetType("image/*");  
+             intent.SetAction(Intent.ActionGetContent);  
+             StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), PickImageId);  */
+            String[] items = { "Take Photo", "Choose from Library", "Cancel" };
+
+            using (var dialogBuilder = new AlertDialog.Builder(this))
+            {
+                dialogBuilder.SetTitle("Add Photo");
+                dialogBuilder.SetItems(items, (d, args) => {
+                    //Take photo
+                    if (args.Which == 0)
+                    {
+                        var intent = new Intent(MediaStore.ActionImageCapture);
+                        this.StartActivityForResult(intent, REQUEST_CAMERA);
+                        
+                    }
+                    //Choose from gallery
+                    else if (args.Which == 1)
+                    {
+                        var intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
+                        intent.SetType("image/*");
+                        this.StartActivityForResult(Intent.CreateChooser(intent, "Select Picture"), SELECT_FILE);
+                    }
+                });
+
+                dialogBuilder.Show();
+            }
+
         }
         
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data) {  
-            if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {  
+            if ((requestCode == SELECT_FILE) && (resultCode == Result.Ok) && (data != null) || ((requestCode == REQUEST_CAMERA)&&(resultCode == Result.Ok))) {  
                 Android.Net.Uri uri = data.Data; 
 
                 _imageView.SetImageURI(uri);
@@ -148,6 +177,8 @@ namespace PriceCompEngnMobile{
 
                 await GetOcrText();
             }
+
+            
             else if (requestCode == 1 && resultCode == Result.Ok && data != null)
             {
                 _result = data.GetStringExtra("validation");
@@ -172,4 +203,6 @@ namespace PriceCompEngnMobile{
                 Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();
         }
     }
+
+   
 }
