@@ -26,5 +26,24 @@ namespace PriceCompEngineAPI.Controllers
 
             return controller.GetAllPurchases();
         }
+
+        [HttpGet]
+        public Dictionary<string, int> GetUserTopPurchases([FromUri] string userName, [FromUri] int days)
+        {
+            DBController controller = new DBController();
+
+            List<Purchase> purchases = controller.GetUserPurchases(userName, days);
+
+            var userPurchases = (purchases.GroupBy(x => x.ItemName)
+                .Select(group => new
+                {
+                    ItemName = group.Key,
+                    Sum = (int)group.Sum(x => x.Price)
+                })).Take(5)
+                .OrderByDescending(x => x.Sum)
+                .ToDictionary(g => g.ItemName, g => g.Sum);
+
+            return userPurchases;
+        }
     }
 }

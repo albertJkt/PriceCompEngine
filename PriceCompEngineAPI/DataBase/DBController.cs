@@ -268,5 +268,20 @@ namespace DataBase
                 return purchases;
             }
         }
+
+        public List<Purchase> GetUserPurchases(string user, int days)
+        {
+            using (var context = new PriceCompEngineEntities())
+            {
+                DateTime oldestValidTime = DateTime.UtcNow.Subtract(new TimeSpan(days, 0, 0, 0));
+                var purchases = context.Purchases
+                            .Where(purchase => purchase.UserName == user &&
+                                              purchase.DateTime >= oldestValidTime)
+                            .Select(purchase => purchase)
+                            .ToList();
+
+                return purchases;
+            }
+        }
     }
 }

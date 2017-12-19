@@ -17,12 +17,17 @@ namespace PriceCompEngnMobile
     [Activity(Label = "CSE", Icon = "@drawable/logo", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class LoginActivity : Activity
     {
+        private ProgressBar spinner;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
             SetContentView(Resource.Layout.login);
+
+            spinner = FindViewById<ProgressBar>(Resource.Id.loadingProgress);
+            spinner.Visibility = ViewStates.Invisible;
 
             var logBtn = FindViewById<ImageButton>(Resource.Id.login);
             var regBtn = FindViewById<ImageButton>(Resource.Id.register);
@@ -37,6 +42,8 @@ namespace PriceCompEngnMobile
 
         async void ButtonOnClick(object sender, EventArgs eventArgs)
         {
+            spinner.Visibility = ViewStates.Visible;
+
             string Username = FindViewById<EditText>(Resource.Id.userTxt).Text;
             string Password = FindViewById<EditText>(Resource.Id.passwordTxt).Text;
 
@@ -57,12 +64,14 @@ namespace PriceCompEngnMobile
             {
                 var intent = new Intent(this, typeof(MainMenuActivity));
 
+                spinner.Visibility = ViewStates.Gone;
                 intent.PutExtra("user", result);
                 StartActivity(intent);
                 Finish();
             }
             else
             {
+                spinner.Visibility = ViewStates.Gone;
                 Toast.MakeText(this, "Incorrect login credentials!", ToastLength.Long).Show();
             }
         }

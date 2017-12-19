@@ -28,8 +28,8 @@ namespace Logic
                 {
                     ItemName = group.Key,
                     Count = group.Count()
-                })).Take(rows)
-                .OrderByDescending(x => x.Count)
+                }))
+                .OrderByDescending(x => x.Count).Take(rows)
                 .ToDictionary(g => g.ItemName, g => g.Count);
 
             return items;
@@ -45,8 +45,8 @@ namespace Logic
                 {
                     ItemName = group.Key,
                     Count = group.Count()
-                })).Take(rows)
-                .OrderByDescending(x => x.Count)
+                }))
+                .OrderByDescending(x => x.Count).Take(rows)
                 .ToDictionary(g => g.ItemName, g => g.Count);
 
             return items;

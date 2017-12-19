@@ -146,7 +146,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\Main.axml" />
-    <AndroidResource Include="Resources\Layout\Shoping.axml" />
+    <AndroidResource Include="Resources\Layout\Shoping.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\Layout\Upload.axml" />
     <AndroidResource Include="Resources\drawable\AddBtn.png" />
     <AndroidResource Include="Resources\drawable\Cart.png" />
@@ -176,6 +178,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\validation_prompt.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\top_item_add_prompt.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

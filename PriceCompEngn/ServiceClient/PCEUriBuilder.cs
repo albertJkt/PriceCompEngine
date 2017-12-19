@@ -18,7 +18,8 @@ namespace ServiceClient
         OCR,
         Items,
         Purchases,
-        TopShops
+        TopShops,
+        MoreItems
     };
 
     public class PCEUriBuilder

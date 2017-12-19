@@ -32,6 +32,11 @@ namespace PriceCompEngnMobile
         {
             private List<KeyValuePair<string, int>> _content;
 
+            public KeyValuePair<string, int> GetEntry(int index)
+            {
+                return _content[index];
+            }
+
             public TopFiveListAdapter(Context context, int resource, List<KeyValuePair<string, int>> content)
                 : base(context, resource, content)
             {
