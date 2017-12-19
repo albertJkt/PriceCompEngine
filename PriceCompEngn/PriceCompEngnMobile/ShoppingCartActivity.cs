@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Widget;
 using Android.OS;
 using Android.Views;
@@ -16,6 +16,7 @@ namespace PriceCompEngnMobile
     public class ShoppingCartActivity : Activity
     {
         private List<KeyValuePair<string, double>> _args = new List<KeyValuePair<string, double>>();
+        private List<KeyValuePair<string, double>> userTop = new List<KeyValuePair<string, double>>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,6 +26,7 @@ namespace PriceCompEngnMobile
             SetContentView(Resource.Layout.activity_shopcart);
 
             SetInitialListValues();
+            GetUserTopBuys();
 
             Button add_item = FindViewById<Button>(Resource.Id.add_item);
 
@@ -40,6 +42,7 @@ namespace PriceCompEngnMobile
                 ListView searchResults = promtView.FindViewById<ListView>(Resource.Id.search_items_list);
                 Button searchButton = promtView.FindViewById<Button>(Resource.Id.search_button);
                 EditText searchText = promtView.FindViewById<EditText>(Resource.Id.search_items_text);
+                Button userTopButton = promtView.FindViewById<Button>(Resource.Id.user_top_items);
 
                 searchButton.Click += delegate
                 {
@@ -49,6 +52,13 @@ namespace PriceCompEngnMobile
                         { "keyword", searchText.Text }
                     });
                     ExecuteSearchAsync(searchResults, uriBuilder);
+                };
+
+                userTopButton.Click += delegate
+                {
+                    ShopItemListAdapter adapter = new ShopItemListAdapter(this, Resource.Id.search_items_list, userTop);
+
+                    searchResults.Adapter = adapter;
                 };
 
                 AlertDialog dialog = builder.Create();
@@ -94,6 +104,24 @@ namespace PriceCompEngnMobile
 
                 ExecuteComparisonAsync(uriBuilder, firstRow, secondRow, thirdRow);
             };
+        }
+
+        private async void GetUserTopBuys()
+        {
+            PCEUriBuilder uriBuilder = new PCEUriBuilder(ServiceClient.Resources.Purchases);
+            uriBuilder.AppendStringArgs(new Dictionary<string, string>()
+            {
+                { "userName", MainMenuActivity.User.UserName },
+                { "days", "50" }
+            });
+            string response = await (new RestRequestExecutor()).ExecuteRestGetRequest(uriBuilder);
+
+            string[] items = JsonConvert.DeserializeObject<Dictionary<string, int>>(response).Keys.ToArray();
+            uriBuilder = new PCEUriBuilder(ServiceClient.Resources.MoreItems);
+            uriBuilder.AppendArrayArgs("itemNames", items);
+
+            string newResponse = await (new RestRequestExecutor()).ExecuteRestGetRequest(uriBuilder);
+            userTop = JsonConvert.DeserializeObject<List<KeyValuePair<string, double>>>(newResponse);
         }
 
         private async void SetInitialListValues()
