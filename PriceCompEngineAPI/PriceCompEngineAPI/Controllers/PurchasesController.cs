@@ -38,9 +38,9 @@ namespace PriceCompEngineAPI.Controllers
                 .Select(group => new
                 {
                     ItemName = group.Key,
-                    Sum = (int)group.Sum(x => x.Price)
-                })).Take(5)
-                .OrderByDescending(x => x.Sum)
+                    Sum = (int)group.Count()
+                }))
+                .OrderByDescending(x => x.Sum).Take(5)
                 .ToDictionary(g => g.ItemName, g => g.Sum);
 
             return userPurchases;

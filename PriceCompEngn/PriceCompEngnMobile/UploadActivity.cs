@@ -36,6 +36,7 @@ namespace PriceCompEngnMobile{
         ImageView _imageView;
         private byte[] bytes;
         private string _result;
+        private ProgressBar bar;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,6 +44,8 @@ namespace PriceCompEngnMobile{
 
             // Create your application here
             SetContentView(Resource.Layout.Upload);
+            bar = FindViewById<ProgressBar>(Resource.Id.load_progress);
+            bar.Visibility = ViewStates.Invisible;
 
             var addBtn = FindViewById<ImageButton>(Resource.Id.addBtn);
             var validateBtn = FindViewById<ImageButton>(Resource.Id.validBtn);
@@ -124,7 +127,7 @@ namespace PriceCompEngnMobile{
         }
 
         void ButtonOnClick(object sender, EventArgs eventArgs)
-        {  
+        {
             var intent = new Intent();  
             intent.SetType("image/*");  
             intent.SetAction(Intent.ActionGetContent);  
@@ -156,6 +159,7 @@ namespace PriceCompEngnMobile{
 
         private async Task GetOcrText()
         {
+            bar.Visibility = ViewStates.Visible;
             PCEUriBuilder builder = new PCEUriBuilder(ServiceClient.Resources.OCR);
             RestRequestExecutor executor = new RestRequestExecutor();
 
@@ -166,7 +170,8 @@ namespace PriceCompEngnMobile{
                 PCEUriBuilder newBuilder = new PCEUriBuilder(ServiceClient.Resources.TextManager);
                 string analyzerJson = await (new RestRequestExecutor()).ExecuteRestPostRequest(newBuilder, response);
                 _result = analyzerJson;
-                Toast.MakeText(this, "Check has been read", ToastLength.Short).Show();
+                bar.Visibility = ViewStates.Gone;
+                Toast.MakeText(this, "Check has been read", ToastLength.Long).Show();
             }
             else
                 Toast.MakeText(this, "provided image cannot be properly processed", ToastLength.Long).Show();

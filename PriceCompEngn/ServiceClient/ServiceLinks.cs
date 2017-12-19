@@ -18,7 +18,7 @@ namespace ServiceClient
         public const string OCRUrl = "/api/OCR";
         public const string UserUrl = "/api/User?";
         public const string ItemsUrl = "/api/Items?";
-        public const string PurchasesUrl = "/api/Purchases";
+        public const string PurchasesUrl = "/api/Purchases?";
         public const string TopShopsUrl = "/api/TopShops?";
         public const string MoreItemsUrl = "/api/MoreItems?";
 
