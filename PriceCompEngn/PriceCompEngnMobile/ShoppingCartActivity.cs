@@ -21,11 +21,10 @@ namespace PriceCompEngnMobile
         {
             base.OnCreate(savedInstanceState);
 
-            Bundle state = new Bundle();
-            OnSaveInstanceState(state);
-
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_shopcart);
+
+            SetInitialListValues();
 
             Button add_item = FindViewById<Button>(Resource.Id.add_item);
 
@@ -55,10 +54,10 @@ namespace PriceCompEngnMobile
                 AlertDialog dialog = builder.Create();
                 dialog.Show();
 
-                searchResults.ItemClick += delegate
+                searchResults.ItemClick += (o,e) =>
                 {
                     ShopItemListAdapter adapter = searchResults.Adapter as ShopItemListAdapter;
-                    KeyValuePair<string, double> item = adapter.GetItemByIndex(0);
+                    KeyValuePair<string, double> item = adapter.GetItemByIndex(e.Position);
                     _args.Add(item);
 
                     View view = adapter.GetView(0, null, null);
@@ -95,6 +94,33 @@ namespace PriceCompEngnMobile
 
                 ExecuteComparisonAsync(uriBuilder, firstRow, secondRow, thirdRow);
             };
+        }
+
+        private async void SetInitialListValues()
+        {
+            Bundle args = Intent.Extras;
+            string[] listItems = args.GetStringArray("selectedTopItems");
+
+            if (listItems != null)
+            {
+                PCEUriBuilder uriBuilder = new PCEUriBuilder(ServiceClient.Resources.MoreItems);
+                uriBuilder.AppendArrayArgs("itemNames", listItems);
+
+                string response = await (new RestRequestExecutor()).ExecuteRestGetRequest(uriBuilder);
+                _args = JsonConvert.DeserializeObject<List<KeyValuePair<string, double>>>(response);
+
+                Bundle fragmentArgs = new Bundle();
+                fragmentArgs.PutGenericList("shopCartItems", _args);
+                Fragment fragment = new ShopItemsListFragment
+                {
+                    Arguments = fragmentArgs
+                };
+
+                FragmentTransaction transaction = FragmentManager.BeginTransaction();
+                transaction.Replace(Resource.Id.shop_cart_fragment_container, fragment);
+
+                transaction.Commit();
+            }
         }
 
         private async void ExecuteComparisonAsync(PCEUriBuilder builder, TextView row1, TextView row2, TextView row3)

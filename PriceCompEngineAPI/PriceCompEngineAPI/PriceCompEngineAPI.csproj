@@ -227,6 +227,7 @@
     <Compile Include="Controllers\CheapestItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\MoreItemsController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\OCRController.cs" />

@@ -21,6 +21,7 @@ namespace PriceCompEngnMobile
     public class ShoppingActivity : Activity
     {
         private RestRequestExecutor _exc = new RestRequestExecutor();
+        private List<string> shopCartItems = new List<string>(); 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -33,6 +34,8 @@ namespace PriceCompEngnMobile
             CartBtn.Click += delegate 
             {
                 Intent intent = new Intent(this, typeof(ShoppingCartActivity));
+                intent.PutExtra("selectedTopItems", shopCartItems.ToArray());
+                shopCartItems = new List<string>();
                 StartActivity(intent);
             };
 
@@ -63,6 +66,8 @@ namespace PriceCompEngnMobile
 
             ListView list = FindViewById<ListView>(Resource.Id.list_pop_week);
             list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
+
+            OnNonShopListItemClick(list);
         }
 
         private async void FillSecondList()
@@ -79,6 +84,8 @@ namespace PriceCompEngnMobile
 
             ListView list = FindViewById<ListView>(Resource.Id.list_pop_alltime);
             list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_pop_week, entryList);
+
+            OnNonShopListItemClick(list);
         }
         
         private async void FillThirdList()
@@ -95,6 +102,38 @@ namespace PriceCompEngnMobile
 
             ListView list = FindViewById<ListView>(Resource.Id.list_shops);
             list.Adapter = new TopFiveListAdapter(this, Resource.Id.list_shops, entryList);
+        }
+
+        private void OnNonShopListItemClick(ListView list)
+        {
+            list.ItemClick += (o, e) =>
+            {
+                View promptView = LayoutInflater.From(this).Inflate(Resource.Layout.top_item_add_prompt, null);
+                AlertDialog.Builder scItemAddBuilder = new AlertDialog.Builder(this);
+                scItemAddBuilder.SetView(promptView);
+                scItemAddBuilder.SetCancelable(false);
+
+                AlertDialog dialog = scItemAddBuilder.Create();
+                dialog.Show();
+
+                Button ok = promptView.FindViewById<Button>(Resource.Id.promt_confirm_add_item);
+                Button cancel = promptView.FindViewById<Button>(Resource.Id.promt_cancel_adding);
+
+                ok.Click += delegate
+                {
+                    TopFiveListAdapter adapter = list.Adapter as TopFiveListAdapter;
+                    string selection = adapter.GetEntry(e.Position).Key;
+                    shopCartItems.Add(selection);
+
+                    Toast.MakeText(this, "Item added to cart", ToastLength.Short).Show();
+                    dialog.Dismiss();
+                };
+
+                cancel.Click += delegate
+                {
+                    dialog.Dismiss();
+                };
+            };
         }
     }
 }

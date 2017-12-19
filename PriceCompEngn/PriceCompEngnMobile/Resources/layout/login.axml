@@ -28,9 +28,15 @@
         android:textColorHint="#ff757575"
         android:contextClickable="true"
         android:shadowColor="#ff2d2d2d" />
+        <ProgressBar
+           android:id="@+id/loadingProgress"
+           style="android:attr/progressBarStyleLarge"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true" 
+           android:layout_centerVertical="true"/>
     <ImageButton
         android:src="@drawable/reg"
-        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register"
